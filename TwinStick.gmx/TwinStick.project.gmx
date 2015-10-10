@@ -6,18 +6,32 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\spr_bullet</sprite>
-    <sprite>sprites\spr_player_body</sprite>
-    <sprite>sprites\spr_player_cannon</sprite>
-    <sprite>sprites\spr_player_body_shadow</sprite>
-    <sprite>sprites\spr_player_cannon_shadow</sprite>
-    <sprite>sprites\spr_bullet_shadow</sprite>
-    <sprite>sprites\spr_enemy</sprite>
-    <sprite>sprites\spr_enemy_shadow</sprite>
     <sprite>sprites\spr_wall_basic</sprite>
     <sprite>sprites\spr_wall_basic_shadow</sprite>
-    <sprite>sprites\spr_power_up_multi_shot</sprite>
-    <sprite>sprites\spr_power_up_multi_shot_shadow</sprite>
+    <sprite>sprites\spr_bullet</sprite>
+    <sprite>sprites\spr_bullet_shadow</sprite>
+    <sprites name="player">
+      <sprite>sprites\spr_player_cannon</sprite>
+      <sprite>sprites\spr_player_cannon_shadow</sprite>
+      <sprite>sprites\spr_player_body</sprite>
+      <sprite>sprites\spr_player_body_shadow</sprite>
+    </sprites>
+    <sprites name="power_ups">
+      <sprite>sprites\spr_power_up_multi_shot</sprite>
+      <sprite>sprites\spr_power_up_multi_shot_shadow</sprite>
+    </sprites>
+    <sprites name="enemies">
+      <sprites name="enemy_drone">
+        <sprite>sprites\spr_enemy</sprite>
+        <sprite>sprites\spr_enemy_shadow</sprite>
+      </sprites>
+      <sprites name="enemy_turret">
+        <sprite>sprites\spr_turret_cannon</sprite>
+        <sprite>sprites\spr_turret_cannon_shadow</sprite>
+        <sprite>sprites\spr_turret_body</sprite>
+        <sprite>sprites\spr_turret_body_shadow</sprite>
+      </sprites>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\background_grid</background>
@@ -34,10 +48,11 @@
     <object>objects\obj_enemy</object>
     <object>objects\obj_wall</object>
     <object>objects\obj_power_up</object>
+    <object>objects\obj_turret</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room0</room>
     <room>rooms\room1</room>
+    <room>rooms\room0</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

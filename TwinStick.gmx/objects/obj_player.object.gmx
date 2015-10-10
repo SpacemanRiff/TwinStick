@@ -112,7 +112,7 @@ if(abs(vspeed) &gt; 0 || abs(hspeed) &gt; 0){
     if(shooting){        
         for(i = -floor(shot_count/2); i &lt; ceil(shot_count/2); i++){
             shot = instance_create(x,y,obj_bullet)
-            shot.speed = 10
+            shot.parent_object = id
             shot.direction = facing_direction + ((30 / ceil(shot_count/2)) * i)
             shot.hover_height = hover_height
         } 
