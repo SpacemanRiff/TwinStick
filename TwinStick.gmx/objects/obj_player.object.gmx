@@ -32,7 +32,7 @@ move_right = false
 default_speed = 4
 hspeed_mod = 0
 vspeed_mod = 0
-firing_rate = 10
+firing_rate = 5
 delay_until_shot = 0
 
 hover_height = 5
@@ -41,6 +41,8 @@ facing_direction = 0
 shooting = false
 
 last_direction_moved = 0
+
+shot_count = 1
 </string>
           </argument>
         </arguments>
@@ -107,11 +109,13 @@ if(abs(vspeed) &gt; 0 || abs(hspeed) &gt; 0){
           <argument>
             <kind>1</kind>
             <string>if(delay_until_shot &lt;= 0){
-    if(shooting){
-        shot = instance_create(x,y,obj_bullet)
-        shot.speed = 10
-        shot.hover_height = hover_height
-        shot.direction = facing_direction
+    if(shooting){        
+        for(i = -floor(shot_count/2); i &lt; ceil(shot_count/2); i++){
+            shot = instance_create(x,y,obj_bullet)
+            shot.speed = 10
+            shot.direction = facing_direction + ((30 / ceil(shot_count/2)) * i)
+            shot.hover_height = hover_height
+        } 
         delay_until_shot = firing_rate
     }
 }
@@ -119,6 +123,51 @@ if(abs(vspeed) &gt; 0 || abs(hspeed) &gt; 0){
 if(delay_until_shot &gt; 0){
     delay_until_shot --
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_wall">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string></string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_enemy">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>room_restart()
 </string>
           </argument>
         </arguments>
