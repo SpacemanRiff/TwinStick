@@ -32,6 +32,10 @@
         <sprite>sprites\spr_turret_body_shadow</sprite>
       </sprites>
     </sprites>
+    <sprite>sprites\spr_spawner_closed</sprite>
+    <sprite>sprites\spr_spawner_opening</sprite>
+    <sprite>sprites\spr_spawner_closing</sprite>
+    <sprite>sprites\hud_health_bar</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background_grid</background>
@@ -47,6 +51,7 @@
     <object>objects\obj_bullet</object>
     <object>objects\obj_enemy</object>
     <object>objects\obj_wall</object>
+    <object>objects\obj_wall_shadow</object>
     <object>objects\obj_power_up</object>
     <object>objects\obj_turret</object>
   </objects>

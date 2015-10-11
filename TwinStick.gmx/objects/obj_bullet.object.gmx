@@ -98,7 +98,7 @@ var parent_object;
           <argument>
             <kind>1</kind>
             <string>if(parent_object != other.id){
-    room_restart()
+    instance_destroy()
 }
 </string>
           </argument>

@@ -34,6 +34,8 @@ max_health = 3
 current_health = 1
 
 score_value = 25
+
+power_up_drop_rate = 0.05
 </string>
           </argument>
         </arguments>
@@ -57,7 +59,33 @@ score_value = 25
           <argument>
             <kind>1</kind>
             <string>if mp_grid_path(global.grid, path, x, y, obj_player.x, obj_player.y, 1){
-      path_start(path, default_speed, 0, 0);
+    path_start(path, default_speed, 0, 0);  
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(current_health &lt;= 1){
+    if(random(1) &lt; power_up_drop_rate){
+        instance_create(x,y,obj_power_up)
+    }
+    instance_destroy()
 }
 </string>
           </argument>
@@ -82,9 +110,6 @@ score_value = 25
           <argument>
             <kind>1</kind>
             <string>obj_supervisor.score += score_value
-if(current_health &lt;= 1){
-    instance_destroy()
-}
 current_health--
 </string>
           </argument>

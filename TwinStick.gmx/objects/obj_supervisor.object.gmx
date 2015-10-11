@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>globalvar grid;
+            <string>randomize()
+
+globalvar grid;
 grid = mp_grid_create(0, 0, room_width div 32, room_height div 32, 32, 32);
 mp_grid_add_instances(grid, obj_wall, false);
 
@@ -157,6 +159,8 @@ if((gamepad_axis_value(0, gp_axislh) &lt; gp_deadzone &amp;&amp; gamepad_axis_va
           <argument>
             <kind>1</kind>
             <string>draw_rectangle_colour(view_hview - 128, 0, view_hview, 32, c_gray, c_gray, c_gray, c_gray, false)
+
+draw_sprite_ext(hud_health_bar,obj_player.current_health,96,12,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 
 draw_set_font(font0)
 draw_set_halign(fa_right)
