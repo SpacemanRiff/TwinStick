@@ -29,7 +29,7 @@
 cannon_height = 8
 body_height = 4
 
-firing_rate = 10
+firing_rate = 15
 delay_until_shot = 0
 </string>
           </argument>
@@ -81,6 +81,7 @@ delay_until_shot = 0
         shot.parent_object = id
         shot.hover_height = cannon_height
         delay_until_shot = firing_rate
+        audio_play_sound_at(snd_cannon,x,y,0,256,512,1,false,1) 
     }
 }
 

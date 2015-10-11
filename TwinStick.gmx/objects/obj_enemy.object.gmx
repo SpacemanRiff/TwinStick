@@ -88,6 +88,7 @@ power_up_drop_rate = 0.05
     for(i = 0; i &lt; irandom(2); i++){        
         instance_create(x+irandom_range(-10,10),y+irandom_range(-10,10),obj_multiplier_orb)
     }
+    audio_play_sound_at(snd_enemy_death,x,y,0,256,512,1,false,1) 
     instance_destroy()
 }
 </string>

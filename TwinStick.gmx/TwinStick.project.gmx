@@ -4,7 +4,12 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\snd_machine_gun_basic</sound>
+    <sound>sound\snd_enemy_death</sound>
+    <sound>sound\snd_power_up_get</sound>
+    <sound>sound\snd_cannon</sound>
+  </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_wall_basic</sprite>
     <sprite>sprites\spr_wall_basic_shadow</sprite>

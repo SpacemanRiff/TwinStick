@@ -43,6 +43,7 @@ shooting = false
 last_direction_moved = 0
 
 shot_count = 1
+max_shot_count = 9
 
 current_health = 8
 </string>
@@ -90,6 +91,8 @@ if(!move_up &amp;&amp; !move_down){
 if(abs(vspeed) &gt; 0 || abs(hspeed) &gt; 0){
     last_direction_moved = point_direction(x, y, x + hspeed, y + vspeed)
 }
+
+audio_listener_position(x,y,0)
 </string>
           </argument>
         </arguments>
@@ -118,6 +121,7 @@ if(abs(vspeed) &gt; 0 || abs(hspeed) &gt; 0){
             shot.direction = facing_direction + ((30 / ceil(shot_count/2)) * i)
             shot.hover_height = hover_height
         } 
+        audio_play_sound_at(snd_machine_gun_basic,x,y,0,256,512,1,false,1) 
         delay_until_shot = firing_rate
     }
 }
@@ -125,6 +129,32 @@ if(abs(vspeed) &gt; 0 || abs(hspeed) &gt; 0){
 if(delay_until_shot &gt; 0){
     delay_until_shot --
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_power_up">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>shot_count += 2
+audio_play_sound_at(snd_power_up_get,x,y,0,256,512,1,false,1) 
+
+clamp(shot_count,0,max_shot_count)
 </string>
           </argument>
         </arguments>
