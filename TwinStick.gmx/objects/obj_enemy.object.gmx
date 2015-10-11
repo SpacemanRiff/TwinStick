@@ -81,9 +81,12 @@ power_up_drop_rate = 0.05
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(current_health &lt;= 1){
+            <string>if(current_health &lt; 1){
     if(random(1) &lt; power_up_drop_rate){
         instance_create(x,y,obj_power_up)
+    }
+    for(i = 0; i &lt; irandom(2); i++){        
+        instance_create(x+irandom_range(-10,10),y+irandom_range(-10,10),obj_multiplier_orb)
     }
     instance_destroy()
 }
@@ -109,7 +112,7 @@ power_up_drop_rate = 0.05
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>obj_supervisor.score += score_value
+            <string>obj_supervisor.score += score_value*obj_supervisor.multiplier
 current_health--
 </string>
           </argument>

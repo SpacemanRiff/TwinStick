@@ -36,6 +36,8 @@
     <sprite>sprites\spr_spawner_opening</sprite>
     <sprite>sprites\spr_spawner_closing</sprite>
     <sprite>sprites\hud_health_bar</sprite>
+    <sprite>sprites\spr_multiplier_orb</sprite>
+    <sprite>sprites\spr_multiplier_orb_shadow</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background_grid</background>
@@ -54,6 +56,7 @@
     <object>objects\obj_wall_shadow</object>
     <object>objects\obj_power_up</object>
     <object>objects\obj_turret</object>
+    <object>objects\obj_multiplier_orb</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room1</room>
