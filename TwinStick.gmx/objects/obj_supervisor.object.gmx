@@ -37,7 +37,7 @@ score = 0
 
 multiplier = 1
 
-decrease_spawn_timer_rate = 60
+decrease_spawn_timer_rate = 120
 time_until_next_decrease = decrease_spawn_timer_rate
 </string>
           </argument>

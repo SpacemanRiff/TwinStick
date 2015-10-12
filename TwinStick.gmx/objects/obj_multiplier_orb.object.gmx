@@ -27,12 +27,14 @@
             <kind>1</kind>
             <string>path = path_add()
 
-move_speed = 0
+move_speed = 1
 move_speed_inc = 0.1
 
-range = 256
+range = 768
 
 hover_height = 5
+
+default_depth = 0
 </string>
           </argument>
         </arguments>
@@ -67,6 +69,8 @@ if(sqrt(power(obj_player.x-x,2) + power(obj_player.y-y,2)) &lt; range){
 }
 
 clamp(move_speed,0,10)
+
+depth = default_depth - y/1000
 </string>
           </argument>
         </arguments>
@@ -91,6 +95,29 @@ clamp(move_speed,0,10)
             <kind>1</kind>
             <string>obj_supervisor.multiplier += 1
 instance_destroy()
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>instance_destroy()
 </string>
           </argument>
         </arguments>

@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>hover_height = 0
 speed = 10
+damage = 1
 
 var parent_object;
 </string>

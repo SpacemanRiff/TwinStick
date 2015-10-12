@@ -28,7 +28,7 @@
             <string>path = path_add()
 
 hover_height = 5
-default_speed = 4
+default_speed = 6
 
 max_health = 3
 current_health = 1
@@ -36,6 +36,8 @@ current_health = 1
 score_value = 25
 
 power_up_drop_rate = 0.05
+
+default_depth = 0
 </string>
           </argument>
         </arguments>
@@ -61,6 +63,8 @@ power_up_drop_rate = 0.05
             <string>if mp_grid_path(global.grid, path, x, y, obj_player.x, obj_player.y, 1){
     path_start(path, default_speed, 0, 0);  
 }
+
+depth = default_depth - y/1000
 </string>
           </argument>
         </arguments>

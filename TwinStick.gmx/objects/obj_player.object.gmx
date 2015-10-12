@@ -29,7 +29,7 @@
 move_down = false
 move_left = false
 move_right = false
-default_speed = 4
+default_speed = 5
 hspeed_mod = 0
 vspeed_mod = 0
 firing_rate = 5
@@ -46,6 +46,8 @@ shot_count = 1
 max_shot_count = 9
 
 current_health = 8
+
+default_depth = 0
 </string>
           </argument>
         </arguments>
@@ -93,6 +95,8 @@ if(abs(vspeed) &gt; 0 || abs(hspeed) &gt; 0){
 }
 
 audio_listener_position(x,y,0)
+
+depth = default_depth - y/1000
 </string>
           </argument>
         </arguments>
@@ -227,8 +231,8 @@ if(current_health == 0){
           <argument>
             <kind>1</kind>
             <string>if(other.parent_object != id){
-    current_health--
-    if(current_health == 0){
+    current_health-=other.damage
+    if(current_health &lt;= 0){
         room_restart()
     }
 }
