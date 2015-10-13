@@ -45,6 +45,10 @@
     <sprite>sprites\spr_multiplier_orb_shadow</sprite>
     <sprite>sprites\spr_cannon_shell</sprite>
     <sprite>sprites\spr_cannon_shell_shadow</sprite>
+    <sprite>sprites\spr_cursor_blue</sprite>
+    <sprite>sprites\spr_cursor_red</sprite>
+    <sprite>sprites\spr_cursor_bad</sprite>
+    <sprite>sprites\spr_cursor_shadow</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background_grid</background>

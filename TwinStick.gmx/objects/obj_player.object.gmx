@@ -74,13 +74,13 @@ default_depth = 0
     vspeed = default_speed * vspeed_mod
 }
 if(move_up){
-    vspeed = default_speed * vspeed_mod
+    vspeed = -default_speed * vspeed_mod
 }
 if(move_right){
     hspeed = default_speed * hspeed_mod
 }
 if(move_left){
-    hspeed = default_speed * hspeed_mod
+    hspeed = -default_speed * hspeed_mod
 }
 
 if(!move_left &amp;&amp; !move_right){
