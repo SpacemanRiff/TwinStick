@@ -96,7 +96,7 @@ if(abs(vspeed) &gt; 0 || abs(hspeed) &gt; 0){
 
 audio_listener_position(x,y,0)
 
-depth = default_depth - y/1000
+depth = default_depth - y/100000
 </string>
           </argument>
         </arguments>

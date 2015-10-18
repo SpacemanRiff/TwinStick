@@ -49,6 +49,9 @@
     <sprite>sprites\spr_cursor_red</sprite>
     <sprite>sprites\spr_cursor_bad</sprite>
     <sprite>sprites\spr_cursor_shadow</sprite>
+    <sprite>sprites\spr_building_floor_1</sprite>
+    <sprite>sprites\spr_building_floor_2</sprite>
+    <sprite>sprites\spr_building_roof</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background_grid</background>

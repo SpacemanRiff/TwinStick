@@ -64,7 +64,7 @@ default_depth = 0
     path_start(path, default_speed, 0, 0);  
 }
 
-depth = default_depth - y/1000
+depth = default_depth - y/100000
 </string>
           </argument>
         </arguments>

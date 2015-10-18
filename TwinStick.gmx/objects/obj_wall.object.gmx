@@ -25,7 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>shadow = instance_create(x,y+5,obj_wall_shadow)
+            <string>//shadow = instance_create(x,y+5,obj_wall_shadow)
+
+depth = depth - y/100000
+
+number_of_extra_floors = irandom(2)
 </string>
           </argument>
         </arguments>
@@ -48,7 +52,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(spr_wall_basic,image_index,x,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+            <string>draw_sprite_ext(spr_building_floor_1,image_index,x,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+
+for(i = 0; i &lt; number_of_extra_floors; i++){
+    draw_sprite_ext(spr_building_floor_2,image_index,x,y - 32 - 32*i,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+}
+
+draw_sprite_ext(spr_building_roof,image_index,x,y - 32 - 32*number_of_extra_floors,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 </string>
           </argument>
         </arguments>
