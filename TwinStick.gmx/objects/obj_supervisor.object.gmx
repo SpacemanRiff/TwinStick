@@ -321,10 +321,8 @@ if(time_until_next_decrease &gt; 0){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_rectangle_colour(view_hview - 128, 2, view_hview, 30, c_gray, c_gray, c_gray, c_gray, false)
-draw_rectangle_colour(view_hview - 128, 32, view_hview, 60, c_gray, c_gray, c_gray, c_gray, false)
-
-draw_sprite_ext(hud_health_bar,obj_player.current_health,96,12,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+            <string>draw_rectangle_colour(view_hview - 128, 2, view_hview, 30, c_ltgray, c_ltgray, c_ltgray, c_ltgray, false)
+draw_rectangle_colour(view_hview - 128, 32, view_hview, 60, c_ltgray, c_ltgray, c_ltgray, c_ltgray, false)
 
 draw_set_font(font0)
 draw_set_halign(fa_right)
@@ -364,6 +362,8 @@ draw_text(view_hview - 8, 36, string(multiplier)+"x")
         draw_sprite_ext(spr_cursor_blue,image_index,mouse_x,mouse_y-4,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
     }
 }
+
+draw_sprite_ext(hud_health_bar,obj_player.current_health,obj_player.x,obj_player.y-32,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 </string>
           </argument>
         </arguments>

@@ -32,7 +32,9 @@ move_right = false
 default_speed = 5
 hspeed_mod = 0
 vspeed_mod = 0
-firing_rate = 5
+firing_rate = 10
+max_fire_rate = 15
+min_fire_rate = 3
 delay_until_shot = 0
 
 hover_height = 5
@@ -117,7 +119,8 @@ depth = default_depth - y/100000
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(delay_until_shot &lt;= 0){
+            <string>gamepad_set_vibration(0,0,0)
+if(delay_until_shot &lt;= 0){
     if(shooting){        
         for(i = -floor(shot_count/2); i &lt; ceil(shot_count/2); i++){
             shot = instance_create(x,y,obj_bullet)
@@ -138,7 +141,7 @@ if(delay_until_shot &gt; 0){
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_power_up">
+    <event eventtype="4" ename="obj_enemy">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -155,10 +158,12 @@ if(delay_until_shot &gt; 0){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>shot_count += 2
-audio_play_sound_at(snd_power_up_get,x,y,0,256,512,1,false,1) 
-
-clamp(shot_count,0,max_shot_count)
+            <string>current_health--
+other.current_health--
+gamepad_set_vibration(0,1,1)
+if(current_health == 0){
+    room_restart()
+}
 </string>
           </argument>
         </arguments>
@@ -186,33 +191,6 @@ clamp(shot_count,0,max_shot_count)
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_enemy">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>current_health--
-other.current_health--
-if(current_health == 0){
-    room_restart()
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="4" ename="obj_bullet">
       <action>
         <libid>1</libid>
@@ -232,6 +210,7 @@ if(current_health == 0){
             <kind>1</kind>
             <string>if(other.parent_object != id){
     current_health-=other.damage
+    gamepad_set_vibration(0,1,1)
     if(current_health &lt;= 0){
         room_restart()
     }

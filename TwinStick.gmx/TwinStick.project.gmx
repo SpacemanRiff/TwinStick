@@ -9,6 +9,7 @@
     <sound>sound\snd_enemy_death</sound>
     <sound>sound\snd_power_up_get</sound>
     <sound>sound\snd_cannon</sound>
+    <sound>sound\snd_hit</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="player">
@@ -18,10 +19,12 @@
       <sprite>sprites\spr_player_body_shadow</sprite>
     </sprites>
     <sprites name="power_ups">
-      <sprite>sprites\spr_power_up_multi_shot</sprite>
-      <sprite>sprites\spr_power_up_multi_shot_shadow</sprite>
       <sprite>sprites\spr_multiplier_orb</sprite>
       <sprite>sprites\spr_multiplier_orb_shadow</sprite>
+      <sprite>sprites\spr_power_up_multi_shot</sprite>
+      <sprite>sprites\spr_power_up_multi_shot_shadow</sprite>
+      <sprite>sprites\spr_power_up_rof</sprite>
+      <sprite>sprites\spr_power_up_rof_shadow</sprite>
     </sprites>
     <sprites name="enemies">
       <sprites name="enemy_drone">
@@ -93,7 +96,8 @@
     </objects>
     <objects name="power_ups">
       <object>objects\obj_multiplier_orb</object>
-      <object>objects\obj_power_up</object>
+      <object>objects\obj_power_up_multi_shot</object>
+      <object>objects\obj_power_up_rof</object>
     </objects>
   </objects>
   <rooms name="rooms">

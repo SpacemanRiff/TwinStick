@@ -87,7 +87,14 @@ depth = default_depth - y/100000
             <kind>1</kind>
             <string>if(current_health &lt; 1){
     if(random(1) &lt; power_up_drop_rate){
-        instance_create(x,y,obj_power_up)
+        switch(irandom(1)){
+            case 0:
+                instance_create(x,y,obj_power_up_multi_shot)
+                break
+            case 1:
+                instance_create(x,y,obj_power_up_rof)
+                break
+        }
     }
     for(i = 0; i &lt; irandom(2); i++){        
         instance_create(x+irandom_range(-10,10),y+irandom_range(-10,10),obj_multiplier_orb)
