@@ -321,13 +321,17 @@ if(time_until_next_decrease &gt; 0){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_rectangle_colour(view_hview - 128, 2, view_hview, 30, c_ltgray, c_ltgray, c_ltgray, c_ltgray, false)
-draw_rectangle_colour(view_hview - 128, 32, view_hview, 60, c_ltgray, c_ltgray, c_ltgray, c_ltgray, false)
+            <string>draw_rectangle_colour(view_wview - 136, 2, view_wview-2, 30, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false)
+draw_rectangle_colour(view_wview - 136, 34, view_wview-2, 62, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false)
+
+draw_rectangle_colour(view_wview - 134, 4, view_wview-4, 28, c_ltgray, c_ltgray, c_ltgray, c_ltgray, false)
+draw_rectangle_colour(view_wview - 134, 36, view_wview-4, 60, c_ltgray, c_ltgray, c_ltgray, c_ltgray, false)
 
 draw_set_font(font0)
 draw_set_halign(fa_right)
-draw_text(view_hview - 8, 6, string(score))
-draw_text(view_hview - 8, 36, string(multiplier)+"x")
+draw_set_valign(fa_center)
+draw_text(view_wview - 12, 16, string(score))
+draw_text(view_wview - 12, 48, string(multiplier)+"x")
 </string>
           </argument>
         </arguments>

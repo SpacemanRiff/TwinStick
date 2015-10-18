@@ -33,6 +33,8 @@ firing_rate = 20
 delay_until_shot = 0
 
 depth = depth - y/100000
+
+has_sight = false
 </string>
           </argument>
         </arguments>
@@ -85,6 +87,9 @@ depth = depth - y/100000
         delay_until_shot = firing_rate
         audio_play_sound_at(snd_cannon,x,y,0,256,512,1,false,1) 
     }
+    has_sight = true
+}else{
+    has_sight = false
 }
 
 if(delay_until_shot &gt; 0){
@@ -115,6 +120,11 @@ if(delay_until_shot &gt; 0){
             <string>draw_sprite_ext(spr_turret_body_shadow,image_index,x,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 draw_sprite_ext(spr_turret_body,image_index,x,y-body_height,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 draw_sprite_ext(spr_turret_cannon_shadow,image_index,x,y-body_height,image_xscale,image_yscale,facing_direction,image_blend,image_alpha)
+if(has_sight){
+    draw_set_alpha(0.5)
+    draw_line_width_colour(x,y-cannon_height,obj_player.x,obj_player.y-obj_player.hover_height,2,c_red,c_red)
+    draw_set_alpha(1)
+}
 draw_sprite_ext(spr_turret_cannon,image_index,x,y-cannon_height,image_xscale,image_yscale,facing_direction,image_blend,image_alpha)
 </string>
           </argument>
