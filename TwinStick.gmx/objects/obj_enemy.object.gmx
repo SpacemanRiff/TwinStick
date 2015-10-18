@@ -28,7 +28,7 @@
             <string>path = path_add()
 
 hover_height = 5
-default_speed = 6
+default_speed = 4
 
 max_health = 3
 current_health = 1

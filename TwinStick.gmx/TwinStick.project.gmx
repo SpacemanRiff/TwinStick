@@ -52,6 +52,9 @@
   </sprites>
   <backgrounds name="background">
     <background>background\background_grid</background>
+    <background>background\bg_road</background>
+    <background>background\bg_sidewalks</background>
+    <background>background\bg_grass</background>
   </backgrounds>
   <paths name="paths"/>
   <fonts name="fonts">
