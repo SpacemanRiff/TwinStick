@@ -11,10 +11,6 @@
     <sound>sound\snd_cannon</sound>
   </sounds>
   <sprites name="sprites">
-    <sprite>sprites\spr_wall_basic</sprite>
-    <sprite>sprites\spr_wall_basic_shadow</sprite>
-    <sprite>sprites\spr_bullet</sprite>
-    <sprite>sprites\spr_bullet_shadow</sprite>
     <sprites name="player">
       <sprite>sprites\spr_player_cannon</sprite>
       <sprite>sprites\spr_player_cannon_shadow</sprite>
@@ -24,6 +20,8 @@
     <sprites name="power_ups">
       <sprite>sprites\spr_power_up_multi_shot</sprite>
       <sprite>sprites\spr_power_up_multi_shot_shadow</sprite>
+      <sprite>sprites\spr_multiplier_orb</sprite>
+      <sprite>sprites\spr_multiplier_orb_shadow</sprite>
     </sprites>
     <sprites name="enemies">
       <sprites name="enemy_drone">
@@ -36,22 +34,37 @@
         <sprite>sprites\spr_turret_body</sprite>
         <sprite>sprites\spr_turret_body_shadow</sprite>
       </sprites>
+      <sprites name="spawner">
+        <sprite>sprites\spr_spawner_closed</sprite>
+        <sprite>sprites\spr_spawner_opening</sprite>
+        <sprite>sprites\spr_spawner_closing</sprite>
+      </sprites>
     </sprites>
-    <sprite>sprites\spr_spawner_closed</sprite>
-    <sprite>sprites\spr_spawner_opening</sprite>
-    <sprite>sprites\spr_spawner_closing</sprite>
-    <sprite>sprites\hud_health_bar</sprite>
-    <sprite>sprites\spr_multiplier_orb</sprite>
-    <sprite>sprites\spr_multiplier_orb_shadow</sprite>
-    <sprite>sprites\spr_cannon_shell</sprite>
-    <sprite>sprites\spr_cannon_shell_shadow</sprite>
-    <sprite>sprites\spr_cursor_blue</sprite>
-    <sprite>sprites\spr_cursor_red</sprite>
-    <sprite>sprites\spr_cursor_bad</sprite>
-    <sprite>sprites\spr_cursor_shadow</sprite>
-    <sprite>sprites\spr_building_floor_1</sprite>
-    <sprite>sprites\spr_building_floor_2</sprite>
-    <sprite>sprites\spr_building_roof</sprite>
+    <sprites name="buildings">
+      <sprite>sprites\spr_building_floor_1</sprite>
+      <sprite>sprites\spr_building_floor_2</sprite>
+      <sprites name="roofs">
+        <sprite>sprites\spr_building_roof</sprite>
+        <sprite>sprites\spr_building_roof_1</sprite>
+        <sprite>sprites\spr_building_roof_2</sprite>
+        <sprite>sprites\spr_building_roof_3</sprite>
+      </sprites>
+      <sprite>sprites\spr_wall_basic</sprite>
+      <sprite>sprites\spr_wall_basic_shadow</sprite>
+    </sprites>
+    <sprites name="projectiles">
+      <sprite>sprites\spr_bullet</sprite>
+      <sprite>sprites\spr_bullet_shadow</sprite>
+      <sprite>sprites\spr_cannon_shell</sprite>
+      <sprite>sprites\spr_cannon_shell_shadow</sprite>
+    </sprites>
+    <sprites name="hud">
+      <sprite>sprites\hud_health_bar</sprite>
+      <sprite>sprites\spr_cursor_blue</sprite>
+      <sprite>sprites\spr_cursor_red</sprite>
+      <sprite>sprites\spr_cursor_bad</sprite>
+      <sprite>sprites\spr_cursor_shadow</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\background_grid</background>
@@ -65,16 +78,23 @@
   </fonts>
   <objects name="objects">
     <object>objects\obj_supervisor</object>
-    <object>objects\obj_spawner</object>
     <object>objects\obj_player</object>
-    <object>objects\obj_bullet</object>
-    <object>objects\obj_enemy</object>
-    <object>objects\obj_wall</object>
-    <object>objects\obj_wall_shadow</object>
-    <object>objects\obj_power_up</object>
-    <object>objects\obj_turret</object>
-    <object>objects\obj_multiplier_orb</object>
-    <object>objects\obj_cannon_shell</object>
+    <objects name="projectiles">
+      <object>objects\obj_bullet</object>
+      <object>objects\obj_cannon_shell</object>
+    </objects>
+    <objects name="enviroment">
+      <object>objects\obj_wall</object>
+    </objects>
+    <objects name="enemies">
+      <object>objects\obj_enemy</object>
+      <object>objects\obj_turret</object>
+      <object>objects\obj_spawner</object>
+    </objects>
+    <objects name="power_ups">
+      <object>objects\obj_multiplier_orb</object>
+      <object>objects\obj_power_up</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\room1</room>

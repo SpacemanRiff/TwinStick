@@ -25,11 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//shadow = instance_create(x,y+5,obj_wall_shadow)
-
-depth = depth - y/100000
+            <string>depth = depth - y/100000
 
 number_of_extra_floors = irandom(2)
+building_style =  irandom(1)
+roof_style = irandom(3)
+
+image_speed = 0
 </string>
           </argument>
         </arguments>
@@ -52,13 +54,27 @@ number_of_extra_floors = irandom(2)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(spr_building_floor_1,image_index,x,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+            <string>draw_sprite_ext(spr_building_floor_1,building_style,x,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 
 for(i = 0; i &lt; number_of_extra_floors; i++){
-    draw_sprite_ext(spr_building_floor_2,image_index,x,y - 32 - 32*i,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+    draw_sprite_ext(spr_building_floor_2,building_style,x,y - 32 - 32*i,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 }
 
-draw_sprite_ext(spr_building_roof,image_index,x,y - 32 - 32*number_of_extra_floors,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+switch(roof_style){
+    case 0:
+        draw_sprite_ext(spr_building_roof,building_style,x,y - 32 - 32*number_of_extra_floors,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+        break
+    case 1:
+        draw_sprite_ext(spr_building_roof_1,building_style,x,y - 32 - 32*number_of_extra_floors,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+        break
+    case 2:
+        draw_sprite_ext(spr_building_roof_2,building_style,x,y - 32 - 32*number_of_extra_floors,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+        break
+    case 3:
+        draw_sprite_ext(spr_building_roof_3,building_style,x,y - 32 - 32*number_of_extra_floors,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+        break
+}
+//draw_sprite_ext(spr_wall_basic_shadow,image_index,x,y - 96 - 32*number_of_extra_floors,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 </string>
           </argument>
         </arguments>
