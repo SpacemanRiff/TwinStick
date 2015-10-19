@@ -60,11 +60,15 @@
       <sprite>sprites\spr_wall_basic</sprite>
       <sprite>sprites\spr_wall_basic_shadow</sprite>
     </sprites>
-    <sprites name="projectiles">
+    <sprites name="weapons">
       <sprite>sprites\spr_bullet</sprite>
       <sprite>sprites\spr_bullet_shadow</sprite>
       <sprite>sprites\spr_cannon_shell</sprite>
       <sprite>sprites\spr_cannon_shell_shadow</sprite>
+      <sprite>sprites\spr_bomb</sprite>
+      <sprite>sprites\spr_bomb_shadow</sprite>
+      <sprite>sprites\spr_bomb_shrapnel</sprite>
+      <sprite>sprites\spr_bomb_shrapnel_shadow</sprite>
     </sprites>
     <sprites name="hud">
       <sprite>sprites\hud_health_bar</sprite>
@@ -88,9 +92,11 @@
   <objects name="objects">
     <object>objects\obj_supervisor</object>
     <object>objects\obj_player</object>
-    <objects name="projectiles">
+    <objects name="weapons">
       <object>objects\obj_bullet</object>
       <object>objects\obj_cannon_shell</object>
+      <object>objects\obj_bomb</object>
+      <object>objects\obj_bomb_shrapnel</object>
     </objects>
     <objects name="enviroment">
       <object>objects\obj_wall</object>

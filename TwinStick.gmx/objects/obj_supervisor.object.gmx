@@ -163,11 +163,17 @@ time_until_next_decrease = decrease_spawn_timer_rate
           <argument>
             <kind>1</kind>
             <string>if(gamepad_is_connected(0)){
-    if(gamepad_button_check_pressed(0,gp_face2)){
+    if(gamepad_button_check_released(0,gp_face2)){
         if(obj_player.shield_count &gt; 0 &amp;&amp; !obj_player.using_shield){
             obj_player.using_shield = true
             obj_player.shield_count--
             obj_player.shield_health = obj_player.default_shield_health
+        }
+    }
+    if(gamepad_button_check_released(0,gp_face1)){
+        if(obj_player.bomb_count &gt; 0){
+            obj_player.bomb_count--
+            instance_create(obj_player.x,obj_player.y,obj_bomb)
         }
     }
 }
