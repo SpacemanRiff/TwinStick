@@ -35,7 +35,7 @@ current_health = 1
 
 score_value = 25
 
-power_up_drop_rate = 0.05
+power_up_drop_rate = 0.075
 
 default_depth = 0
 </string>
@@ -87,12 +87,19 @@ depth = default_depth - y/100000
             <kind>1</kind>
             <string>if(current_health &lt; 1){
     if(random(1) &lt; power_up_drop_rate){
-        switch(irandom(1)){
+        switch(irandom(4)){
             case 0:
+            case 1:
+                instance_create(x,y,obj_power_up_health)
+                break
+            case 2:
                 instance_create(x,y,obj_power_up_multi_shot)
                 break
-            case 1:
+            case 3:
                 instance_create(x,y,obj_power_up_rof)
+                break
+            case 4:
+                instance_create(x,y,obj_power_up_shield)
                 break
         }
     }

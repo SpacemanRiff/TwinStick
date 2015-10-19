@@ -48,8 +48,14 @@ shot_count = 1
 max_shot_count = 9
 
 current_health = 8
+max_health = 8
 
-default_depth = 0
+default_depth = depth
+
+shield_count = 1
+using_shield = false
+shield_health = 0
+default_shield_health = 4
 </string>
           </argument>
         </arguments>
@@ -158,11 +164,19 @@ if(delay_until_shot &gt; 0){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>current_health--
-other.current_health--
-gamepad_set_vibration(0,1,1)
-if(current_health == 0){
-    room_restart()
+            <string>other.current_health--
+if(using_shield){    
+    shield_health--
+    gamepad_set_vibration(0,1,1)
+    if(shield_health &lt;= 0){
+        using_shield = false
+    }
+}else{
+    current_health--
+    gamepad_set_vibration(0,1,1)
+    if(current_health &lt;= 0){
+        room_restart()
+    }
 }
 </string>
           </argument>
@@ -209,10 +223,18 @@ if(current_health == 0){
           <argument>
             <kind>1</kind>
             <string>if(other.parent_object != id){
-    current_health-=other.damage
-    gamepad_set_vibration(0,1,1)
-    if(current_health &lt;= 0){
-        room_restart()
+    if(using_shield){    
+        shield_health-=other.damage
+        gamepad_set_vibration(0,1,1)
+        if(shield_health &lt;= 0){
+            using_shield = false
+        }
+    }else{
+        current_health-=other.damage
+        gamepad_set_vibration(0,1,1)
+        if(current_health &lt;= 0){
+            room_restart()
+        }
     }
 }
 </string>
@@ -242,6 +264,10 @@ draw_sprite_ext(spr_player_cannon_shadow,image_index,x,y,image_xscale,image_ysca
 
 draw_sprite_ext(spr_player_body,image_index,x,y-hover_height,image_xscale,image_yscale,last_direction_moved,image_blend,image_alpha)
 draw_sprite_ext(spr_player_cannon,image_index,x,y-hover_height,image_xscale,image_yscale,facing_direction,image_blend,image_alpha)
+
+if(using_shield){
+    draw_sprite_ext(spr_player_shield,image_index,x,y-hover_height,image_xscale,image_yscale,facing_direction,image_blend,image_alpha)
+}
 </string>
           </argument>
         </arguments>

@@ -17,6 +17,7 @@
       <sprite>sprites\spr_player_cannon_shadow</sprite>
       <sprite>sprites\spr_player_body</sprite>
       <sprite>sprites\spr_player_body_shadow</sprite>
+      <sprite>sprites\spr_player_shield</sprite>
     </sprites>
     <sprites name="power_ups">
       <sprite>sprites\spr_multiplier_orb</sprite>
@@ -25,6 +26,10 @@
       <sprite>sprites\spr_power_up_multi_shot_shadow</sprite>
       <sprite>sprites\spr_power_up_rof</sprite>
       <sprite>sprites\spr_power_up_rof_shadow</sprite>
+      <sprite>sprites\spr_power_up_shield</sprite>
+      <sprite>sprites\spr_power_up_shield_shadow</sprite>
+      <sprite>sprites\spr_power_up_health</sprite>
+      <sprite>sprites\spr_power_up_health_shadow</sprite>
     </sprites>
     <sprites name="enemies">
       <sprites name="enemy_drone">
@@ -63,6 +68,7 @@
     </sprites>
     <sprites name="hud">
       <sprite>sprites\hud_health_bar</sprite>
+      <sprite>sprites\hud_shield_bar</sprite>
       <sprite>sprites\spr_cursor_blue</sprite>
       <sprite>sprites\spr_cursor_red</sprite>
       <sprite>sprites\spr_cursor_bad</sprite>
@@ -98,11 +104,13 @@
       <object>objects\obj_multiplier_orb</object>
       <object>objects\obj_power_up_multi_shot</object>
       <object>objects\obj_power_up_rof</object>
+      <object>objects\obj_power_up_shield</object>
+      <object>objects\obj_power_up_health</object>
     </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\room1</room>
-    <room>rooms\room0</room>
+    <room>rooms\test_room</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
