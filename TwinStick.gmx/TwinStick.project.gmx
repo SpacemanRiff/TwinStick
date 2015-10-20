@@ -81,6 +81,7 @@
       <sprite>sprites\spr_bomb_shrapnel_shadow</sprite>
       <sprite>sprites\spr_missile</sprite>
       <sprite>sprites\spr_missile_shadow</sprite>
+      <sprite>sprites\spr_decoy_ducky</sprite>
     </sprites>
     <sprites name="hud">
       <sprite>sprites\hud_health_bar</sprite>
@@ -91,6 +92,8 @@
       <sprite>sprites\spr_cursor_shadow</sprite>
       <sprite>sprites\hud_a_button</sprite>
       <sprite>sprites\hud_b_button</sprite>
+      <sprite>sprites\hud_shift_key</sprite>
+      <sprite>sprites\hud_space_key</sprite>
     </sprites>
     <sprites name="effects">
       <sprite>sprites\spr_smoke</sprite>
@@ -117,6 +120,7 @@
       <object>objects\obj_bullet</object>
       <object>objects\obj_cannon_shell</object>
       <object>objects\obj_bomb</object>
+      <object>objects\obj_bomb_decoy</object>
       <object>objects\obj_bomb_shrapnel</object>
       <object>objects\obj_missile</object>
     </objects>
@@ -143,8 +147,8 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room1</room>
     <room>rooms\test_room</room>
+    <room>rooms\room1</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

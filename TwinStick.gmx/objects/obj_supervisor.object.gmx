@@ -177,6 +177,12 @@ time_until_next_decrease = decrease_spawn_timer_rate
             instance_create(obj_player.x,obj_player.y,obj_bomb)
         }
     }
+    if(gamepad_button_check_released(0,gp_face3)){
+        if(obj_player.bomb_count &gt; 0){
+            obj_player.bomb_count--
+            instance_create(obj_player.x,obj_player.y,obj_bomb_decoy)
+        }
+    }
 }
 </string>
           </argument>
@@ -256,6 +262,27 @@ time_until_next_decrease = decrease_spawn_timer_rate
     if(keyboard_check_released(ord("W"))){
         obj_player.move_up = false
     }   
+    
+    if(keyboard_check_released(vk_shift)){
+        if(obj_player.shield_count &gt; 0 &amp;&amp; !obj_player.using_shield){
+            obj_player.using_shield = true
+            obj_player.shield_count--
+            obj_player.shield_health = obj_player.default_shield_health
+            audio_play_sound(snd_shield_up,1,false)
+        }
+    }
+    if(keyboard_check_released(vk_space)){
+        if(obj_player.bomb_count &gt; 0){
+            obj_player.bomb_count--
+            instance_create(obj_player.x,obj_player.y,obj_bomb)
+        }
+    }
+    if(keyboard_check_released(ord("V"))){
+        if(obj_player.bomb_count &gt; 0){
+            obj_player.bomb_count--
+            instance_create(obj_player.x,obj_player.y,obj_bomb_decoy)
+        }
+    }
 }
 </string>
           </argument>
@@ -382,7 +409,11 @@ if(obj_player.shield_count &gt; 0){
 }else{
     draw_sprite_ext(spr_power_up_shield_shadow,0,view_wview - 38, view_hview - 38,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 }
-draw_sprite_ext(hud_b_button,0, view_wview-10, view_hview-10, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+if(gamepad_is_connected(0)){
+    draw_sprite_ext(hud_b_button,0, view_wview-10, view_hview-10, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+}else{
+    draw_sprite_ext(hud_shift_key,0, view_wview-20, view_hview-10, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+}
 draw_text_colour(view_wview - 70, view_hview - 38,string(obj_player.shield_count),global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue,1)
 
 //bombs
@@ -393,7 +424,11 @@ if(obj_player.bomb_count &gt; 0){
 }else{
     draw_sprite_ext(spr_power_up_bomb_shadow,0,view_wview - 144, view_hview - 38,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 }
-draw_sprite_ext(hud_a_button,0, view_wview-116, view_hview-10, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+if(gamepad_is_connected(0)){
+    draw_sprite_ext(hud_a_button,0, view_wview-116, view_hview-10, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+}else{
+    draw_sprite_ext(hud_space_key,0, view_wview-126, view_hview-10, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+}
 draw_text_colour(view_wview - 176, view_hview - 38,string(obj_player.bomb_count),global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue,1)
 </string>
           </argument>

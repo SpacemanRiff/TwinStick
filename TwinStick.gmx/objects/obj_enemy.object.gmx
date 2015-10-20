@@ -60,8 +60,14 @@ default_depth = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if mp_grid_path(global.grid, path, x, y, obj_player.x, obj_player.y, 1){
-    path_start(path, default_speed, 0, 0);  
+            <string>if(!instance_exists(obj_bomb_decoy)){
+    if mp_grid_path(global.grid, path, x, y, obj_player.x, obj_player.y, 1){
+        path_start(path, default_speed, 0, 0);  
+    }
+}else{
+    if mp_grid_path(global.grid, path, x, y, instance_nearest(x,y,obj_bomb_decoy).x, instance_nearest(x,y,obj_bomb_decoy).y, 1){
+        path_start(path, default_speed, 0, 0);  
+    }
 }
 
 depth = default_depth - y/100000

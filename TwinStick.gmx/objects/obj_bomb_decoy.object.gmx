@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_bomb</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,49 +25,28 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.1
+            <string>event_inherited()
 
-explosion_radius = 512
+image_speed = 0.05
 
-hover_height = 4
+explosion_radius = 256
 </string>
           </argument>
         </arguments>
       </action>
-    </event>
-    <event eventtype="7" enumb="7">
       <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
+        <libid>0</libid>
+        <id>0</id>
+        <kind>0</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
         <functionname></functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if(sprite_index == spr_bomb){
-    audio_play_sound_at(snd_explosion,x,y,0,256,512,1,false,1) 
-    for(i = 0; i &lt; 360; i+=2){
-        shot = instance_create(x,y, obj_bomb_shrapnel)
-        shot.direction = i
-        shot.image_angle = irandom(360)
-        shot.speed = irandom(4) + 12
-        shot.o_x = x
-        shot.o_y = y
-        shot.max_distance = explosion_radius
-    }
-    instance_destroy()
-}
-</string>
-          </argument>
-        </arguments>
       </action>
     </event>
     <event eventtype="8" enumb="0">
@@ -87,8 +66,8 @@ hover_height = 4
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(spr_bomb_shadow,image_index,x,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
-draw_sprite_ext(spr_bomb,image_index,x,y-hover_height,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+            <string>event_inherited()
+draw_sprite_ext(spr_decoy_ducky,image_index,x,y-16-image_index*2,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 </string>
           </argument>
         </arguments>
