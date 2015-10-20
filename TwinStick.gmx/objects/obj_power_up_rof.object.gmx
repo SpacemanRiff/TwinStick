@@ -25,10 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>other.firing_rate -= 1
-audio_play_sound_at(snd_power_up_get,x,y,0,256,512,1,false,1) 
+            <string>if(other.firing_rate - 1  &gt; other.min_fire_rate){
+    other.firing_rate -= 1
+}else{
+    other.firing_rate = other.min_fire_rate
+}
 
-clamp(other.shot_count,other.min_fire_rate,other.max_fire_rate)
+audio_play_sound_at(snd_power_up_get,x,y,0,256,512,1,false,1) 
 
 instance_destroy()
 </string>

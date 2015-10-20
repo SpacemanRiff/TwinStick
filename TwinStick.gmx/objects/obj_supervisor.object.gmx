@@ -168,6 +168,7 @@ time_until_next_decrease = decrease_spawn_timer_rate
             obj_player.using_shield = true
             obj_player.shield_count--
             obj_player.shield_health = obj_player.default_shield_health
+            audio_play_sound(snd_shield_up,1,false)
         }
     }
     if(gamepad_button_check_released(0,gp_face1)){
@@ -363,7 +364,6 @@ if(time_until_next_decrease &gt; 0){
 draw_set_halign(fa_right)
 draw_set_valign(fa_center)
 
-
 //score
 draw_rectangle_colour(view_wview - 136, 2, view_wview-2, 30, global.hud_blue, global.hud_blue, global.hud_blue, global.hud_blue, false)
 draw_rectangle_colour(view_wview - 134, 4, view_wview-4, 28, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false)
@@ -375,10 +375,26 @@ draw_rectangle_colour(view_wview - 134, 36, view_wview-4, 60, c_dkgray, c_dkgray
 draw_text_colour(view_wview - 12, 48, string(multiplier)+"x",global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue,1)
 
 //shields
-draw_rectangle_colour(view_wview - 102, view_hview-2, view_wview-2, view_hview-70, global.hud_blue, global.hud_blue, global.hud_blue, global.hud_blue, false)
-draw_rectangle_colour(view_wview - 100, view_hview-4, view_wview-4, view_hview-68, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false)
-draw_sprite_ext(spr_power_up_shield,0,view_wview - 36, view_hview - 36,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
-draw_text_colour(view_wview - 68, view_hview - 36,string(obj_player.shield_count),global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue,1)
+draw_rectangle_colour(view_wview - 104, view_hview-4, view_wview-4, view_hview-72, global.hud_blue, global.hud_blue, global.hud_blue, global.hud_blue, false)
+draw_rectangle_colour(view_wview - 102, view_hview-6, view_wview-6, view_hview-70, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false)
+if(obj_player.shield_count &gt; 0){
+    draw_sprite_ext(spr_power_up_shield,0,view_wview - 38, view_hview - 38,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+}else{
+    draw_sprite_ext(spr_power_up_shield_shadow,0,view_wview - 38, view_hview - 38,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+}
+draw_sprite_ext(hud_b_button,0, view_wview-10, view_hview-10, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+draw_text_colour(view_wview - 70, view_hview - 38,string(obj_player.shield_count),global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue,1)
+
+//bombs
+draw_rectangle_colour(view_wview - 210, view_hview-4, view_wview-110, view_hview-72, global.hud_blue, global.hud_blue, global.hud_blue, global.hud_blue, false)
+draw_rectangle_colour(view_wview - 208, view_hview-6, view_wview-112, view_hview-70, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false)
+if(obj_player.bomb_count &gt; 0){
+    draw_sprite_ext(spr_power_up_bomb,0,view_wview - 144, view_hview - 38,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+}else{
+    draw_sprite_ext(spr_power_up_bomb_shadow,0,view_wview - 144, view_hview - 38,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+}
+draw_sprite_ext(hud_a_button,0, view_wview-116, view_hview-10, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+draw_text_colour(view_wview - 176, view_hview - 38,string(obj_player.bomb_count),global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue,1)
 </string>
           </argument>
         </arguments>

@@ -171,7 +171,8 @@ if(using_shield){
     shield_health--
     gamepad_set_vibration(0,1,1)
     if(shield_health &lt;= 0){
-        using_shield = false
+        using_shield = false        
+        audio_play_sound(snd_shield_down,1,false)
     }
 }else{
     current_health--
@@ -230,6 +231,7 @@ if(using_shield){
         gamepad_set_vibration(0,1,1)
         if(shield_health &lt;= 0){
             using_shield = false
+            audio_play_sound(snd_shield_down,1,false)
         }
     }else{
         current_health-=other.damage

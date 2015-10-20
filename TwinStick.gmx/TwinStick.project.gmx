@@ -10,6 +10,11 @@
     <sound>sound\snd_power_up_get</sound>
     <sound>sound\snd_cannon</sound>
     <sound>sound\snd_hit</sound>
+    <sound>sound\snd_explosion</sound>
+    <sound>sound\snd_missile_explosion</sound>
+    <sound>sound\snd_missile_firing</sound>
+    <sound>sound\snd_shield_up</sound>
+    <sound>sound\snd_shield_down</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="player">
@@ -28,6 +33,8 @@
       <sprite>sprites\spr_power_up_rof_shadow</sprite>
       <sprite>sprites\spr_power_up_shield</sprite>
       <sprite>sprites\spr_power_up_shield_shadow</sprite>
+      <sprite>sprites\spr_power_up_bomb</sprite>
+      <sprite>sprites\spr_power_up_bomb_shadow</sprite>
       <sprite>sprites\spr_power_up_health</sprite>
       <sprite>sprites\spr_power_up_health_shadow</sprite>
     </sprites>
@@ -41,6 +48,8 @@
         <sprite>sprites\spr_turret_cannon_shadow</sprite>
         <sprite>sprites\spr_turret_body</sprite>
         <sprite>sprites\spr_turret_body_shadow</sprite>
+        <sprite>sprites\spr_turret_missile_launcher</sprite>
+        <sprite>sprites\spr_turret_missile_launcher_shadow</sprite>
       </sprites>
       <sprites name="spawner">
         <sprite>sprites\spr_spawner_closed</sprite>
@@ -59,6 +68,7 @@
       </sprites>
       <sprite>sprites\spr_wall_basic</sprite>
       <sprite>sprites\spr_wall_basic_shadow</sprite>
+      <sprite>sprites\spr_bomb_spawner</sprite>
     </sprites>
     <sprites name="weapons">
       <sprite>sprites\spr_bullet</sprite>
@@ -69,6 +79,8 @@
       <sprite>sprites\spr_bomb_shadow</sprite>
       <sprite>sprites\spr_bomb_shrapnel</sprite>
       <sprite>sprites\spr_bomb_shrapnel_shadow</sprite>
+      <sprite>sprites\spr_missile</sprite>
+      <sprite>sprites\spr_missile_shadow</sprite>
     </sprites>
     <sprites name="hud">
       <sprite>sprites\hud_health_bar</sprite>
@@ -77,6 +89,12 @@
       <sprite>sprites\spr_cursor_red</sprite>
       <sprite>sprites\spr_cursor_bad</sprite>
       <sprite>sprites\spr_cursor_shadow</sprite>
+      <sprite>sprites\hud_a_button</sprite>
+      <sprite>sprites\hud_b_button</sprite>
+    </sprites>
+    <sprites name="effects">
+      <sprite>sprites\spr_smoke</sprite>
+      <sprite>sprites\spr_smoke_shadow</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -86,6 +104,9 @@
     <background>background\bg_grass</background>
   </backgrounds>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\calculate_magnitude.gml</script>
+  </scripts>
   <fonts name="fonts">
     <font>fonts\font0</font>
   </fonts>
@@ -97,21 +118,28 @@
       <object>objects\obj_cannon_shell</object>
       <object>objects\obj_bomb</object>
       <object>objects\obj_bomb_shrapnel</object>
+      <object>objects\obj_missile</object>
     </objects>
     <objects name="enviroment">
       <object>objects\obj_wall</object>
+      <object>objects\obj_bomb_spawner</object>
     </objects>
     <objects name="enemies">
       <object>objects\obj_enemy</object>
       <object>objects\obj_turret</object>
       <object>objects\obj_spawner</object>
+      <object>objects\spr_missile_turret</object>
     </objects>
     <objects name="power_ups">
       <object>objects\obj_multiplier_orb</object>
       <object>objects\obj_power_up_multi_shot</object>
       <object>objects\obj_power_up_rof</object>
       <object>objects\obj_power_up_shield</object>
+      <object>objects\obj_power_up_bomb</object>
       <object>objects\obj_power_up_health</object>
+    </objects>
+    <objects name="effects">
+      <object>objects\obj_smoke</object>
     </objects>
   </objects>
   <rooms name="rooms">

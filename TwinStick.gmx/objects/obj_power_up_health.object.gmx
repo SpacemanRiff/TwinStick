@@ -25,10 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>other.current_health += 1
-audio_play_sound_at(snd_power_up_get,x,y,0,256,512,1,false,1) 
+            <string>if(other.current_health  &lt; other.max_health){
+    other.current_health += 1
+}else{
+    other.current_health = other.max_health
+}
 
-clamp(other.current_health,0,other.max_health)
+audio_play_sound_at(snd_power_up_get,x,y,0,256,512,1,false,1) 
 
 instance_destroy()
 </string>

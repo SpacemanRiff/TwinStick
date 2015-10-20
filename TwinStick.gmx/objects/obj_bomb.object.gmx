@@ -26,6 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>image_speed = 0.2
+
+explosion_radius = 512
+
+hover_height = 4
 </string>
           </argument>
         </arguments>
@@ -49,14 +53,42 @@
           <argument>
             <kind>1</kind>
             <string>if(sprite_index == spr_bomb){
+    audio_play_sound_at(snd_explosion,x,y,0,256,512,1,false,1) 
     for(i = 0; i &lt; 360; i+=2){
         shot = instance_create(x,y, obj_bomb_shrapnel)
         shot.direction = i
         shot.image_angle = irandom(360)
         shot.speed = irandom(4) + 12
+        shot.o_x = x
+        shot.o_y = y
+        shot.max_distance = explosion_radius
     }
     instance_destroy()
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_sprite_ext(spr_bomb_shadow,image_index,x,y,image_xscale,image_yscale,direction,image_blend,image_alpha)
+draw_sprite_ext(spr_bomb,image_index,x,y-hover_height,image_xscale,image_yscale,direction,image_blend,image_alpha)
 </string>
           </argument>
         </arguments>

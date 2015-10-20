@@ -61,6 +61,43 @@
     <instance objName="obj_power_up_shield" x="1184" y="864" name="inst_DCB13966" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_power_up_shield" x="1184" y="1184" name="inst_342D2DDC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_power_up_shield" x="864" y="1184" name="inst_C706593C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_health" x="864" y="992" name="inst_3E30055B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_health" x="864" y="1056" name="inst_697DC227" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_rof" x="1184" y="992" name="inst_A6DCE3F7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_rof" x="1248" y="992" name="inst_F3E8D767" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_rof" x="1312" y="992" name="inst_FA240DF3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_rof" x="1312" y="1056" name="inst_F2E5E083" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_rof" x="1248" y="1056" name="inst_18146DED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_rof" x="1184" y="1056" name="inst_3FC1CF9C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_rof" x="1184" y="928" name="inst_F871971D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_rof" x="1248" y="928" name="inst_B84F5573" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_rof" x="1312" y="928" name="inst_E90CAE8C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_rof" x="1376" y="1056" name="inst_FCA092A9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_rof" x="1376" y="992" name="inst_822DF3B1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_rof" x="1376" y="928" name="inst_3582DDCE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_rof" x="1376" y="1120" name="inst_4F3A93C8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_rof" x="1312" y="1120" name="inst_1EE35A81" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_rof" x="1248" y="1120" name="inst_FBED4603" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_rof" x="1184" y="1120" name="inst_FF68A8FC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_multi_shot" x="928" y="864" name="inst_68701097" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_multi_shot" x="992" y="864" name="inst_E685051D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_multi_shot" x="1056" y="864" name="inst_2FBD55EE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_multi_shot" x="1120" y="864" name="inst_C9B970CB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_multi_shot" x="1120" y="800" name="inst_A3BE8D6D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_multi_shot" x="1120" y="736" name="inst_D32AC57F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_multi_shot" x="1120" y="672" name="inst_3E5E2572" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_multi_shot" x="1056" y="672" name="inst_0990FED0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_multi_shot" x="992" y="672" name="inst_F2971BB6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_multi_shot" x="928" y="672" name="inst_2ECB8D53" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_multi_shot" x="928" y="736" name="inst_E00CFFB6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_multi_shot" x="928" y="800" name="inst_EF63E1B6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_multi_shot" x="992" y="800" name="inst_2936983C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_multi_shot" x="1056" y="800" name="inst_C82BC7D5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_multi_shot" x="1056" y="736" name="inst_0E9F140B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_multi_shot" x="992" y="736" name="inst_E9308DA0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bomb_spawner" x="928" y="1248" name="inst_45AA0262" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bomb_spawner" x="1120" y="1248" name="inst_0F623F92" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="spr_missile_turret" x="704" y="704" name="inst_860F7E9C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
