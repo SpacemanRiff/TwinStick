@@ -34,7 +34,7 @@ globalvar grid;
 grid = mp_grid_create(0, 0, room_width div 32, room_height div 32, 32, 32);
 mp_grid_add_instances(grid, obj_wall, false);
 
-gp_deadzone = 0.2
+gp_deadzone = 0.25
 
 score = 0
 
@@ -181,6 +181,20 @@ time_until_next_decrease = decrease_spawn_timer_rate
         if(obj_player.bomb_count &gt; 0){
             obj_player.bomb_count--
             instance_create(obj_player.x,obj_player.y,obj_bomb_decoy)
+        }
+    }
+    if(gamepad_button_check_pressed(0,gp_shoulderrb)){
+        if(!obj_player.dashing){
+            obj_player.charging_dash = true
+        }
+    }
+    
+    if(gamepad_button_check_released(0,gp_shoulderrb)){
+        if(!obj_player.dashing){
+            obj_player.charging_dash = false
+            obj_player.dashing = true
+            obj_player.dash_direction = obj_player.facing_direction
+            obj_player.dash_duration = obj_player.default_dash_duration * obj_player.dash_power
         }
     }
 }

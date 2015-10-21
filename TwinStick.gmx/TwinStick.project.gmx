@@ -23,6 +23,7 @@
       <sprite>sprites\spr_player_body</sprite>
       <sprite>sprites\spr_player_body_shadow</sprite>
       <sprite>sprites\spr_player_shield</sprite>
+      <sprite>sprites\spr_dash_shield</sprite>
     </sprites>
     <sprites name="power_ups">
       <sprite>sprites\spr_multiplier_orb</sprite>
@@ -82,6 +83,7 @@
       <sprite>sprites\spr_missile</sprite>
       <sprite>sprites\spr_missile_shadow</sprite>
       <sprite>sprites\spr_decoy_ducky</sprite>
+      <sprite>sprites\spr_dash_attack</sprite>
     </sprites>
     <sprites name="hud">
       <sprite>sprites\hud_health_bar</sprite>
@@ -147,8 +149,8 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\test_room</room>
     <room>rooms\room1</room>
+    <room>rooms\test_room</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
