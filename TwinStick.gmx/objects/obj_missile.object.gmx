@@ -29,6 +29,8 @@
 
 speed = 2
 damage = 3
+
+target = obj_player
 </string>
           </argument>
         </arguments>
@@ -51,11 +53,34 @@ damage = 3
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>mp_potential_step_object(obj_player.x,obj_player.y,speed,false)
+            <string>mp_potential_step_object(target.x,target.y,speed,false)
 speed += 0.02
 
 smoke = instance_create(x,y,obj_smoke)
 smoke.hover_height = hover_height
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_flak">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>instance_destroy()
 </string>
           </argument>
         </arguments>

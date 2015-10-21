@@ -59,10 +59,12 @@ default_shield_health = 4
 
 bomb_count = 1
 
+turret_count = 1
+
 charging_dash = false
 dashing = false
 dash_power = 0
-dash_speed = 10
+dash_speed = 15
 dash_direction = 0
 default_dash_duration = 30
 dash_duration = 0
@@ -125,6 +127,7 @@ if(abs(vspeed) &gt; 0 || abs(hspeed) &gt; 0){
 }
 
 audio_listener_position(x,y,0)
+audio_listener_orientation(0,1,0,0,0,1);
 
 depth = default_depth - y/100000
 </string>
@@ -156,7 +159,7 @@ if(delay_until_shot &lt;= 0){
             shot.direction = facing_direction + ((30 / ceil(shot_count/2)) * i)
             shot.hover_height = hover_height
         } 
-        audio_play_sound_at(snd_machine_gun_basic,x,y,0,256,512,1,false,1) 
+        audio_play_sound(snd_machine_gun_basic,1,false) 
         delay_until_shot = firing_rate
     }
 }

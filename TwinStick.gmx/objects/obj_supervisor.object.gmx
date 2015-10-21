@@ -183,6 +183,12 @@ time_until_next_decrease = decrease_spawn_timer_rate
             instance_create(obj_player.x,obj_player.y,obj_bomb_decoy)
         }
     }
+    if(gamepad_button_check_released(0,gp_face4)){
+        if(obj_player.turret_count &gt; 0){
+            obj_player.turret_count--
+            instance_create(obj_player.x,obj_player.y,obj_anti_missile_turret)
+        }
+    }
     if(gamepad_button_check_pressed(0,gp_shoulderrb)){
         if(!obj_player.dashing){
             obj_player.charging_dash = true
@@ -440,10 +446,27 @@ if(obj_player.bomb_count &gt; 0){
 }
 if(gamepad_is_connected(0)){
     draw_sprite_ext(hud_a_button,0, view_wview-116, view_hview-10, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+    draw_sprite_ext(hud_x_button,0, view_wview-116, view_hview-66, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+    draw_sprite_ext(hud_decoy_ducky,0, view_wview-136, view_hview-66, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 }else{
     draw_sprite_ext(hud_space_key,0, view_wview-126, view_hview-10, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 }
 draw_text_colour(view_wview - 176, view_hview - 38,string(obj_player.bomb_count),global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue,1)
+
+//turrets
+draw_rectangle_colour(view_wview - 104, view_hview-78, view_wview-4, view_hview-146, global.hud_blue, global.hud_blue, global.hud_blue, global.hud_blue, false)
+draw_rectangle_colour(view_wview - 102, view_hview-80, view_wview-6, view_hview-144, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false)
+if(obj_player.turret_count &gt; 0){
+    draw_sprite_ext(spr_power_up_anti_missile,0,view_wview - 38, view_hview - 112,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+}else{
+    draw_sprite_ext(spr_power_up_anti_missile_shadow,0,view_wview - 38, view_hview - 112,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+}
+if(gamepad_is_connected(0)){
+    draw_sprite_ext(hud_y_button,0, view_wview-10, view_hview-84, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+}else{
+    draw_sprite_ext(hud_shift_key,0, view_wview-20, view_hview-84, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+}
+draw_text_colour(view_wview - 70, view_hview -112,string(obj_player.turret_count),global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue,1)
 </string>
           </argument>
         </arguments>
