@@ -162,8 +162,8 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\test_room</room>
     <room>rooms\room1</room>
+    <room>rooms\test_room</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
