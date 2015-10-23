@@ -38,6 +38,8 @@
       <sprite>sprites\spr_power_up_bomb_shadow</sprite>
       <sprite>sprites\spr_power_up_health</sprite>
       <sprite>sprites\spr_power_up_health_shadow</sprite>
+      <sprite>sprites\spr_power_up_anti_missile</sprite>
+      <sprite>sprites\spr_power_up_anti_missile_shadow</sprite>
     </sprites>
     <sprites name="enemies">
       <sprites name="enemy_drone">
@@ -84,6 +86,12 @@
       <sprite>sprites\spr_missile_shadow</sprite>
       <sprite>sprites\spr_decoy_ducky</sprite>
       <sprite>sprites\spr_dash_attack</sprite>
+      <sprites name="anti_missile_turret">
+        <sprite>sprites\spr_friendly_turret_body</sprite>
+        <sprite>sprites\spr_friendly_turret_body_shadow</sprite>
+        <sprite>sprites\spr_friendly_turret_cannon</sprite>
+        <sprite>sprites\spr_friendly_turret_cannon_shadow</sprite>
+      </sprites>
     </sprites>
     <sprites name="hud">
       <sprite>sprites\hud_health_bar</sprite>
@@ -94,8 +102,11 @@
       <sprite>sprites\spr_cursor_shadow</sprite>
       <sprite>sprites\hud_a_button</sprite>
       <sprite>sprites\hud_b_button</sprite>
+      <sprite>sprites\hud_x_button</sprite>
       <sprite>sprites\hud_shift_key</sprite>
       <sprite>sprites\hud_space_key</sprite>
+      <sprite>sprites\hud_decoy_ducky</sprite>
+      <sprite>sprites\hud_y_button</sprite>
     </sprites>
     <sprites name="effects">
       <sprite>sprites\spr_smoke</sprite>
@@ -125,16 +136,18 @@
       <object>objects\obj_bomb_decoy</object>
       <object>objects\obj_bomb_shrapnel</object>
       <object>objects\obj_missile</object>
+      <object>objects\obj_anti_missile_turret</object>
+      <object>objects\obj_flak</object>
     </objects>
     <objects name="enviroment">
       <object>objects\obj_wall</object>
       <object>objects\obj_bomb_spawner</object>
     </objects>
     <objects name="enemies">
+      <object>objects\obj_spawner</object>
       <object>objects\obj_enemy</object>
       <object>objects\obj_turret</object>
-      <object>objects\obj_spawner</object>
-      <object>objects\spr_missile_turret</object>
+      <object>objects\obj_missile_turret</object>
     </objects>
     <objects name="power_ups">
       <object>objects\obj_multiplier_orb</object>
