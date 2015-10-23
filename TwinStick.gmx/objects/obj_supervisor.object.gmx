@@ -40,7 +40,7 @@ score = 0
 
 multiplier = 1
 
-decrease_spawn_timer_rate = 120
+decrease_spawn_timer_rate = 150
 time_until_next_decrease = decrease_spawn_timer_rate
 </string>
           </argument>
@@ -375,7 +375,7 @@ time_until_next_decrease = decrease_spawn_timer_rate
             <kind>1</kind>
             <string>if(time_until_next_decrease &lt;= 0){
     with(obj_spawner){
-        if(spawn_rate-5 &gt;= 30){
+        if(spawn_rate-5 &gt;= 60){
             spawn_rate -= 5
         }
     }

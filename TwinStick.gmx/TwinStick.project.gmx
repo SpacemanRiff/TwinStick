@@ -59,6 +59,7 @@
         <sprite>sprites\spr_spawner_opening</sprite>
         <sprite>sprites\spr_spawner_closing</sprite>
       </sprites>
+      <sprite>sprites\spr_enemy_nexus</sprite>
     </sprites>
     <sprites name="buildings">
       <sprite>sprites\spr_building_floor_1</sprite>
@@ -148,6 +149,7 @@
       <object>objects\obj_enemy</object>
       <object>objects\obj_turret</object>
       <object>objects\obj_missile_turret</object>
+      <object>objects\obj_enemy_nexus</object>
     </objects>
     <objects name="power_ups">
       <object>objects\obj_multiplier_orb</object>
@@ -162,7 +164,8 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room1</room>
+    <room>rooms\room2</room>
+    <room>rooms\arena</room>
     <room>rooms\test_room</room>
   </rooms>
   <help>
