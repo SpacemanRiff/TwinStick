@@ -49,11 +49,11 @@ multiplier = 1
 decrease_spawn_timer_rate = 150
 time_until_next_decrease = decrease_spawn_timer_rate
 
-wave_count = 1
-default_wave_increment = 15
-number_of_enemies_in_wave = default_wave_increment
-enemies_left_in_wave = number_of_enemies_in_wave
-enemies_left_to_spawn = number_of_enemies_in_wave
+wave_count = 0
+default_wave_increment = 10
+number_of_enemies_in_wave = 0
+enemies_left_in_wave = 0
+enemies_left_to_spawn = 0
 default_wave_delay = 240
 time_until_next_wave = default_wave_delay
 </string>
@@ -390,7 +390,11 @@ time_until_next_wave = default_wave_delay
             <string>if(enemies_left_in_wave &lt;= 0){
     if(time_until_next_wave &lt;= 0){
         wave_count++
-        number_of_enemies_in_wave = number_of_enemies_in_wave + floor(power(default_wave_increment, wave_count/5))
+        if(wave_count == 1){
+            number_of_enemies_in_wave = default_wave_increment        
+        }else{
+            number_of_enemies_in_wave = number_of_enemies_in_wave + floor(power(default_wave_increment, wave_count/5))
+        }
         enemies_left_in_wave = number_of_enemies_in_wave
         enemies_left_to_spawn = number_of_enemies_in_wave   
         with(obj_spawner){

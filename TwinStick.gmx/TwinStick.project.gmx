@@ -59,6 +59,14 @@
         <sprite>sprites\spr_spawner_opening</sprite>
         <sprite>sprites\spr_spawner_closing</sprite>
       </sprites>
+      <sprites name="enemy_scout">
+        <sprite>sprites\spr_enemy_scout</sprite>
+        <sprite>sprites\spr_enemy_scout_shadow</sprite>
+      </sprites>
+      <sprites name="enemy_tank">
+        <sprite>sprites\spr_enemy_tank</sprite>
+        <sprite>sprites\spr_enemy_tank_shadow</sprite>
+      </sprites>
       <sprite>sprites\spr_enemy_nexus</sprite>
     </sprites>
     <sprites name="buildings">
@@ -145,11 +153,13 @@
       <object>objects\obj_bomb_spawner</object>
     </objects>
     <objects name="enemies">
+      <object>objects\obj_enemy_nexus</object>
       <object>objects\obj_spawner</object>
-      <object>objects\obj_enemy</object>
       <object>objects\obj_turret</object>
       <object>objects\obj_missile_turret</object>
-      <object>objects\obj_enemy_nexus</object>
+      <object>objects\obj_enemy</object>
+      <object>objects\obj_enemy_tank</object>
+      <object>objects\obj_enemy_scout</object>
     </objects>
     <objects name="power_ups">
       <object>objects\obj_multiplier_orb</object>

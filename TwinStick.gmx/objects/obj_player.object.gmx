@@ -32,6 +32,7 @@ move_right = false
 default_speed = 5
 hspeed_mod = 0
 vspeed_mod = 0
+
 firing_rate = 10
 max_fire_rate = 15
 min_fire_rate = 3
@@ -198,6 +199,7 @@ if(charging_dash){
           <argument>
             <kind>1</kind>
             <string>other.current_health--
+audio_play_sound(snd_hit,1,false)
 if(!dashing){
     if(using_shield){    
         shield_health--

@@ -57,11 +57,8 @@
     <instance objName="obj_wall" x="1248" y="1248" name="inst_72EB6EB7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="800" y="800" name="inst_0878F57E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="1248" y="800" name="inst_B7F75421" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_power_up_multi_shot" x="1024" y="800" name="inst_23437580" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_turret" x="672" y="672" name="inst_0044462F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_turret" x="1376" y="672" name="inst_45F406CB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_turret" x="1376" y="1376" name="inst_7A98C660" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_turret" x="672" y="1376" name="inst_3BE5D632" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="736" y="800" name="inst_97611330" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="800" y="608" name="inst_1EA57C2B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="1312" y="800" name="inst_4DC73ABA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -98,7 +95,6 @@
     <instance objName="obj_wall" x="800" y="1376" name="inst_E016835A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="672" y="1248" name="inst_C7B2522E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="608" y="1248" name="inst_F2AEF5BF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_power_up_multi_shot" x="1024" y="1248" name="inst_9BD9B78A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="800" y="1696" name="inst_8CA71136" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="1248" y="1696" name="inst_BE0CF044" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="1184" y="1696" name="inst_A920D022" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -355,10 +351,8 @@
     <instance objName="obj_wall" x="1696" y="352" name="inst_7EF3D5C8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="1632" y="352" name="inst_F2479A34" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="1568" y="352" name="inst_20343360" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_missile_turret" x="192" y="192" name="inst_EF217A80" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_missile_turret" x="1856" y="192" name="inst_3E62D14D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_missile_turret" x="1856" y="1856" name="inst_4ADD2AB2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_missile_turret" x="192" y="1856" name="inst_1E2E7586" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_missile_turret" x="1376" y="672" name="inst_3E62D14D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_missile_turret" x="672" y="1376" name="inst_1E2E7586" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_sidewalks" x="512" y="704" w="64" h="64" xo="0" yo="0" id="10000309" name="inst_63D45C9E" depth="9999999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

@@ -31,13 +31,20 @@ hover_height = 5
 default_speed = 4
 
 max_health = 3
-current_health = 1
+current_health = max_health
 
 score_value = 25
 
-power_up_drop_rate = 0.075
+power_up_drop_rate = 0.1
 
 default_depth = 0
+
+sprite = spr_enemy
+sprite_shadow = spr_enemy_shadow
+
+face_path = false
+
+multiplier_orb_count = 2
 </string>
           </argument>
         </arguments>
@@ -109,7 +116,7 @@ depth = default_depth - y/100000
                 break
         }
     }
-    for(i = 0; i &lt; irandom(2); i++){        
+    for(i = 0; i &lt; irandom(multiplier_orb_count); i++){        
         instance_create(x+irandom_range(-10,10),y+irandom_range(-10,10),obj_multiplier_orb)
     }
     audio_play_sound_at(snd_enemy_death,x,y,0,256,512,1,false,1) 
@@ -162,8 +169,13 @@ depth = default_depth - y/100000
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(spr_enemy_shadow,image_index,x,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
-draw_sprite_ext(spr_enemy,current_health-1,x,y-hover_height,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+            <string>if(face_path){
+    draw_sprite_ext(sprite_shadow,image_index,x,y,image_xscale,image_yscale,direction,image_blend,image_alpha)
+    draw_sprite_ext(sprite,current_health-1,x,y-hover_height,image_xscale,image_yscale,direction,image_blend,image_alpha)
+}else{
+    draw_sprite_ext(sprite_shadow,image_index,x,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+    draw_sprite_ext(sprite,current_health-1,x,y-hover_height,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+}
 </string>
           </argument>
         </arguments>

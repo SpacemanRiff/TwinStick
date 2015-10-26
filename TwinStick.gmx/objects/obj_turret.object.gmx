@@ -29,7 +29,7 @@
 cannon_height = 8
 body_height = 4
 
-firing_rate = 20
+firing_rate = 40
 delay_until_shot = 0
 
 depth = depth - y/100000

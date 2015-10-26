@@ -85,8 +85,30 @@ if(delay_until_spawn &gt; 0){
           <argument>
             <kind>1</kind>
             <string>if(sprite_index == spr_spawner_opening){    
-    enemy = instance_create(x,y,obj_enemy)
-    enemy.current_health = irandom(enemy.max_health - 1) + 1
+    to_spawn = obj_enemy
+    switch(irandom(9)){
+        case 0:
+        case 1:
+        case 2:
+        case 3:
+        case 4:            
+        case 5:     
+            to_spawn = obj_enemy
+            break;  
+        case 6:
+        case 7:                  
+        case 8:
+            if(obj_supervisor.wave_count &gt;=3){ 
+                to_spawn = obj_enemy_scout
+            }
+            break;  
+        case 9:
+            if(obj_supervisor.wave_count &gt;=5){ 
+                to_spawn = obj_enemy_tank
+            }
+            break;            
+    }    
+    enemy = instance_create(x,y,to_spawn)
     sprite_index = spr_spawner_closing
 }else if(sprite_index == spr_spawner_closing){   
     sprite_index = spr_spawner_closed

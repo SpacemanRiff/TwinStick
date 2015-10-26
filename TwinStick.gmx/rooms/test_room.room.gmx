@@ -97,8 +97,6 @@
     <instance objName="obj_power_up_multi_shot" x="992" y="736" name="inst_E9308DA0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bomb_spawner" x="928" y="1248" name="inst_45AA0262" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bomb_spawner" x="1120" y="1248" name="inst_0F623F92" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_missile_turret" x="736" y="736" name="inst_F253AB29" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_anti_missile_turret" x="736" y="1056" name="inst_428C19CA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
