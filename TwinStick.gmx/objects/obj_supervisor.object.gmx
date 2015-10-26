@@ -19,7 +19,7 @@
         <exetype>2</exetype>
         <functionname></functionname>
         <codestring></codestring>
-        <whoName>self</whoName>
+        <whoName>obj_supervisor</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
@@ -29,6 +29,12 @@
 
 globalvar hud_blue;
 hud_blue = make_colour_rgb(127,201,255);
+
+globalvar hud_red;
+hud_red = make_colour_rgb(204,102,102);
+
+globalvar hud_green;
+hud_green = make_colour_rgb(124,191,95);
 
 globalvar grid;
 grid = mp_grid_create(0, 0, room_width div 32, room_height div 32, 32, 32);
@@ -42,6 +48,14 @@ multiplier = 1
 
 decrease_spawn_timer_rate = 150
 time_until_next_decrease = decrease_spawn_timer_rate
+
+wave_count = 1
+default_wave_increment = 15
+number_of_enemies_in_wave = default_wave_increment
+enemies_left_in_wave = number_of_enemies_in_wave
+enemies_left_to_spawn = number_of_enemies_in_wave
+default_wave_delay = 240
+time_until_next_wave = default_wave_delay
 </string>
           </argument>
         </arguments>
@@ -373,17 +387,21 @@ time_until_next_decrease = decrease_spawn_timer_rate
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(time_until_next_decrease &lt;= 0){
-    with(obj_spawner){
-        if(spawn_rate-5 &gt;= 60){
-            spawn_rate -= 5
-        }
+            <string>if(enemies_left_in_wave &lt;= 0){
+    if(time_until_next_wave &lt;= 0){
+        wave_count++
+        number_of_enemies_in_wave = number_of_enemies_in_wave + floor(power(default_wave_increment, wave_count/5))
+        enemies_left_in_wave = number_of_enemies_in_wave
+        enemies_left_to_spawn = number_of_enemies_in_wave   
+        with(obj_spawner){
+            if(spawn_rate-10 &gt;= 30){
+               spawn_rate -= 10
+            }
+        } 
+        time_until_next_wave = default_wave_delay
+    }else{
+        time_until_next_wave--
     }
-    time_until_next_decrease = decrease_spawn_timer_rate
-}
-
-if(time_until_next_decrease &gt; 0){
-    time_until_next_decrease--
 }
 </string>
           </argument>
@@ -408,8 +426,36 @@ if(time_until_next_decrease &gt; 0){
           <argument>
             <kind>1</kind>
             <string>draw_set_font(font0)
-draw_set_halign(fa_right)
 draw_set_valign(fa_center)
+
+//waves
+draw_set_halign(fa_left)
+draw_rectangle_colour(view_wview/2 - 112, 2, view_wview/2 + 112, 30, global.hud_blue, global.hud_blue, global.hud_blue, global.hud_blue, false)
+draw_rectangle_colour(view_wview/2 - 110, 4, view_wview/2 + 110, 28, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false)
+draw_text_colour(view_wview/2 - 100 , 16, "Enemies Remaining:", global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue, 1)
+draw_set_halign(fa_right)
+draw_text_colour(view_wview/2 + 100 , 16, string(enemies_left_in_wave), global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue, 1)
+
+draw_set_halign(fa_left)
+draw_rectangle_colour(view_wview/2 - 48, 32, view_wview/2 + 48, 62, global.hud_blue, global.hud_blue, global.hud_blue, global.hud_blue, false)
+draw_rectangle_colour(view_wview/2 - 46, 34, view_wview/2 + 46, 60, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false)
+draw_text_colour(view_wview/2 - 36 , 48, "Wave:", global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue, 1)
+draw_set_halign(fa_right)
+draw_text_colour(view_wview/2 + 36 , 48, string(wave_count), global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue, 1)
+
+if(enemies_left_in_wave &lt;= 0){
+    draw_set_halign(fa_left)
+    timer_text_color = global.hud_red
+    if(floor((time_until_next_wave/default_wave_delay)*8)%2 == 1){
+        timer_text_color = c_ltgray
+    }
+    draw_rectangle_colour(view_wview/2 - 48, 64, view_wview/2 + 48, 94, timer_text_color, timer_text_color, timer_text_color, timer_text_color, false)
+    draw_rectangle_colour(view_wview/2 - 46, 66, view_wview/2 + 46, 92, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false)
+    draw_text_colour(view_wview/2 - 36 , 80, "0:0" + string((time_until_next_wave/default_wave_delay)*4), timer_text_color, timer_text_color, timer_text_color, timer_text_color, 1)
+}
+
+
+draw_set_halign(fa_right)
 
 //score
 draw_rectangle_colour(view_wview - 136, 2, view_wview-2, 30, global.hud_blue, global.hud_blue, global.hud_blue, global.hud_blue, false)

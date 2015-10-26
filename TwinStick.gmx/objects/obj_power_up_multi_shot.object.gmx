@@ -86,10 +86,15 @@ min_height = 3
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(other.shot_count + 2 &lt; other.max_shot_count){
+            <string>text = instance_create(x,y,obj_text)
+text.display_text = "+ Multi-shot Count"
+text.draw_colour = global.hud_green
+
+if(other.shot_count + 2 &lt; other.max_shot_count){
     other.shot_count += 2
 }else{
     other.shot_count = other.max_shot_count
+    text.display_text = "Multi-shot Maxed"
 }
 
 audio_play_sound_at(snd_power_up_get,x,y,0,256,512,1,false,1) 

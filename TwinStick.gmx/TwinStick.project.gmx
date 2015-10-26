@@ -161,12 +161,13 @@
     </objects>
     <objects name="effects">
       <object>objects\obj_smoke</object>
+      <object>objects\obj_text</object>
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room2</room>
     <room>rooms\arena</room>
     <room>rooms\test_room</room>
+    <room>rooms\room2</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

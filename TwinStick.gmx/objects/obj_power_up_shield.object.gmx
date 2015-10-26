@@ -28,6 +28,10 @@
             <string>other.shield_count += 1
 audio_play_sound_at(snd_power_up_get,x,y,0,256,512,1,false,1) 
 
+text = instance_create(x,y,obj_text)
+text.display_text = "+ Shield"
+text.draw_colour = global.hud_blue
+
 instance_destroy()
 </string>
           </argument>

@@ -25,10 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(other.current_health  &lt; other.max_health){
+            <string>text = instance_create(x,y,obj_text)
+text.display_text = "+ Health"
+text.draw_colour = global.hud_red
+
+if(other.current_health  &lt; other.max_health){
     other.current_health += 1
 }else{
     other.current_health = other.max_health
+    text.display_text = "Health Maxed"
 }
 
 audio_play_sound_at(snd_power_up_get,x,y,0,256,512,1,false,1) 
