@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>depth = depth - y/100000
 
-number_of_extra_floors = irandom(2)
+number_of_extra_floors = irandom(4)+4
 building_style =  irandom(1)
 roof_style = irandom(3)
 
@@ -54,24 +54,27 @@ image_speed = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(spr_building_floor_1,building_style,x,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+            <string>x_offset = calculate_magnitude(x + view_xview + view_wview/2,y + view_yview + view_hview/2) * dcos(point_direction(view_xview + view_wview/2,view_yview + view_hview/2,x,y))/512
+y_offset = calculate_magnitude(x + view_xview + view_wview/2,y + view_yview + view_hview/2) * dsin(-point_direction(view_xview + view_wview/2,view_yview + view_hview/2,x,y))/512
+
+draw_sprite_ext(/*spr_building_floor_1*/spr_wall_basic,building_style,x,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 
 for(i = 0; i &lt; number_of_extra_floors; i++){
-    draw_sprite_ext(spr_building_floor_2,building_style,x,y - 32 - 32*i,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+    draw_sprite_ext(/*spr_building_floor_2*/spr_wall_basic,building_style,x+x_offset*(i+1),y+y_offset*(i+1),image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 }
 
 switch(roof_style){
     case 0:
-        draw_sprite_ext(spr_building_roof,building_style,x,y - 32 - 32*number_of_extra_floors,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+        draw_sprite_ext(/*spr_building_roof*/spr_wall_basic,building_style,x+x_offset*number_of_extra_floors,y+y_offset*number_of_extra_floors/* - 32 - 32*number_of_extra_floors*/,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
         break
     case 1:
-        draw_sprite_ext(spr_building_roof_1,building_style,x,y - 32 - 32*number_of_extra_floors,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+        draw_sprite_ext(/*spr_building_roof_1*/spr_wall_basic,building_style,x+x_offset*number_of_extra_floors,y+y_offset*number_of_extra_floors/* - 32 - 32*number_of_extra_floors*/,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
         break
     case 2:
-        draw_sprite_ext(spr_building_roof_2,building_style,x,y - 32 - 32*number_of_extra_floors,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+        draw_sprite_ext(/*spr_building_roof_2*/spr_wall_basic,building_style,x+x_offset*number_of_extra_floors,y+y_offset*number_of_extra_floors/* - 32 - 32*number_of_extra_floors*/,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
         break
     case 3:
-        draw_sprite_ext(spr_building_roof_3,building_style,x,y - 32 - 32*number_of_extra_floors,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+        draw_sprite_ext(/*spr_building_roof_3*/spr_wall_basic,building_style,x+x_offset*number_of_extra_floors,y+y_offset*number_of_extra_floors/* - 32 - 32*number_of_extra_floors*/,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
         break
 }
 //draw_sprite_ext(spr_wall_basic_shadow,image_index,x,y - 96 - 32*number_of_extra_floors,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
