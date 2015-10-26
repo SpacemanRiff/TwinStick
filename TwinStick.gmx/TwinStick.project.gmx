@@ -121,6 +121,7 @@
       <sprite>sprites\spr_smoke</sprite>
       <sprite>sprites\spr_smoke_shadow</sprite>
     </sprites>
+    <sprite>sprites\sprite76</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background_grid</background>

@@ -517,6 +517,36 @@ if(gamepad_is_connected(0)){
     draw_sprite_ext(hud_shift_key,0, view_wview-20, view_hview-84, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 }
 draw_text_colour(view_wview - 70, view_hview -112,string(obj_player.turret_count),global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue,1)
+
+if(enemies_left_in_wave &lt;= 0){
+    new_enemy_sprite = spr_enemy
+    new_enemy_image_index = 2
+    new_enemy = false
+    switch(wave_count+1){
+        case 1:
+            new_enemy_sprite = spr_enemy
+            new_enemy_image_index = 2
+            new_enemy = true
+            break;
+        case 3:
+            new_enemy_sprite = spr_enemy_scout
+            new_enemy_image_index = 0
+            new_enemy = true
+            break;
+        case 5:            
+            new_enemy_sprite = spr_enemy_tank
+            new_enemy_image_index = 5
+            new_enemy = true
+            break;
+    }
+    if(new_enemy){
+        draw_set_halign(fa_center)  
+        draw_rectangle_colour(2, view_hview - 2, 130, view_hview - 66, global.hud_blue, global.hud_blue, global.hud_blue, global.hud_blue, false)
+        draw_rectangle_colour(4, view_hview - 4, 128, view_hview - 64, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false)
+        draw_text_colour(66,view_hview - 54, "New Enemy", global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue, 1)
+        draw_sprite(new_enemy_sprite,new_enemy_image_index,24, view_hview - 24)
+    }
+}
 </string>
           </argument>
         </arguments>
