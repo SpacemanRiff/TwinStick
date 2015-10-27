@@ -59,7 +59,7 @@ scale = 512
             <string>//x_offset = calculate_magnitude(x + /*view_xview + view_wview/2*/obj_player.x,y + /*view_yview + view_hview/2*/obj_player.y,)/scale * dcos(point_direction(/*view_xview + view_wview/2*/obj_player.x,/*view_yview + view_hview/2*/obj_player.y,x,y))
 //y_offset = calculate_magnitude(x + /*view_xview + view_wview/2*/obj_player.x,y + /*view_yview + view_hview/2*/obj_player.y,)/scale * dsin(-point_direction(/*view_xview + view_wview/2*/obj_player.x,/*view_yview + view_hview/2*/obj_player.y,x,y))
 
-draw_sprite_ext(sprite,building_style,x+calculate_x_offset(x,y)*(current_floor),y+calculate_y_offset(x,y)*(current_floor),1 + current_floor/100,1 + current_floor/100,image_angle,image_blend,image_alpha)
+draw_sprite_ext(sprite,building_style,x+calculate_x_offset(x,y)*(current_floor),y+calculate_y_offset(x,y)*(current_floor),1 + current_floor/50,1 + current_floor/50,image_angle,image_blend,image_alpha)
 
 </string>
           </argument>

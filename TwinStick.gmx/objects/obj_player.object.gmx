@@ -181,46 +181,6 @@ if(charging_dash){
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_enemy">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>other.current_health--
-audio_play_sound(snd_hit,1,false)
-if(!dashing){
-    if(using_shield){    
-        shield_health--
-        gamepad_set_vibration(0,1,1)
-        if(shield_health &lt;= 0){
-            using_shield = false        
-            audio_play_sound(snd_shield_down,1,false)
-        }
-    }else{
-        current_health--
-        gamepad_set_vibration(0,1,1)
-        if(current_health &lt;= 0){
-            room_restart()
-        }
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="4" ename="obj_wall">
       <action>
         <libid>1</libid>
@@ -298,6 +258,46 @@ if(!dashing){
             if(current_health &lt;= 0){
                 room_restart()
             }
+        }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_enemy">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>other.current_health--
+audio_play_sound(snd_hit,1,false)
+if(!dashing){
+    if(using_shield){    
+        shield_health--
+        gamepad_set_vibration(0,1,1)
+        if(shield_health &lt;= 0){
+            using_shield = false        
+            audio_play_sound(snd_shield_down,1,false)
+        }
+    }else{
+        current_health--
+        gamepad_set_vibration(0,1,1)
+        if(current_health &lt;= 0){
+            room_restart()
         }
     }
 }
