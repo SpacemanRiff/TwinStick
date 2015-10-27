@@ -213,7 +213,7 @@ time_until_next_wave = default_wave_delay
     }
     
     if(gamepad_button_check_released(0,gp_shoulderrb)){
-        if(!obj_player.dashing){
+        if(!obj_player.dashing &amp;&amp; obj_player.charging_dash){
             obj_player.charging_dash = false
             obj_player.dashing = true
             obj_player.dash_direction = obj_player.facing_direction
@@ -348,6 +348,20 @@ time_until_next_wave = default_wave_delay
     }
     if(mouse_check_button_released(mb_left)){
         obj_player.shooting = false
+    }
+    if(mouse_check_button_pressed(mb_right)){
+        if(!obj_player.dashing){
+            obj_player.charging_dash = true
+        }
+    }
+    
+    if(mouse_check_button_released(mb_right)){
+        if(!obj_player.dashing &amp;&amp; obj_player.charging_dash){
+            obj_player.charging_dash = false
+            obj_player.dashing = true
+            obj_player.dash_direction = obj_player.facing_direction
+            obj_player.dash_duration = obj_player.default_dash_duration * obj_player.dash_power
+        }
     }
 }
 </string>

@@ -88,7 +88,7 @@ hover_height = 4
           <argument>
             <kind>1</kind>
             <string>draw_sprite_ext(spr_bomb_shadow,image_index,x,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
-draw_sprite_ext(spr_bomb,image_index,x+calculate_x_offset(x,y),y+calculate_y_offset(x,y),image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+draw_sprite_ext(spr_bomb,image_index,x+calculate_x_offset(x,y)/2,y+calculate_y_offset(x,y)/2,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 </string>
           </argument>
         </arguments>

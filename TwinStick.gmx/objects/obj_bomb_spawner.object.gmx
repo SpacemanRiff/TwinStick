@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>spawn_delay = 600
+            <string>spawn_delay = 1800
 time_until_spawn = spawn_delay
 
 bomb_spawned = instance_create(x,y-2,obj_power_up_bomb)

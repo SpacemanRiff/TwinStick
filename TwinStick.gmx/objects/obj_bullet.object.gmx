@@ -156,7 +156,7 @@ instance_destroy()
           <argument>
             <kind>1</kind>
             <string>draw_sprite_ext(sprite_shadow,image_index,x,y,image_xscale,image_yscale,direction,image_blend,image_alpha)
-draw_sprite_ext(sprite,image_index,x+calculate_x_offset(x,y),y+calculate_y_offset(x,y),image_xscale,image_yscale,direction,image_blend,image_alpha)
+draw_sprite_ext(sprite,image_index,x+calculate_x_offset(x,y)/2,y+calculate_y_offset(x,y)/2,image_xscale,image_yscale,direction,image_blend,image_alpha)
 </string>
           </argument>
         </arguments>
