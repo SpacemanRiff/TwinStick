@@ -28,7 +28,7 @@
             <string>depth = depth - y/100000
 default_depth = depth
 
-number_of_extra_floors = irandom(8)+1
+number_of_extra_floors = irandom(4)+4
 building_style =  irandom(1)
 roof_style = irandom(3)
 

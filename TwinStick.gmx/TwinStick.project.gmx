@@ -182,8 +182,8 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\arena</room>
     <room>rooms\test_room</room>
+    <room>rooms\arena</room>
     <room>rooms\room2</room>
   </rooms>
   <help>
