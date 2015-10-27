@@ -171,10 +171,10 @@ depth = default_depth - y/100000
             <kind>1</kind>
             <string>if(face_path){
     draw_sprite_ext(sprite_shadow,image_index,x,y,image_xscale,image_yscale,direction,image_blend,image_alpha)
-    draw_sprite_ext(sprite,current_health-1,x,y-hover_height,image_xscale,image_yscale,direction,image_blend,image_alpha)
+    draw_sprite_ext(sprite,current_health-1,x+calculate_x_offset(x,y),y+calculate_y_offset(x,y),image_xscale,image_yscale,direction,image_blend,image_alpha)
 }else{
     draw_sprite_ext(sprite_shadow,image_index,x,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
-    draw_sprite_ext(sprite,current_health-1,x,y-hover_height,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+    draw_sprite_ext(sprite,current_health-1,x+calculate_x_offset(x,y),y+calculate_y_offset(x,y),image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 }
 </string>
           </argument>

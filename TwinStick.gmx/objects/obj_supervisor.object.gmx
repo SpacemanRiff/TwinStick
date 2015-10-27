@@ -36,6 +36,9 @@ hud_red = make_colour_rgb(204,102,102);
 globalvar hud_green;
 hud_green = make_colour_rgb(124,191,95);
 
+globalvar scale;
+scale = 16;
+
 globalvar grid;
 grid = mp_grid_create(0, 0, room_width div 32, room_height div 32, 32, 32);
 mp_grid_add_instances(grid, obj_wall, false);

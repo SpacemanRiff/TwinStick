@@ -53,7 +53,7 @@ explosion_radius = 256
           <argument>
             <kind>1</kind>
             <string>event_inherited()
-draw_sprite_ext(spr_decoy_ducky,image_index,x,y-16-image_index*2,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+draw_sprite_ext(spr_decoy_ducky,image_index,x+calculate_x_offset(x,y)*image_index/2,y+calculate_y_offset(x,y)*image_index/2,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 </string>
           </argument>
         </arguments>

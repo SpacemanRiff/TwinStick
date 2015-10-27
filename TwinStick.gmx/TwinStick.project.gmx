@@ -82,6 +82,9 @@
       <sprite>sprites\spr_wall_top</sprite>
       <sprite>sprites\spr_wall_basic_shadow</sprite>
       <sprite>sprites\spr_bomb_spawner</sprite>
+      <sprite>sprites\spr_building</sprite>
+      <sprite>sprites\spr_building_floor</sprite>
+      <sprite>sprites\spr_building_roof_p</sprite>
     </sprites>
     <sprites name="weapons">
       <sprite>sprites\spr_bullet</sprite>
@@ -132,6 +135,8 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\calculate_magnitude.gml</script>
+    <script>scripts\calculate_x_offset.gml</script>
+    <script>scripts\calculate_y_offset.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font0</font>
@@ -139,6 +144,15 @@
   <objects name="objects">
     <object>objects\obj_supervisor</object>
     <object>objects\obj_player</object>
+    <objects name="enemies">
+      <object>objects\obj_enemy_nexus</object>
+      <object>objects\obj_spawner</object>
+      <object>objects\obj_turret</object>
+      <object>objects\obj_missile_turret</object>
+      <object>objects\obj_enemy</object>
+      <object>objects\obj_enemy_tank</object>
+      <object>objects\obj_enemy_scout</object>
+    </objects>
     <objects name="weapons">
       <object>objects\obj_bullet</object>
       <object>objects\obj_cannon_shell</object>
@@ -153,15 +167,6 @@
       <object>objects\obj_wall</object>
       <object>objects\obj_wall_floor</object>
       <object>objects\obj_bomb_spawner</object>
-    </objects>
-    <objects name="enemies">
-      <object>objects\obj_enemy_nexus</object>
-      <object>objects\obj_spawner</object>
-      <object>objects\obj_turret</object>
-      <object>objects\obj_missile_turret</object>
-      <object>objects\obj_enemy</object>
-      <object>objects\obj_enemy_tank</object>
-      <object>objects\obj_enemy_scout</object>
     </objects>
     <objects name="power_ups">
       <object>objects\obj_multiplier_orb</object>

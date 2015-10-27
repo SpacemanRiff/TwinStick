@@ -327,17 +327,17 @@ if(!dashing){
 draw_sprite_ext(spr_player_cannon_shadow,image_index,x,y,image_xscale,image_yscale,facing_direction,image_blend,image_alpha)
 
 if(charging_dash){    
-    draw_sprite_ext(spr_dash_attack,image_index,x + 16*dcos(facing_direction),y + 16*dsin(-facing_direction)-hover_height,dash_power,dash_power,facing_direction,image_blend,image_alpha)
+    draw_sprite_ext(spr_dash_attack,image_index,x + 16*dcos(facing_direction),y + 16*dsin(-facing_direction)/*-hover_height*/,dash_power,dash_power,facing_direction,image_blend,image_alpha)
 }
-draw_sprite_ext(spr_player_body,image_index,x,y-hover_height,image_xscale,image_yscale,last_direction_moved,image_blend,image_alpha)
-draw_sprite_ext(spr_player_cannon,image_index,x,y-hover_height,image_xscale,image_yscale,facing_direction,image_blend,image_alpha)
+draw_sprite_ext(spr_player_body,image_index,x,y/*-hover_height*/,image_xscale,image_yscale,last_direction_moved,image_blend,image_alpha)
+draw_sprite_ext(spr_player_cannon,image_index,x,y/*-hover_height*/,image_xscale,image_yscale,facing_direction,image_blend,image_alpha)
 
 if(dashing){
-    draw_sprite_ext(spr_dash_shield,image_index,x,y-hover_height,image_xscale,image_yscale,dash_direction,image_blend,image_alpha)
+    draw_sprite_ext(spr_dash_shield,image_index,x,y/*-hover_height*/,image_xscale,image_yscale,dash_direction,image_blend,image_alpha)
 }
 
 if(using_shield){
-    draw_sprite_ext(spr_player_shield,image_index,x,y-hover_height,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+    draw_sprite_ext(spr_player_shield,image_index,x,y/*-hover_height*/,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 }
 </string>
           </argument>

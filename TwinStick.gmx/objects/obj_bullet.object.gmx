@@ -30,6 +30,9 @@ speed = 16
 damage = 1
 
 var parent_object;
+
+sprite = spr_bullet
+sprite_shadow = spr_bullet_shadow
 </string>
           </argument>
         </arguments>
@@ -152,8 +155,8 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(spr_bullet_shadow,image_index,x,y,image_xscale,image_yscale,direction,image_blend,image_alpha)
-draw_sprite_ext(spr_bullet,image_index,x,y-hover_height,image_xscale,image_yscale,direction,image_blend,image_alpha)
+            <string>draw_sprite_ext(sprite_shadow,image_index,x,y,image_xscale,image_yscale,direction,image_blend,image_alpha)
+draw_sprite_ext(sprite,image_index,x+calculate_x_offset(x,y),y+calculate_y_offset(x,y),image_xscale,image_yscale,direction,image_blend,image_alpha)
 </string>
           </argument>
         </arguments>
