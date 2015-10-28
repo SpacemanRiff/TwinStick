@@ -28,7 +28,7 @@
             <string>depth = depth - y/100000
 default_depth = depth
 
-number_of_extra_floors = irandom(4)+4
+number_of_extra_floors = irandom(4)+2
 building_style =  irandom(1)
 roof_style = irandom(3)
 
@@ -41,6 +41,9 @@ for(i = 0; i &lt; number_of_extra_floors; i++){
     next_floor.building_style = building_style
 }
 next_floor.sprite = spr_building_roof_p
+if(irandom(10) &lt; 1){
+    next_floor.is_roof = true
+}
 </string>
           </argument>
         </arguments>

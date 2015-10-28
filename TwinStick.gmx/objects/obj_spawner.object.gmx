@@ -29,6 +29,8 @@
 delay_until_spawn = 0
 
 image_speed = 1
+
+start_wave = 0
 </string>
           </argument>
         </arguments>
@@ -51,16 +53,18 @@ image_speed = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(delay_until_spawn &lt;= 0){
-    if(obj_supervisor.enemies_left_to_spawn &gt; 0){
-        delay_until_spawn = spawn_rate
-        obj_supervisor.enemies_left_to_spawn--
-        sprite_index = spr_spawner_opening
+            <string>if(obj_supervisor.wave_count &gt;= start_wave){
+    if(delay_until_spawn &lt;= 0){
+        if(obj_supervisor.enemies_left_to_spawn &gt; 0){
+            delay_until_spawn = spawn_rate
+            obj_supervisor.enemies_left_to_spawn--
+            sprite_index = spr_spawner_opening
+        }
     }
-}
-
-if(delay_until_spawn &gt; 0){ 
-    delay_until_spawn--
+    
+    if(delay_until_spawn &gt; 0){ 
+        delay_until_spawn--
+    }
 }
 </string>
           </argument>
@@ -137,6 +141,9 @@ if(delay_until_spawn &gt; 0){
           <argument>
             <kind>1</kind>
             <string>draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,direction,image_blend,image_alpha)
+
+draw_sprite_ext(spr_spawner_lip,image_index,x+calculate_x_offset(x,y)/4,y+calculate_y_offset(x,y)/4,image_xscale,image_yscale,direction,image_blend,image_alpha)
+draw_sprite_ext(spr_spawner_lip_2,image_index,x+calculate_x_offset(x,y)/8,y+calculate_y_offset(x,y)/8,image_xscale,image_yscale,direction,image_blend,image_alpha)
 </string>
           </argument>
         </arguments>

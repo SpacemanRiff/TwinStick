@@ -34,6 +34,8 @@ sprite = spr_building
 building_style = 0
 
 scale = 512
+
+is_roof = false
 </string>
           </argument>
         </arguments>
@@ -60,7 +62,11 @@ scale = 512
 //y_offset = calculate_magnitude(x + /*view_xview + view_wview/2*/obj_player.x,y + /*view_yview + view_hview/2*/obj_player.y,)/scale * dsin(-point_direction(/*view_xview + view_wview/2*/obj_player.x,/*view_yview + view_hview/2*/obj_player.y,x,y))
 
 draw_sprite_ext(sprite,building_style,x+calculate_x_offset(x,y)*(current_floor),y+calculate_y_offset(x,y)*(current_floor),1 + current_floor/50,1 + current_floor/50,image_angle,image_blend,image_alpha)
-
+if(is_roof){
+    for(i = 0; i &lt; 4; i++){
+        draw_sprite_ext(spr_roof_details,i,x+calculate_x_offset(x,y)*(current_floor+i/4),y+calculate_y_offset(x,y)*(current_floor+i/4),1 + current_floor/50,1 + current_floor/50,image_angle,image_blend,image_alpha)    
+    }
+}
 </string>
           </argument>
         </arguments>

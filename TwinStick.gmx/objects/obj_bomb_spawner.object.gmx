@@ -53,7 +53,7 @@ bomb_spawned = instance_create(x,y-2,obj_power_up_bomb)
             <kind>1</kind>
             <string>if(!instance_exists(bomb_spawned)){
     if(time_until_spawn &lt;= 0){
-        bomb_spawned = instance_create(x,y-2,obj_power_up_bomb)
+        bomb_spawned = instance_create(x,y,obj_power_up_bomb)
         time_until_spawn = spawn_delay
     }else{
         time_until_spawn--
@@ -81,7 +81,7 @@ bomb_spawned = instance_create(x,y-2,obj_power_up_bomb)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,ceil((time_until_spawn*8/spawn_delay)),x,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+            <string>draw_sprite_ext(sprite_index,ceil((time_until_spawn*16/spawn_delay)),x,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 </string>
           </argument>
         </arguments>

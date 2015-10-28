@@ -7,10 +7,10 @@
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>3</bbox_left>
-  <bbox_right>60</bbox_right>
-  <bbox_top>3</bbox_top>
-  <bbox_bottom>60</bbox_bottom>
+  <bbox_left>2</bbox_left>
+  <bbox_right>61</bbox_right>
+  <bbox_top>2</bbox_top>
+  <bbox_bottom>61</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
@@ -29,5 +29,13 @@
     <frame index="6">images\spr_bomb_spawner_6.png</frame>
     <frame index="7">images\spr_bomb_spawner_7.png</frame>
     <frame index="8">images\spr_bomb_spawner_8.png</frame>
+    <frame index="9">images\spr_bomb_spawner_9.png</frame>
+    <frame index="10">images\spr_bomb_spawner_10.png</frame>
+    <frame index="11">images\spr_bomb_spawner_11.png</frame>
+    <frame index="12">images\spr_bomb_spawner_12.png</frame>
+    <frame index="13">images\spr_bomb_spawner_13.png</frame>
+    <frame index="14">images\spr_bomb_spawner_14.png</frame>
+    <frame index="15">images\spr_bomb_spawner_15.png</frame>
+    <frame index="16">images\spr_bomb_spawner_16.png</frame>
   </frames>
 </sprite>

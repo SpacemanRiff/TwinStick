@@ -58,6 +58,8 @@
         <sprite>sprites\spr_spawner_closed</sprite>
         <sprite>sprites\spr_spawner_opening</sprite>
         <sprite>sprites\spr_spawner_closing</sprite>
+        <sprite>sprites\spr_spawner_lip</sprite>
+        <sprite>sprites\spr_spawner_lip_2</sprite>
       </sprites>
       <sprites name="enemy_scout">
         <sprite>sprites\spr_enemy_scout</sprite>
@@ -85,6 +87,7 @@
       <sprite>sprites\spr_building</sprite>
       <sprite>sprites\spr_building_floor</sprite>
       <sprite>sprites\spr_building_roof_p</sprite>
+      <sprite>sprites\spr_roof_details</sprite>
     </sprites>
     <sprites name="weapons">
       <sprite>sprites\spr_bullet</sprite>
@@ -182,8 +185,8 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\test_room</room>
     <room>rooms\arena</room>
+    <room>rooms\test_room</room>
     <room>rooms\room2</room>
   </rooms>
   <help>

@@ -353,6 +353,11 @@
     <instance objName="obj_wall" x="1184" y="608" name="inst_0FAC78F1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="1248" y="608" name="inst_3D615125" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_missile_turret" x="1376" y="672" name="inst_A8BB29B5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_spawner" x="192" y="1856" name="inst_BDB09BE4" locked="0" code="start_wave = 4&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_spawner" x="1856" y="192" name="inst_FBB24150" locked="0" code="start_wave = 4&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_spawner" x="1856" y="1856" name="inst_EFB3FE77" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_spawner" x="1856" y="192" name="inst_2FA26CCC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_spawner" x="192" y="192" name="inst_DF1A4ED4" locked="0" code="start_wave = 4&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_sidewalks" x="512" y="704" w="64" h="64" xo="0" yo="0" id="10000309" name="inst_63D45C9E" depth="9999999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
