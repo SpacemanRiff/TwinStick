@@ -414,11 +414,11 @@ time_until_next_wave = default_wave_delay
         }
         enemies_left_in_wave = number_of_enemies_in_wave
         enemies_left_to_spawn = number_of_enemies_in_wave   
-        with(obj_spawner){
-            if(spawn_rate-10 &gt;= 30){
-               spawn_rate -= 10
-            }
-        } 
+        //with(obj_spawner){
+            //if(spawn_rate-10 &gt;= 30){
+               //spawn_rate -= 10
+            //}
+        //} 
         time_until_next_wave = default_wave_delay
     }else{
         time_until_next_wave--

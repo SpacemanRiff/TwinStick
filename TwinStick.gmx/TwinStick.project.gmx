@@ -88,6 +88,11 @@
       <sprite>sprites\spr_building_floor</sprite>
       <sprite>sprites\spr_building_roof_p</sprite>
       <sprite>sprites\spr_roof_details</sprite>
+      <sprites name="tree">
+        <sprite>sprites\spr_tree_top</sprite>
+        <sprite>sprites\spr_tree_trunk</sprite>
+        <sprite>sprites\spr_tree_shadow</sprite>
+      </sprites>
     </sprites>
     <sprites name="weapons">
       <sprite>sprites\spr_bullet</sprite>
@@ -170,6 +175,7 @@
       <object>objects\obj_wall</object>
       <object>objects\obj_wall_floor</object>
       <object>objects\obj_bomb_spawner</object>
+      <object>objects\obj_tree</object>
     </objects>
     <objects name="power_ups">
       <object>objects\obj_multiplier_orb</object>
@@ -185,8 +191,9 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\arena</room>
+    <room>rooms\arena_easy</room>
     <room>rooms\test_room</room>
+    <room>rooms\arena</room>
     <room>rooms\room2</room>
   </rooms>
   <help>

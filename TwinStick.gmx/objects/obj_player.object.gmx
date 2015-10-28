@@ -35,7 +35,7 @@ vspeed_mod = 0
 
 firing_rate = 10
 max_fire_rate = 15
-min_fire_rate = 3
+min_fire_rate = 5
 delay_until_shot = 0
 
 hover_height = 5
@@ -46,7 +46,7 @@ shooting = false
 last_direction_moved = 0
 
 shot_count = 1
-max_shot_count = 9
+max_shot_count = 7
 
 current_health = 8
 max_health = 8
@@ -157,7 +157,7 @@ if(delay_until_shot &lt;= 0){
         for(i = -floor(shot_count/2); i &lt; ceil(shot_count/2); i++){
             shot = instance_create(x,y,obj_bullet)
             shot.parent_object = id
-            shot.direction = facing_direction + ((30 / ceil(shot_count/2)) * i)
+            shot.direction = facing_direction + ((15 / ceil(shot_count/2)) * i)
             shot.hover_height = hover_height
         } 
         audio_play_sound(snd_machine_gun_basic,1,false) 

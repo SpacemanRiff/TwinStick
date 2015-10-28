@@ -35,7 +35,7 @@ current_health = max_health
 
 score_value = 25
 
-power_up_drop_rate = 0.075
+power_up_drop_rate = 0.1
 
 default_depth = 0
 
