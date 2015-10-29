@@ -107,7 +107,7 @@ start_wave = 0
             }
             break;  
         case 9:
-            if(obj_supervisor.wave_count &gt;=5){ 
+            if(obj_supervisor.wave_count &gt;=6){ 
                 to_spawn = obj_enemy_tank
             }
             break;            

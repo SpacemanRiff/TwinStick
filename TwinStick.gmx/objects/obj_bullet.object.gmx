@@ -78,10 +78,12 @@ sprite_shadow = spr_bullet_shadow
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!audio_is_playing(snd_hit)){
-    audio_play_sound(snd_hit, 1, false)
+            <string>if(parent_object != other.id){
+    if(!audio_is_playing(snd_hit)){
+        audio_play_sound(snd_hit, 1, false)
+    }
+    instance_destroy()
 }
-instance_destroy()
 </string>
           </argument>
         </arguments>

@@ -59,6 +59,9 @@ enemies_left_in_wave = 0
 enemies_left_to_spawn = 0
 default_wave_delay = 240
 time_until_next_wave = default_wave_delay
+
+boss_wave_every = 5
+number_of_boss_spawners = 0
 </string>
           </argument>
         </arguments>
@@ -410,10 +413,25 @@ time_until_next_wave = default_wave_delay
         if(wave_count == 1){
             number_of_enemies_in_wave = default_wave_increment        
         }else{
-            number_of_enemies_in_wave = number_of_enemies_in_wave + floor(power(default_wave_increment, wave_count/5))
+            number_of_enemies_in_wave = floor(power(default_wave_increment, 1 + wave_count/10))
         }
-        enemies_left_in_wave = number_of_enemies_in_wave
-        enemies_left_to_spawn = number_of_enemies_in_wave   
+        if(wave_count%boss_wave_every != 0 || number_of_boss_spawners &lt;= 0){
+            enemies_left_in_wave = number_of_enemies_in_wave
+            enemies_left_to_spawn = number_of_enemies_in_wave  
+        }else{
+            boss_has_spawned = false
+            enemies_left_in_wave = ceil(number_of_enemies_in_wave / 4)
+            enemies_left_to_spawn = ceil(number_of_enemies_in_wave / 4)
+            while(!boss_has_spawned){
+                with(obj_boss_spawn_pad){
+                    if(irandom(other.number_of_boss_spawners-1) == 0 &amp;&amp; !other.boss_has_spawned){
+                        instance_create(x,y,obj_enemy_boss)
+                        other.boss_has_spawned = true
+                        other.enemies_left_in_wave++
+                    }
+                }
+            }
+        }        
         //with(obj_spawner){
             //if(spawn_rate-10 &gt;= 30){
                //spawn_rate -= 10
@@ -470,11 +488,17 @@ if(enemies_left_in_wave &lt;= 0){
     if(floor((time_until_next_wave/default_wave_delay)*8)%2 == 1){
         timer_text_color = c_ltgray
     }
-    draw_rectangle_colour(view_wview/2 - 48, 64, view_wview/2 + 48, 94, timer_text_color, timer_text_color, timer_text_color, timer_text_color, false)
-    draw_rectangle_colour(view_wview/2 - 46, 66, view_wview/2 + 46, 92, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false)
-    draw_text_colour(view_wview/2 - 36 , 80, "0:0" + string((time_until_next_wave/default_wave_delay)*4), timer_text_color, timer_text_color, timer_text_color, timer_text_color, 1)
+    draw_rectangle_colour(view_wview/2 - 48, 62, view_wview/2 + 48, 92, timer_text_color, timer_text_color, timer_text_color, timer_text_color, false)
+    draw_rectangle_colour(view_wview/2 - 46, 64, view_wview/2 + 46, 90, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false)
+    draw_text_colour(view_wview/2 - 36 , 78, "0:0" + string((time_until_next_wave/default_wave_delay)*4), timer_text_color, timer_text_color, timer_text_color, timer_text_color, 1)
 }
-
+if(enemies_left_in_wave &lt;= 0 &amp;&amp; (wave_count+1)%boss_wave_every == 0){
+    draw_set_halign(fa_center)
+    display_color = global.hud_red
+    draw_rectangle_colour(view_wview/2 - 64, 94, view_wview/2 + 64, 124, display_color, display_color, display_color, display_color, false)
+    draw_rectangle_colour(view_wview/2 - 62, 96, view_wview/2 + 62, 122, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false)
+    draw_text_colour(view_wview/2, 108, "!Boss Wave!", display_color, display_color, display_color, display_color, 1)
+}
 
 draw_set_halign(fa_right)
 
@@ -550,7 +574,7 @@ if(enemies_left_in_wave &lt;= 0){
             new_enemy_image_index = 0
             new_enemy = true
             break;
-        case 5:            
+        case 6:            
             new_enemy_sprite = spr_enemy_tank
             new_enemy_image_index = 5
             new_enemy = true

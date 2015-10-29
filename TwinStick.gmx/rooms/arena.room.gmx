@@ -358,6 +358,10 @@
     <instance objName="obj_spawner" x="1856" y="1856" name="inst_EFB3FE77" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_spawner" x="1856" y="192" name="inst_2FA26CCC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_spawner" x="192" y="192" name="inst_DF1A4ED4" locked="0" code="start_wave = 4&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_boss_spawn_pad" x="448" y="448" name="inst_7AFCD018" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_boss_spawn_pad" x="1600" y="448" name="inst_7084D03F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_boss_spawn_pad" x="1600" y="1600" name="inst_3D8F7E90" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_boss_spawn_pad" x="448" y="1600" name="inst_50D1FE5B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_sidewalks" x="512" y="704" w="64" h="64" xo="0" yo="0" id="10000309" name="inst_63D45C9E" depth="9999999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

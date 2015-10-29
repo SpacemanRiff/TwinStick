@@ -70,6 +70,12 @@
         <sprite>sprites\spr_enemy_tank_shadow</sprite>
       </sprites>
       <sprite>sprites\spr_enemy_nexus</sprite>
+      <sprites name="boss">
+        <sprite>sprites\spr_boss_body</sprite>
+        <sprite>sprites\spr_boss_body_shadow</sprite>
+        <sprite>sprites\spr_boss_cannon</sprite>
+        <sprite>sprites\spr_boss_cannon_shadow</sprite>
+      </sprites>
     </sprites>
     <sprites name="buildings">
       <sprite>sprites\spr_building_floor_1</sprite>
@@ -93,6 +99,7 @@
         <sprite>sprites\spr_tree_trunk</sprite>
         <sprite>sprites\spr_tree_shadow</sprite>
       </sprites>
+      <sprite>sprites\spr_boss_spawn_pad</sprite>
     </sprites>
     <sprites name="weapons">
       <sprite>sprites\spr_bullet</sprite>
@@ -128,6 +135,7 @@
       <sprite>sprites\hud_space_key</sprite>
       <sprite>sprites\hud_decoy_ducky</sprite>
       <sprite>sprites\hud_y_button</sprite>
+      <sprite>sprites\hud_boss_pointer</sprite>
     </sprites>
     <sprites name="effects">
       <sprite>sprites\spr_smoke</sprite>
@@ -160,6 +168,7 @@
       <object>objects\obj_enemy</object>
       <object>objects\obj_enemy_tank</object>
       <object>objects\obj_enemy_scout</object>
+      <object>objects\obj_enemy_boss</object>
     </objects>
     <objects name="weapons">
       <object>objects\obj_bullet</object>
@@ -176,6 +185,7 @@
       <object>objects\obj_wall_floor</object>
       <object>objects\obj_bomb_spawner</object>
       <object>objects\obj_tree</object>
+      <object>objects\obj_boss_spawn_pad</object>
     </objects>
     <objects name="power_ups">
       <object>objects\obj_multiplier_orb</object>
@@ -191,9 +201,9 @@
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\arena</room>
     <room>rooms\arena_easy</room>
     <room>rooms\test_room</room>
-    <room>rooms\arena</room>
     <room>rooms\room2</room>
   </rooms>
   <help>
