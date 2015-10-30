@@ -128,6 +128,37 @@ if(abs(vspeed) &gt; 0 || abs(hspeed) &gt; 0){
     last_direction_moved = point_direction(x, y, x + hspeed, y + vspeed)
 }
 
+if(place_meeting(x+hspeed,y,obj_wall)){
+    var move = sign(hspeed);
+    repeat(abs(ceil(hspeed)))
+        {
+        if (place_free(x+move,y))
+            {
+            x += move;
+            }
+        else
+            {
+            break;
+            }
+        }
+    hspeed = 0;
+}
+if(place_meeting(x,y+vspeed,obj_wall)){
+    var move = sign(vspeed);
+    repeat(abs(ceil(vspeed)))
+        {
+        if (place_free(x,y+move))
+            {
+            y += move;
+            }
+        else
+            {
+            break;
+            }
+        }
+    vspeed = 0;
+}
+
 audio_listener_position(x,y,0)
 audio_listener_orientation(0,1,0,0,0,1);
 

@@ -100,19 +100,18 @@ depth = default_depth - y/100000
             <kind>1</kind>
             <string>if(current_health &lt; 1){
     if(random(1) &lt; power_up_drop_rate){
-        switch(irandom(4)){
+        switch(irandom(6)){
             case 0:
-            case 1:
-                instance_create(x,y,obj_power_up_health)
-                break
-            case 2:
                 instance_create(x,y,obj_power_up_multi_shot)
                 break
-            case 3:
+            case 1:
                 instance_create(x,y,obj_power_up_rof)
                 break
-            case 4:
+            case 2:
                 instance_create(x,y,obj_power_up_shield)
+                break
+            default:
+                instance_create(x,y,obj_power_up_health)
                 break
         }
     }
