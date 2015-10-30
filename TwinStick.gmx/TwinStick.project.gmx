@@ -144,6 +144,7 @@
     <sprites name="menu">
       <sprite>sprites\menu_items</sprite>
     </sprites>
+    <sprite>sprites\logo</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background_grid</background>
@@ -202,6 +203,8 @@
     <objects name="effects">
       <object>objects\obj_smoke</object>
       <object>objects\obj_text</object>
+      <object>objects\fx_fade_out</object>
+      <object>objects\fx_fade_in</object>
     </objects>
   </objects>
   <rooms name="rooms">

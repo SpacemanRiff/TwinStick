@@ -69,6 +69,7 @@ dash_speed = 15
 dash_direction = 0
 default_dash_duration = 30
 dash_duration = 0
+
 </string>
           </argument>
         </arguments>
@@ -159,6 +160,7 @@ if(delay_until_shot &lt;= 0){
             shot.parent_object = id
             shot.direction = facing_direction + ((15 / ceil(shot_count/2)) * i)
             shot.hover_height = hover_height
+            shot.range = 512
         } 
         audio_play_sound(snd_machine_gun_basic,1,false) 
         delay_until_shot = firing_rate

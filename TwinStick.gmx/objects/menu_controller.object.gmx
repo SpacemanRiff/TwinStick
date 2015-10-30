@@ -33,6 +33,8 @@ menu_delay = 15
 delay_until_move = 0
 
 rotation_angle = 0
+
+fade_in = instance_create(0,0,fx_fade_in)
 </string>
           </argument>
         </arguments>
@@ -55,45 +57,49 @@ rotation_angle = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(gamepad_is_connected(0)){    
-    if(gamepad_axis_value(0, gp_axislv) &gt; 0.25){
-        if(delay_until_move &lt;= 0){
-            current_choice++
-            delay_until_move = menu_delay
+            <string>if(!instance_exists(fx_fade_out)){
+    if(gamepad_is_connected(0)){    
+        if(gamepad_axis_value(0, gp_axislv) &gt; 0.25){
+            if(delay_until_move &lt;= 0){
+                current_choice++
+                delay_until_move = menu_delay
+            }
+        }else if(gamepad_axis_value(0, gp_axislv) &lt; -0.25){
+            if(delay_until_move &lt;= 0){
+                current_choice--
+                delay_until_move = menu_delay
+            }
+        }else{
+            delay_until_move = 0
         }
-    }else if(gamepad_axis_value(0, gp_axislv) &lt; -0.25){
-        if(delay_until_move &lt;= 0){
-            current_choice--
-            delay_until_move = menu_delay
+        
+        if(gamepad_button_check_pressed(0,gp_face1)){
+            switch(current_choice){
+                case 0:
+                    fade = instance_create(0,0,fx_fade_out)
+                    fade.change_room = arena_easy
+                    break;
+                case 1:
+                    fade = instance_create(0,0,fx_fade_out)
+                    fade.change_room = arena_hard
+                    break;
+                case 2:
+                    game_end()
+                    break;
+            }
         }
-    }else{
-        delay_until_move = 0
     }
     
-    if(gamepad_button_check_pressed(0,gp_face1)){
-        switch(current_choice){
-            case 0:
-                room = arena_easy
-                break;
-            case 1:
-                room = arena_hard
-                break;
-            case 2:
-                game_end()
-                break;
-        }
+    if(current_choice &lt; 0){
+        current_choice = max_choice
     }
-}
-
-if(current_choice &lt; 0){
-    current_choice = max_choice
-}
-if(current_choice &gt; max_choice){
-    current_choice = 0
-}
-
-if(delay_until_move &gt; 0){
-    delay_until_move--
+    if(current_choice &gt; max_choice){
+        current_choice = 0
+    }
+    
+    if(delay_until_move &gt; 0){
+        delay_until_move--
+    }
 }
 </string>
           </argument>
@@ -152,6 +158,8 @@ for(i = 0; i &lt;= max_choice; i++){
         draw_sprite_ext(menu_items,(i*2),view_wview/2,view_hview/2 - (64*max_choice/2) + 64*i,image_xscale,image_yscale,image_angle,image_blend,image_alpha)    
     }
 }
+
+draw_sprite_ext(logo,image_index,view_wview-48,view_hview-48,2,2,image_angle,image_blend,image_alpha)
 </string>
           </argument>
         </arguments>

@@ -62,6 +62,8 @@ time_until_next_wave = default_wave_delay
 
 boss_wave_every = 5
 number_of_boss_spawners = 0
+
+fade = instance_create(0,0,fx_fade_in)
 </string>
           </argument>
         </arguments>
@@ -203,12 +205,12 @@ number_of_boss_spawners = 0
             instance_create(obj_player.x,obj_player.y,obj_bomb_decoy)
         }
     }
-    if(gamepad_button_check_released(0,gp_face4)){
+    /*if(gamepad_button_check_released(0,gp_face4)){
         if(obj_player.turret_count &gt; 0){
             obj_player.turret_count--
             instance_create(obj_player.x,obj_player.y,obj_anti_missile_turret)
         }
-    }
+    }*/
     if(gamepad_button_check_pressed(0,gp_shoulderrb)){
         if(!obj_player.dashing){
             obj_player.charging_dash = true
@@ -221,6 +223,12 @@ number_of_boss_spawners = 0
             obj_player.dashing = true
             obj_player.dash_direction = obj_player.facing_direction
             obj_player.dash_duration = obj_player.default_dash_duration * obj_player.dash_power
+        }
+    }
+    if(gamepad_button_check_pressed(0,gp_start)){
+        if(!instance_exists(fx_fade_out)){
+            fade_out = instance_create(0,0,fx_fade_out)
+            fade_out.change_room = main_menu
         }
     }
 }
@@ -545,7 +553,7 @@ if(gamepad_is_connected(0)){
 draw_text_colour(view_wview - 176, view_hview - 38,string(obj_player.bomb_count),global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue,1)
 
 //turrets
-draw_rectangle_colour(view_wview - 104, view_hview-78, view_wview-4, view_hview-146, global.hud_blue, global.hud_blue, global.hud_blue, global.hud_blue, false)
+/*draw_rectangle_colour(view_wview - 104, view_hview-78, view_wview-4, view_hview-146, global.hud_blue, global.hud_blue, global.hud_blue, global.hud_blue, false)
 draw_rectangle_colour(view_wview - 102, view_hview-80, view_wview-6, view_hview-144, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false)
 if(obj_player.turret_count &gt; 0){
     draw_sprite_ext(spr_power_up_anti_missile,0,view_wview - 38, view_hview - 112,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
@@ -558,7 +566,7 @@ if(gamepad_is_connected(0)){
     draw_sprite_ext(hud_shift_key,0, view_wview-20, view_hview-84, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 }
 draw_text_colour(view_wview - 70, view_hview -112,string(obj_player.turret_count),global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue,1)
-
+*/
 if(enemies_left_in_wave &lt;= 0){
     new_enemy_sprite = spr_enemy
     new_enemy_image_index = 2
