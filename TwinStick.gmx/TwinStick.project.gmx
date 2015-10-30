@@ -141,6 +141,9 @@
       <sprite>sprites\spr_smoke</sprite>
       <sprite>sprites\spr_smoke_shadow</sprite>
     </sprites>
+    <sprites name="menu">
+      <sprite>sprites\menu_items</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\background_grid</background>
@@ -159,6 +162,7 @@
   </fonts>
   <objects name="objects">
     <object>objects\obj_supervisor</object>
+    <object>objects\menu_controller</object>
     <object>objects\obj_player</object>
     <objects name="enemies">
       <object>objects\obj_enemy_nexus</object>
@@ -201,8 +205,9 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\arena</room>
+    <room>rooms\main_menu</room>
     <room>rooms\arena_easy</room>
+    <room>rooms\arena_hard</room>
     <room>rooms\test_room</room>
     <room>rooms\room2</room>
   </rooms>
