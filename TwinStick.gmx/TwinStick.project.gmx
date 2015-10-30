@@ -133,6 +133,7 @@
       <sprite>sprites\hud_x_button</sprite>
       <sprite>sprites\hud_shift_key</sprite>
       <sprite>sprites\hud_space_key</sprite>
+      <sprite>sprites\hud_v_key</sprite>
       <sprite>sprites\hud_decoy_ducky</sprite>
       <sprite>sprites\hud_y_button</sprite>
       <sprite>sprites\hud_boss_pointer</sprite>

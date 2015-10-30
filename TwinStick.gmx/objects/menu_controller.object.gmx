@@ -88,6 +88,36 @@ fade_in = instance_create(0,0,fx_fade_in)
                     break;
             }
         }
+    }else{
+        if(keyboard_check(vk_down) || keyboard_check(ord("S"))){
+            if(delay_until_move &lt;= 0){
+                current_choice++
+                delay_until_move = menu_delay
+            }
+        }else if(keyboard_check(vk_up)|| keyboard_check(ord("W"))){
+            if(delay_until_move &lt;= 0){
+                current_choice--
+                delay_until_move = menu_delay
+            }
+        }else{
+            delay_until_move = 0
+        }
+        
+        if(keyboard_check_pressed(vk_space)|| keyboard_check_pressed(vk_enter)){
+            switch(current_choice){
+                case 0:
+                    fade = instance_create(0,0,fx_fade_out)
+                    fade.change_room = arena_easy
+                    break;
+                case 1:
+                    fade = instance_create(0,0,fx_fade_out)
+                    fade.change_room = arena_hard
+                    break;
+                case 2:
+                    game_end()
+                    break;
+            }
+        }
     }
     
     if(current_choice &lt; 0){
@@ -154,6 +184,11 @@ draw_set_alpha(1)
 for(i = 0; i &lt;= max_choice; i++){
     if(i == current_choice){
         draw_sprite_ext(menu_items,(i*2)+1,view_wview/2,view_hview/2 - (64*max_choice/2) + 64*i,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+        if(!gamepad_is_connected(0)){
+            draw_sprite_ext(hud_space_key,0,view_wview/2 + 150,view_hview/2 - (64*max_choice/2) + 64*i,image_xscale,image_yscale,image_angle,image_blend,image_alpha)        
+        }else{
+            draw_sprite_ext(hud_a_button,0,view_wview/2 + 100,view_hview/2 - (64*max_choice/2) + 64*i,image_xscale,image_yscale,image_angle,image_blend,image_alpha)        
+        }
     }else{
         draw_sprite_ext(menu_items,(i*2),view_wview/2,view_hview/2 - (64*max_choice/2) + 64*i,image_xscale,image_yscale,image_angle,image_blend,image_alpha)    
     }

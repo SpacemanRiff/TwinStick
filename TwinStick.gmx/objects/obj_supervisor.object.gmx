@@ -331,6 +331,13 @@ fade = instance_create(0,0,fx_fade_in)
             instance_create(obj_player.x,obj_player.y,obj_bomb_decoy)
         }
     }
+    if(keyboard_check_released(vk_escape)){
+        if(!instance_exists(fx_fade_out)){
+            fade_out = instance_create(0,0,fx_fade_out)
+            fade_out.change_room = main_menu
+        }
+    }
+    
 }
 </string>
           </argument>
@@ -505,7 +512,7 @@ if(enemies_left_in_wave &lt;= 0 &amp;&amp; (wave_count+1)%boss_wave_every == 0){
     display_color = global.hud_red
     draw_rectangle_colour(view_wview/2 - 64, 94, view_wview/2 + 64, 124, display_color, display_color, display_color, display_color, false)
     draw_rectangle_colour(view_wview/2 - 62, 96, view_wview/2 + 62, 122, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false)
-    draw_text_colour(view_wview/2, 108, "!Boss Wave!", display_color, display_color, display_color, display_color, 1)
+    draw_text_colour(view_wview/2, 109, "!Boss Wave!", display_color, display_color, display_color, display_color, 1)
 }
 
 draw_set_halign(fa_right)
@@ -521,52 +528,39 @@ draw_rectangle_colour(view_wview - 134, 36, view_wview-4, 60, c_dkgray, c_dkgray
 draw_text_colour(view_wview - 12, 48, string(multiplier)+"x",global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue,1)
 
 //shields
-draw_rectangle_colour(view_wview - 104, view_hview-4, view_wview-4, view_hview-72, global.hud_blue, global.hud_blue, global.hud_blue, global.hud_blue, false)
-draw_rectangle_colour(view_wview - 102, view_hview-6, view_wview-6, view_hview-70, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false)
+draw_rectangle_colour(view_wview - 104, view_hview-14, view_wview-4, view_hview-82, global.hud_blue, global.hud_blue, global.hud_blue, global.hud_blue, false)
+draw_rectangle_colour(view_wview - 102, view_hview-16, view_wview-6, view_hview-80, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false)
 if(obj_player.shield_count &gt; 0){
-    draw_sprite_ext(spr_power_up_shield,0,view_wview - 38, view_hview - 38,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+    draw_sprite_ext(spr_power_up_shield,0,view_wview - 38, view_hview - 48,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 }else{
-    draw_sprite_ext(spr_power_up_shield_shadow,0,view_wview - 38, view_hview - 38,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+    draw_sprite_ext(spr_power_up_shield_shadow,0,view_wview - 38, view_hview - 48,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 }
 if(gamepad_is_connected(0)){
-    draw_sprite_ext(hud_b_button,0, view_wview-10, view_hview-10, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+    draw_sprite_ext(hud_b_button,0, view_wview-10, view_hview-20, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 }else{
-    draw_sprite_ext(hud_shift_key,0, view_wview-20, view_hview-10, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+    draw_sprite_ext(hud_shift_key,0, view_wview-54, view_hview-12, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 }
 draw_text_colour(view_wview - 70, view_hview - 38,string(obj_player.shield_count),global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue,1)
 
 //bombs
-draw_rectangle_colour(view_wview - 210, view_hview-4, view_wview-110, view_hview-72, global.hud_blue, global.hud_blue, global.hud_blue, global.hud_blue, false)
-draw_rectangle_colour(view_wview - 208, view_hview-6, view_wview-112, view_hview-70, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false)
+draw_rectangle_colour(view_wview - 210, view_hview-14, view_wview-110, view_hview-82, global.hud_blue, global.hud_blue, global.hud_blue, global.hud_blue, false)
+draw_rectangle_colour(view_wview - 208, view_hview-16, view_wview-112, view_hview-80, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false)
 if(obj_player.bomb_count &gt; 0){
-    draw_sprite_ext(spr_power_up_bomb,0,view_wview - 144, view_hview - 38,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+    draw_sprite_ext(spr_power_up_bomb,0,view_wview - 144, view_hview - 48,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 }else{
-    draw_sprite_ext(spr_power_up_bomb_shadow,0,view_wview - 144, view_hview - 38,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+    draw_sprite_ext(spr_power_up_bomb_shadow,0,view_wview - 144, view_hview - 48,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 }
 if(gamepad_is_connected(0)){
-    draw_sprite_ext(hud_a_button,0, view_wview-116, view_hview-10, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
-    draw_sprite_ext(hud_x_button,0, view_wview-116, view_hview-66, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
-    draw_sprite_ext(hud_decoy_ducky,0, view_wview-136, view_hview-66, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+    draw_sprite_ext(hud_a_button,0, view_wview-116, view_hview-20, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+    draw_sprite_ext(hud_x_button,0, view_wview-116, view_hview-76, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+    draw_sprite_ext(hud_decoy_ducky,0, view_wview-136, view_hview-76, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 }else{
-    draw_sprite_ext(hud_space_key,0, view_wview-126, view_hview-10, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+    draw_sprite_ext(hud_space_key,0, view_wview-160, view_hview-12, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+    draw_sprite_ext(hud_v_key,0, view_wview-116, view_hview-76, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+    draw_sprite_ext(hud_decoy_ducky,0, view_wview-140, view_hview-76, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 }
 draw_text_colour(view_wview - 176, view_hview - 38,string(obj_player.bomb_count),global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue,1)
 
-//turrets
-/*draw_rectangle_colour(view_wview - 104, view_hview-78, view_wview-4, view_hview-146, global.hud_blue, global.hud_blue, global.hud_blue, global.hud_blue, false)
-draw_rectangle_colour(view_wview - 102, view_hview-80, view_wview-6, view_hview-144, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false)
-if(obj_player.turret_count &gt; 0){
-    draw_sprite_ext(spr_power_up_anti_missile,0,view_wview - 38, view_hview - 112,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
-}else{
-    draw_sprite_ext(spr_power_up_anti_missile_shadow,0,view_wview - 38, view_hview - 112,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
-}
-if(gamepad_is_connected(0)){
-    draw_sprite_ext(hud_y_button,0, view_wview-10, view_hview-84, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
-}else{
-    draw_sprite_ext(hud_shift_key,0, view_wview-20, view_hview-84, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
-}
-draw_text_colour(view_wview - 70, view_hview -112,string(obj_player.turret_count),global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue,1)
-*/
 if(enemies_left_in_wave &lt;= 0){
     new_enemy_sprite = spr_enemy
     new_enemy_image_index = 2
