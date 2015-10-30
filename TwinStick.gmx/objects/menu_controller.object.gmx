@@ -142,7 +142,7 @@ rotation_angle+=0.5
           <argument>
             <kind>1</kind>
             <string>draw_set_alpha(0.2)
-draw_rectangle_colour(0,0,view_wview,view_hview,c_black,c_black,c_black,c_black,false)
+//draw_rectangle_colour(0,0,view_wview,view_hview,c_black,c_black,c_black,c_black,false)
 draw_set_alpha(1)
 
 for(i = 0; i &lt;= max_choice; i++){
