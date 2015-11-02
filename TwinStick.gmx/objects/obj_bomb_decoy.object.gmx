@@ -29,7 +29,7 @@
 
 image_speed = 0.05
 
-explosion_radius = 256
+explosion_radius = 196
 </string>
           </argument>
         </arguments>

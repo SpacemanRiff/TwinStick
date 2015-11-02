@@ -64,12 +64,40 @@ boss_wave_every = 5
 number_of_boss_spawners = 0
 
 fade = instance_create(0,0,fx_fade_in)
+
+special_weapon = 0
+time_until_special = 0
+special_cool_down = 60
+previous_cool_down = 60
 </string>
           </argument>
         </arguments>
       </action>
     </event>
     <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(time_until_special &gt; 0){
+    time_until_special--
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
       <action>
         <libid>1</libid>
         <id>605</id>
@@ -199,10 +227,12 @@ fade = instance_create(0,0,fx_fade_in)
             instance_create(obj_player.x,obj_player.y,obj_bomb)
         }
     }
-    if(gamepad_button_check_released(0,gp_face3)){
-        if(obj_player.bomb_count &gt; 0){
-            obj_player.bomb_count--
-            instance_create(obj_player.x,obj_player.y,obj_bomb_decoy)
+    /*if(gamepad_button_check_released(0,gp_face3)){
+        
+    }*/
+    if(gamepad_button_check_released(0,gp_face4)){
+        if(!obj_player.dashing &amp;&amp; !obj_player.charging_dash){
+            special_weapon = (special_weapon+1)%2
         }
     }
     /*if(gamepad_button_check_released(0,gp_face4)){
@@ -212,17 +242,27 @@ fade = instance_create(0,0,fx_fade_in)
         }
     }*/
     if(gamepad_button_check_pressed(0,gp_shoulderrb)){
-        if(!obj_player.dashing){
-            obj_player.charging_dash = true
+        if(!obj_player.dashing &amp;&amp; time_until_special &lt;= 0){        
+            if(special_weapon == 0){
+                obj_player.charging_dash = true
+            }else if(special_weapon == 1){
+                instance_create(obj_player.x,obj_player.y,obj_bomb_decoy)
+                time_until_special = special_cool_down * 8
+                previous_cool_down = special_cool_down * 8
+            }
         }
     }
     
     if(gamepad_button_check_released(0,gp_shoulderrb)){
         if(!obj_player.dashing &amp;&amp; obj_player.charging_dash){
-            obj_player.charging_dash = false
-            obj_player.dashing = true
-            obj_player.dash_direction = obj_player.facing_direction
-            obj_player.dash_duration = obj_player.default_dash_duration * obj_player.dash_power
+            if(special_weapon == 0){
+                obj_player.charging_dash = false
+                obj_player.dashing = true
+                obj_player.dash_direction = obj_player.facing_direction
+                obj_player.dash_duration = obj_player.default_dash_duration * obj_player.dash_power
+                time_until_special = special_cool_down * 3
+                previous_cool_down = special_cool_down * 3
+            }
         }
     }
     if(gamepad_button_check_pressed(0,gp_start)){
@@ -536,11 +576,11 @@ if(obj_player.shield_count &gt; 0){
     draw_sprite_ext(spr_power_up_shield_shadow,0,view_wview - 38, view_hview - 48,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 }
 if(gamepad_is_connected(0)){
-    draw_sprite_ext(hud_b_button,0, view_wview-10, view_hview-20, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+    draw_sprite_ext(hud_b_button,gamepad_button_check(0, gp_face2), view_wview-10, view_hview-20, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 }else{
     draw_sprite_ext(hud_shift_key,0, view_wview-54, view_hview-12, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 }
-draw_text_colour(view_wview - 70, view_hview - 38,string(obj_player.shield_count),global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue,1)
+draw_text_colour(view_wview - 70, view_hview - 48,string(obj_player.shield_count),global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue,1)
 
 //bombs
 draw_rectangle_colour(view_wview - 210, view_hview-14, view_wview-110, view_hview-82, global.hud_blue, global.hud_blue, global.hud_blue, global.hud_blue, false)
@@ -551,15 +591,29 @@ if(obj_player.bomb_count &gt; 0){
     draw_sprite_ext(spr_power_up_bomb_shadow,0,view_wview - 144, view_hview - 48,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 }
 if(gamepad_is_connected(0)){
-    draw_sprite_ext(hud_a_button,0, view_wview-116, view_hview-20, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
-    draw_sprite_ext(hud_x_button,0, view_wview-116, view_hview-76, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
-    draw_sprite_ext(hud_decoy_ducky,0, view_wview-136, view_hview-76, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+    draw_sprite_ext(hud_a_button,gamepad_button_check(0, gp_face1), view_wview-116, view_hview-20, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+    //draw_sprite_ext(hud_x_button,0, view_wview-116, view_hview-76, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+    //draw_sprite_ext(hud_decoy_ducky,0, view_wview-136, view_hview-76, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 }else{
     draw_sprite_ext(hud_space_key,0, view_wview-160, view_hview-12, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
-    draw_sprite_ext(hud_v_key,0, view_wview-116, view_hview-76, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
-    draw_sprite_ext(hud_decoy_ducky,0, view_wview-140, view_hview-76, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+    //draw_sprite_ext(hud_v_key,0, view_wview-116, view_hview-76, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+    //draw_sprite_ext(hud_decoy_ducky,0, view_wview-140, view_hview-76, image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 }
-draw_text_colour(view_wview - 176, view_hview - 38,string(obj_player.bomb_count),global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue,1)
+draw_text_colour(view_wview - 176, view_hview - 48,string(obj_player.bomb_count),global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue,1)
+
+//special
+draw_rectangle_colour(view_wview - 210, view_hview-88, view_wview-4, view_hview-156, global.hud_blue, global.hud_blue, global.hud_blue, global.hud_blue, false)
+draw_rectangle_colour(view_wview - 208, view_hview-90, view_wview-6, view_hview-154, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false)
+if(special_weapon == 0){
+    draw_sprite_ext(hud_dash,ceil((time_until_special*8)/previous_cool_down),view_wview - 160, view_hview - 122,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+    draw_sprite_ext(spr_power_up_decoy_shadow,0,view_wview - 54, view_hview - 122,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+}else if(special_weapon == 1){
+    draw_sprite_ext(spr_power_up_dash_sprite,0,view_wview - 160, view_hview - 122,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+    draw_sprite_ext(hud_decoy,ceil((time_until_special*8)/previous_cool_down),view_wview - 54, view_hview - 122,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+}
+draw_sprite_ext(hud_cycle,0,view_wview - 116, view_hview - 152,image_xscale,image_yscale,special_weapon*90,image_blend,image_alpha)
+draw_sprite_ext(hud_y_button,gamepad_button_check(0, gp_face4),view_wview - 96, view_hview - 152,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+draw_sprite_ext(hud_right_trigger,gamepad_button_check(0, gp_shoulderrb),view_wview - 106, view_hview - 112,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 
 if(enemies_left_in_wave &lt;= 0){
     new_enemy_sprite = spr_enemy

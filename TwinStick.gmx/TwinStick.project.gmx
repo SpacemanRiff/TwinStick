@@ -128,15 +128,21 @@
       <sprite>sprites\spr_cursor_red</sprite>
       <sprite>sprites\spr_cursor_bad</sprite>
       <sprite>sprites\spr_cursor_shadow</sprite>
+      <sprite>sprites\hud_boss_pointer</sprite>
       <sprite>sprites\hud_a_button</sprite>
       <sprite>sprites\hud_b_button</sprite>
       <sprite>sprites\hud_x_button</sprite>
+      <sprite>sprites\hud_y_button</sprite>
+      <sprite>sprites\hud_right_trigger</sprite>
       <sprite>sprites\hud_shift_key</sprite>
       <sprite>sprites\hud_space_key</sprite>
       <sprite>sprites\hud_v_key</sprite>
       <sprite>sprites\hud_decoy_ducky</sprite>
-      <sprite>sprites\hud_y_button</sprite>
-      <sprite>sprites\hud_boss_pointer</sprite>
+      <sprite>sprites\hud_dash</sprite>
+      <sprite>sprites\hud_decoy</sprite>
+      <sprite>sprites\spr_power_up_dash_sprite</sprite>
+      <sprite>sprites\spr_power_up_decoy_shadow</sprite>
+      <sprite>sprites\hud_cycle</sprite>
     </sprites>
     <sprites name="effects">
       <sprite>sprites\spr_smoke</sprite>
@@ -212,8 +218,8 @@
     <room>rooms\main_menu</room>
     <room>rooms\arena_easy</room>
     <room>rooms\arena_hard</room>
-    <room>rooms\test_room</room>
     <room>rooms\room2</room>
+    <room>rooms\test_room</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
