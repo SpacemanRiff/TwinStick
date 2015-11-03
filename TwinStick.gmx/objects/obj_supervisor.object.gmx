@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>randomize()
+gamepad_set_vibration(0,0,0)   
 
 globalvar hud_blue;
 hud_blue = make_colour_rgb(127,201,255);

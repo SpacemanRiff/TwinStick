@@ -34,6 +34,10 @@ var parent_object;
 sprite = spr_bullet
 sprite_shadow = spr_bullet_shadow
 range = 2048
+
+from_player = false
+o_x = 0
+o_y = 0
 </string>
           </argument>
         </arguments>
@@ -56,8 +60,8 @@ range = 2048
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(instance_exists(parent_object.id)){
-    if(calculate_magnitude(x-parent_object.x, y-parent_object.y)&gt;range){
+            <string>if(from_player){
+    if(calculate_magnitude(x-o_x, y-o_y) &gt; range){
         instance_destroy()
     }
 }

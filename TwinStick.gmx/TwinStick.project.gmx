@@ -147,6 +147,8 @@
     <sprites name="effects">
       <sprite>sprites\spr_smoke</sprite>
       <sprite>sprites\spr_smoke_shadow</sprite>
+      <sprite>sprites\fx_explosion</sprite>
+      <sprite>sprites\fx_explosion_shadow</sprite>
     </sprites>
     <sprites name="menu">
       <sprite>sprites\menu_items</sprite>
@@ -212,14 +214,15 @@
       <object>objects\obj_text</object>
       <object>objects\fx_fade_out</object>
       <object>objects\fx_fade_in</object>
+      <object>objects\obj_explosion</object>
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\test_room</room>
     <room>rooms\main_menu</room>
     <room>rooms\arena_easy</room>
     <room>rooms\arena_hard</room>
     <room>rooms\room2</room>
-    <room>rooms\test_room</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

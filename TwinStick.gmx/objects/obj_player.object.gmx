@@ -70,6 +70,12 @@ dash_direction = 0
 default_dash_duration = 30
 dash_duration = 0
 
+dead = false
+dying = false
+
+image_speed = 0
+image_index = 0
+
 </string>
           </argument>
         </arguments>
@@ -92,77 +98,82 @@ dash_duration = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!dashing){
-    if(move_down){
-        vspeed = default_speed * vspeed_mod
+            <string>if(!dying){
+    if(!dashing){
+        if(move_down){
+            vspeed = default_speed * vspeed_mod
+        }
+        if(move_up){
+            vspeed = -default_speed * vspeed_mod
+        }
+        if(move_right){
+            hspeed = default_speed * hspeed_mod
+        }
+        if(move_left){
+            hspeed = -default_speed * hspeed_mod
+        }
+        
+        if(!move_left &amp;&amp; !move_right){
+            hspeed = 0
+        }
+        if(!move_up &amp;&amp; !move_down){
+            vspeed = 0
+        }
+        
+    }else{
+        hspeed = (dash_speed + dash_speed*(dash_duration/default_dash_duration)) * dash_power * dcos(dash_direction)
+        vspeed = (dash_speed + dash_speed*(dash_duration/default_dash_duration)) * dash_power * dsin(-dash_direction)
+        
+        dash_duration--
+        if(dash_duration &lt;= 0){
+            dashing = false
+            dash_power = 0
+        }
     }
-    if(move_up){
-        vspeed = -default_speed * vspeed_mod
-    }
-    if(move_right){
-        hspeed = default_speed * hspeed_mod
-    }
-    if(move_left){
-        hspeed = -default_speed * hspeed_mod
+        
+    if(abs(vspeed) &gt; 0 || abs(hspeed) &gt; 0){
+        last_direction_moved = point_direction(x, y, x + hspeed, y + vspeed)
     }
     
-    if(!move_left &amp;&amp; !move_right){
-        hspeed = 0
+    if(place_meeting(x+hspeed,y,obj_wall)){
+        var move = sign(hspeed);
+        repeat(abs(ceil(hspeed)))
+            {
+            if (place_free(x+move,y))
+                {
+                x += move;
+                }
+            else
+                {
+                break;
+                }
+            }
+        hspeed = 0;
     }
-    if(!move_up &amp;&amp; !move_down){
-        vspeed = 0
+    if(place_meeting(x,y+vspeed,obj_wall)){
+        var move = sign(vspeed);
+        repeat(abs(ceil(vspeed)))
+            {
+            if (place_free(x,y+move))
+                {
+                y += move;
+                }
+            else
+                {
+                break;
+                }
+            }
+        vspeed = 0;
     }
     
+    audio_listener_position(x,y,0)
+    audio_listener_orientation(0,1,0,0,0,1);
+    
+    depth = default_depth - y/100000
 }else{
-    hspeed = (dash_speed + dash_speed*(dash_duration/default_dash_duration)) * dash_power * dcos(dash_direction)
-    vspeed = (dash_speed + dash_speed*(dash_duration/default_dash_duration)) * dash_power * dsin(-dash_direction)
-    
-    dash_duration--
-    if(dash_duration &lt;= 0){
-        dashing = false
-        dash_power = 0
-    }
+    hspeed = 0
+    vspeed = 0
 }
-    
-if(abs(vspeed) &gt; 0 || abs(hspeed) &gt; 0){
-    last_direction_moved = point_direction(x, y, x + hspeed, y + vspeed)
-}
-
-if(place_meeting(x+hspeed,y,obj_wall)){
-    var move = sign(hspeed);
-    repeat(abs(ceil(hspeed)))
-        {
-        if (place_free(x+move,y))
-            {
-            x += move;
-            }
-        else
-            {
-            break;
-            }
-        }
-    hspeed = 0;
-}
-if(place_meeting(x,y+vspeed,obj_wall)){
-    var move = sign(vspeed);
-    repeat(abs(ceil(vspeed)))
-        {
-        if (place_free(x,y+move))
-            {
-            y += move;
-            }
-        else
-            {
-            break;
-            }
-        }
-    vspeed = 0;
-}
-
-audio_listener_position(x,y,0)
-audio_listener_orientation(0,1,0,0,0,1);
-
-depth = default_depth - y/100000
 </string>
           </argument>
         </arguments>
@@ -183,31 +194,62 @@ depth = default_depth - y/100000
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gamepad_set_vibration(0,0,0)
-if(delay_until_shot &lt;= 0){
-    if(shooting &amp;&amp; !charging_dash &amp;&amp; !dashing){        
-        for(i = -floor(shot_count/2); i &lt; ceil(shot_count/2); i++){
-            shot = instance_create(x,y,obj_bullet)
-            shot.parent_object = id
-            shot.direction = facing_direction + ((15 / ceil(shot_count/2)) * i)
-            shot.hover_height = hover_height
-            shot.range = 512
-        } 
-        audio_play_sound(snd_machine_gun_basic,1,false) 
-        delay_until_shot = firing_rate
+            <string>if(!dying){
+    gamepad_set_vibration(0,0,0)
+    if(delay_until_shot &lt;= 0){
+        if(shooting &amp;&amp; !charging_dash &amp;&amp; !dashing){        
+            for(i = -floor(shot_count/2); i &lt; ceil(shot_count/2); i++){
+                shot = instance_create(x,y,obj_bullet)
+                shot.parent_object = id
+                shot.direction = facing_direction + ((15 / ceil(shot_count/2)) * i)
+                shot.hover_height = hover_height
+                shot.range = 512
+                shot.o_x = x
+                shot.o_y = y
+                shot.from_player = true
+            } 
+            audio_play_sound(snd_machine_gun_basic,1,false) 
+            delay_until_shot = firing_rate
+        }
+    }
+    
+    if(delay_until_shot &gt; 0){
+        delay_until_shot --
+    }
+    
+    if(charging_dash){
+        if(dash_power &lt; 1){
+            dash_power+=0.02
+        }else{
+            dash_power = 1
+        }
     }
 }
-
-if(delay_until_shot &gt; 0){
-    delay_until_shot --
-}
-
-if(charging_dash){
-    if(dash_power &lt; 1){
-        dash_power+=0.02
-    }else{
-        dash_power = 1
-    }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(!dying &amp;&amp; current_health &lt;= 0){
+    dying = true
+    image_index = 0
+    image_speed = 0.75
+    sprite_index = fx_explosion
 }
 </string>
           </argument>
@@ -276,20 +318,19 @@ if(charging_dash){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(other.parent_object != id){
-    if(!dashing){
-        if(using_shield){    
-            shield_health-=other.damage
-            gamepad_set_vibration(0,1,1)
-            if(shield_health &lt;= 0){
-                using_shield = false
-                audio_play_sound(snd_shield_down,1,false)
-            }
-        }else{
-            current_health-=other.damage
-            gamepad_set_vibration(0,1,1)
-            if(current_health &lt;= 0){
-                room_restart()
+            <string>if(!dying){
+    if(other.parent_object != id){
+        if(!dashing){
+            if(using_shield){    
+                shield_health-=other.damage
+                gamepad_set_vibration(0,1,1)
+                if(shield_health &lt;= 0){
+                    using_shield = false
+                    audio_play_sound(snd_shield_down,1,false)
+                }
+            }else{
+                current_health-=other.damage
+                gamepad_set_vibration(0,1,1)
             }
         }
     }
@@ -316,23 +357,51 @@ if(charging_dash){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>other.current_health--
-audio_play_sound(snd_hit,1,false)
-if(!dashing){
-    if(using_shield){    
-        shield_health--
-        gamepad_set_vibration(0,1,1)
-        if(shield_health &lt;= 0){
-            using_shield = false        
-            audio_play_sound(snd_shield_down,1,false)
-        }
-    }else{
-        current_health--
-        gamepad_set_vibration(0,1,1)
-        if(current_health &lt;= 0){
-            room_restart()
+            <string>if(!dying){
+    other.current_health--
+    audio_play_sound(snd_hit,1,false)
+    if(!dashing){
+        if(using_shield){    
+            shield_health--
+            gamepad_set_vibration(0,1,1)
+            if(shield_health &lt;= 0){
+                using_shield = false        
+                audio_play_sound(snd_shield_down,1,false)
+            }
+        }else{
+            current_health--
+            gamepad_set_vibration(0,1,1)
         }
     }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="7">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(dying){
+    dead = true    
+    image_speed = 0
+    fade = instance_create(0,0,fx_fade_out)
+    fade.change_room = main_menu
+    gamepad_set_vibration(0,0,0)   
 }
 </string>
           </argument>
@@ -356,25 +425,33 @@ if(!dashing){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(spr_player_body_shadow,image_index,x,y,image_xscale,image_yscale,last_direction_moved,image_blend,image_alpha)
-draw_sprite_ext(spr_player_cannon_shadow,image_index,x,y,image_xscale,image_yscale,facing_direction,image_blend,image_alpha)
-
-draw_sprite_ext(spr_player_body,image_index,x+calculate_x_offset(x,y)/2,y+calculate_y_offset(x,y)/2,image_xscale,image_yscale,last_direction_moved,image_blend,image_alpha)
-draw_sprite_ext(spr_player_cannon,image_index,x+calculate_x_offset(x,y),y+calculate_y_offset(x,y),image_xscale,image_yscale,facing_direction,image_blend,image_alpha)
-
-if(charging_dash){    
-    draw_sprite_ext(spr_dash_attack,image_index,x+calculate_x_offset(x,y) + 16*dcos(facing_direction),y+calculate_y_offset(x,y) + 16*dsin(-facing_direction)/*-hover_height*/,dash_power,dash_power,facing_direction,image_blend,image_alpha)
-}
-if(dashing){
-    draw_sprite_ext(spr_dash_shield,image_index,x+calculate_x_offset(x,y)/2,y+calculate_y_offset(x,y)/2/*-hover_height*/,image_xscale,image_yscale,dash_direction,image_blend,image_alpha)
-}
-
-if(using_shield){
-    draw_sprite_ext(spr_player_shield,image_index,x+calculate_x_offset(x,y)/2,y+calculate_y_offset(x,y)/2/*-hover_height*/,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
-}
-
-if(instance_exists(obj_enemy_boss)){
-    draw_sprite_ext(hud_boss_pointer,image_index,x+calculate_x_offset(x,y)/2,y+calculate_y_offset(x,y)/2/*-hover_height*/,image_xscale,image_yscale,point_direction(x,y,obj_enemy_boss.x,obj_enemy_boss.y),image_blend,image_alpha)
+            <string>if(!dying &amp;&amp; !dead){
+    draw_sprite_ext(spr_player_body_shadow,image_index,x,y,image_xscale,image_yscale,last_direction_moved,image_blend,image_alpha)
+    draw_sprite_ext(spr_player_cannon_shadow,image_index,x,y,image_xscale,image_yscale,facing_direction,image_blend,image_alpha)
+    
+    draw_sprite_ext(spr_player_body,image_index,x+calculate_x_offset(x,y)/2,y+calculate_y_offset(x,y)/2,image_xscale,image_yscale,last_direction_moved,image_blend,image_alpha)
+    draw_sprite_ext(spr_player_cannon,image_index,x+calculate_x_offset(x,y),y+calculate_y_offset(x,y),image_xscale,image_yscale,facing_direction,image_blend,image_alpha)
+    
+    if(charging_dash){    
+        draw_sprite_ext(spr_dash_attack,image_index,x+calculate_x_offset(x,y) + 16*dcos(facing_direction),y+calculate_y_offset(x,y) + 16*dsin(-facing_direction)/*-hover_height*/,dash_power,dash_power,facing_direction,image_blend,image_alpha)
+    }
+    if(dashing){
+        draw_sprite_ext(spr_dash_shield,image_index,x+calculate_x_offset(x,y)/2,y+calculate_y_offset(x,y)/2/*-hover_height*/,image_xscale,image_yscale,dash_direction,image_blend,image_alpha)
+    }
+    
+    if(using_shield){
+        draw_sprite_ext(spr_player_shield,image_index,x+calculate_x_offset(x,y)/2,y+calculate_y_offset(x,y)/2/*-hover_height*/,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+    }
+    
+    if(instance_exists(obj_enemy_boss)){
+        draw_sprite_ext(hud_boss_pointer,image_index,x+calculate_x_offset(x,y)/2,y+calculate_y_offset(x,y)/2/*-hover_height*/,image_xscale,image_yscale,point_direction(x,y,obj_enemy_boss.x,obj_enemy_boss.y),image_blend,image_alpha)
+    }
+}else if(!dead){
+    for(i = 0; i &lt; 6; i++){
+        image_angle = irandom(360)
+        draw_sprite_ext(fx_explosion_shadow,image_index,x,y,1,1,image_angle,image_blend,image_alpha)
+        draw_sprite_ext(fx_explosion,image_index,x+calculate_x_offset(x,y)/2,y+calculate_y_offset(x,y)/2,1,1,image_angle,image_blend,image_alpha)
+    }
 }
 </string>
           </argument>

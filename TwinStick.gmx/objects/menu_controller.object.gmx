@@ -35,6 +35,8 @@ delay_until_move = 0
 rotation_angle = 0
 
 fade_in = instance_create(0,0,fx_fade_in)
+
+gamepad_set_vibration(0,0,0)   
 </string>
           </argument>
         </arguments>

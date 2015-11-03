@@ -52,7 +52,7 @@
   </views>
   <instances>
     <instance objName="obj_player" x="1344" y="768" name="inst_586D4EFD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_supervisor" x="1472" y="800" name="inst_80ECB698" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_supervisor" x="1472" y="800" name="inst_80ECB698" locked="0" code="wave_count = 5&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_power_up_shield" x="800" y="800" name="inst_CD5B51CD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_power_up_shield" x="1248" y="800" name="inst_DCB13966" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_power_up_shield" x="1248" y="1248" name="inst_342D2DDC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -136,6 +136,16 @@
     <instance objName="obj_wall" x="1440" y="992" name="inst_EFCDBFE6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="1312" y="992" name="inst_0E617F42" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="1376" y="992" name="inst_DE9C12FA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_enemy_boss" x="704" y="704" name="inst_8D5A951C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_rof" x="1440" y="640" name="inst_601622FF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_rof" x="1408" y="768" name="inst_3FA62785" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_rof" x="1536" y="640" name="inst_B1A2EA84" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_rof" x="1344" y="640" name="inst_1611951E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_rof" x="1504" y="704" name="inst_BB974F06" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_rof" x="1408" y="672" name="inst_FEFEEDFD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_multi_shot" x="1568" y="768" name="inst_E63369C7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_multi_shot" x="1408" y="832" name="inst_25606204" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_power_up_multi_shot" x="1440" y="768" name="inst_003B6503" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
