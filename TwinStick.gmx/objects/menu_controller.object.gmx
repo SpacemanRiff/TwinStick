@@ -41,6 +41,7 @@ gamepad_set_vibration(0,0,0)
 globalvar current_track;
 global.current_track = msc_main_menu
 audio_play_sound(global.current_track,1,false)
+audio_sound_gain(global.current_track, 0, 0)
 </string>
           </argument>
         </arguments>

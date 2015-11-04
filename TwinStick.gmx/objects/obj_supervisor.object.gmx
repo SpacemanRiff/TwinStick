@@ -45,7 +45,10 @@ grid = mp_grid_create(0, 0, room_width div 32, room_height div 32, 32, 32);
 mp_grid_add_instances(grid, obj_wall, false);
 
 globalvar current_track;
-current_track = msc_main_menu
+current_track = msc_normal_1
+audio_play_sound(global.current_track,1,false)
+audio_sound_gain(global.current_track, 0, 0)
+current_track_counter = 0
 
 gp_deadzone = 0.40
 
@@ -106,6 +109,38 @@ previous_cool_down = 60
             <kind>1</kind>
             <string>if(time_until_special &gt; 0){
     time_until_special--
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(!audio_is_playing(global.current_track)){
+    current_track_counter = (current_track_counter + 1) % 2
+    switch(current_track_counter){
+        case 0:
+            global.current_track = msc_normal_1
+            break;
+        case 1:
+            global.current_track = msc_normal_2
+            break;
+    }
+    audio_play_sound(global.current_track,1,false)
 }
 </string>
           </argument>

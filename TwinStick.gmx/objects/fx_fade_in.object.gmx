@@ -51,6 +51,7 @@ current_alpha = 1
           <argument>
             <kind>1</kind>
             <string>current_alpha -= alpha_increment
+audio_sound_gain(global.current_track, audio_sound_get_gain(global.current_track)+alpha_increment, 0)
 
 if(current_alpha &lt;= 0){
     instance_destroy()

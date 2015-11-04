@@ -7,6 +7,8 @@
   <sounds name="sound">
     <sounds name="msc">
       <sound>sound\msc_main_menu</sound>
+      <sound>sound\msc_normal_1</sound>
+      <sound>sound\msc_normal_2</sound>
     </sounds>
     <sounds name="sfx">
       <sound>sound\snd_machine_gun_basic</sound>
