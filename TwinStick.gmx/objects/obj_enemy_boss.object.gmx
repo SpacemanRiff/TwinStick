@@ -50,6 +50,8 @@ shots_per_burst = 45
 shots_left_in_burst = shots_per_burst
 
 shooting = false
+
+type = 3
 </string>
           </argument>
         </arguments>
@@ -177,6 +179,8 @@ depth = default_depth - y/100000
     }
     audio_play_sound_at(snd_enemy_death,x,y,0,256,512,1,false,1) 
     obj_supervisor.score += score_value*obj_supervisor.multiplier
+    obj_supervisor.enemy_boss_kills ++
+    obj_supervisor.enemy_boss_points += score_value*obj_supervisor.multiplier
     obj_supervisor.enemies_left_in_wave--
     explosion = instance_create(x,y,obj_explosion)
     explosion.image_scale = 2

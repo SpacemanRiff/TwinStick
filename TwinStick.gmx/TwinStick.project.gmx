@@ -5,16 +5,21 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound">
-    <sound>sound\snd_machine_gun_basic</sound>
-    <sound>sound\snd_enemy_death</sound>
-    <sound>sound\snd_power_up_get</sound>
-    <sound>sound\snd_cannon</sound>
-    <sound>sound\snd_hit</sound>
-    <sound>sound\snd_explosion</sound>
-    <sound>sound\snd_missile_explosion</sound>
-    <sound>sound\snd_missile_firing</sound>
-    <sound>sound\snd_shield_up</sound>
-    <sound>sound\snd_shield_down</sound>
+    <sounds name="msc">
+      <sound>sound\msc_main_menu</sound>
+    </sounds>
+    <sounds name="sfx">
+      <sound>sound\snd_machine_gun_basic</sound>
+      <sound>sound\snd_shield_up</sound>
+      <sound>sound\snd_explosion</sound>
+      <sound>sound\snd_missile_firing</sound>
+      <sound>sound\snd_missile_explosion</sound>
+      <sound>sound\snd_shield_down</sound>
+      <sound>sound\snd_hit</sound>
+      <sound>sound\snd_power_up_get</sound>
+      <sound>sound\snd_cannon</sound>
+      <sound>sound\snd_enemy_death</sound>
+    </sounds>
   </sounds>
   <sprites name="sprites">
     <sprites name="player">

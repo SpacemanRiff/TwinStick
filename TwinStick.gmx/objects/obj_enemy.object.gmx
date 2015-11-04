@@ -45,6 +45,8 @@ sprite_shadow = spr_enemy_shadow
 face_path = false
 
 multiplier_orb_count = 2
+
+type = 0
 </string>
           </argument>
         </arguments>
@@ -120,6 +122,20 @@ depth = default_depth - y/100000
     }
     audio_play_sound_at(snd_enemy_death,x,y,0,256,512,1,false,1) 
     obj_supervisor.score += score_value*obj_supervisor.multiplier
+    switch(type){
+        case 0:
+            obj_supervisor.enemy_drone_points += score_value*obj_supervisor.multiplier
+            obj_supervisor.enemy_drone_kills ++
+            break;
+        case 1:
+            obj_supervisor.enemy_scout_points += score_value*obj_supervisor.multiplier
+            obj_supervisor.enemy_scout_kills++
+            break;
+        case 2:
+            obj_supervisor.enemy_tank_points += score_value*obj_supervisor.multiplier
+            obj_supervisor.enemy_tank_kills ++
+            break;
+    }
     obj_supervisor.enemies_left_in_wave--
     explosion = instance_create(x,y,obj_explosion)
     instance_destroy()

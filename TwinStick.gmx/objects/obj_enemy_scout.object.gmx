@@ -37,6 +37,8 @@ current_health = max_health
 power_up_drop_rate = 0.05
 
 face_path = true
+
+type = 2
 </string>
           </argument>
         </arguments>

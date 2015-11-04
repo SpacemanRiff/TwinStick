@@ -44,9 +44,21 @@ globalvar grid;
 grid = mp_grid_create(0, 0, room_width div 32, room_height div 32, 32, 32);
 mp_grid_add_instances(grid, obj_wall, false);
 
+globalvar current_track;
+current_track = msc_main_menu
+
 gp_deadzone = 0.40
 
 score = 0
+enemy_drone_kills = 0
+enemy_drone_points = 0
+enemy_scout_kills = 0
+enemy_scout_points = 0
+enemy_tank_kills = 0
+enemy_tank_points = 0
+enemy_boss_kills = 0
+enemy_boss_points = 0
+show_scoreboard = false
 
 multiplier = 1
 
@@ -271,6 +283,12 @@ previous_cool_down = 60
             fade_out = instance_create(0,0,fx_fade_out)
             fade_out.change_room = main_menu
         }
+    }
+    if(gamepad_button_check_pressed(0,gp_select)){
+        show_scoreboard =  true
+    }
+    if(gamepad_button_check_released(0,gp_select)){
+        show_scoreboard =  false
     }
 }
 </string>
@@ -644,6 +662,36 @@ if(enemies_left_in_wave &lt;= 0){
         draw_text_colour(66,view_hview - 54, "New Enemy", global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue, 1)
         draw_sprite(new_enemy_sprite,new_enemy_image_index,24, view_hview - 24)
     }
+}
+
+if(show_scoreboard){
+    draw_set_alpha(0.75)
+    draw_set_halign(fa_center)
+    draw_rectangle_colour(4, view_hview/2 - 128, 260, view_hview/2 + 128, global.hud_blue, global.hud_blue, global.hud_blue, global.hud_blue, false)
+    draw_rectangle_colour(6, view_hview/2 - 126, 258, view_hview/2 + 126, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false)
+    draw_text_colour(96, view_hview/2 - 110, "Kills",global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue,1)
+    draw_text_colour(164, view_hview/2 - 110, "Points",global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue,1)
+    
+    draw_set_halign(fa_right)
+    draw_set_valign(fa_center)
+    
+    draw_sprite_ext(spr_enemy,2,38, view_hview/2 - 64,1,1,image_angle,image_blend,image_alpha)
+    draw_text_colour(128, view_hview/2 - 64, string(enemy_drone_kills),global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue,1)
+    draw_text_colour(244, view_hview/2 - 64, string(enemy_drone_points),global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue,1)
+    
+    draw_sprite_ext(spr_enemy_scout,5,38, view_hview/2 - 16,1,1,image_angle,image_blend,image_alpha)
+    draw_text_colour(128, view_hview/2 - 16, string(enemy_scout_kills),global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue,1)
+    draw_text_colour(244, view_hview/2 - 16, string(enemy_scout_points),global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue,1)
+    
+    draw_sprite_ext(spr_enemy_tank,2,38, view_hview/2 + 32,1,1,image_angle,image_blend,image_alpha)
+    draw_text_colour(128, view_hview/2 + 32, string(enemy_tank_kills),global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue,1)
+    draw_text_colour(244, view_hview/2 + 32, string(enemy_tank_points),global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue,1)
+    
+    draw_sprite_ext(spr_boss_body,2,38, view_hview/2  + 80,0.5,0.5,image_angle,image_blend,image_alpha)
+    draw_sprite_ext(spr_boss_cannon,2,38, view_hview/2 + 80,0.5,0.5,image_angle,image_blend,image_alpha)
+    draw_text_colour(128, view_hview/2 + 80, string(enemy_boss_kills),global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue,1)
+    draw_text_colour(244, view_hview/2 + 80, string(enemy_boss_points),global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue,1)
+    draw_set_alpha(1)
 }
 </string>
           </argument>

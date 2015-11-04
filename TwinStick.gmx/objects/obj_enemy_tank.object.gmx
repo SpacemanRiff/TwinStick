@@ -37,6 +37,8 @@ current_health = max_health
 power_up_drop_rate = 0.15
 
 multiplier_orb_count = 4
+
+type = 1
 </string>
           </argument>
         </arguments>
