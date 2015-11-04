@@ -29,7 +29,7 @@
 default_depth = depth
 
 number_of_extra_floors = irandom(2)+2
-building_style =  irandom(1)
+building_style =  irandom(2)
 roof_style = irandom(3)
 
 image_speed = 0
