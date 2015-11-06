@@ -52,10 +52,13 @@ alpha_increment = 0.03
           <argument>
             <kind>1</kind>
             <string>current_alpha += alpha_increment
-audio_sound_gain(global.current_track,audio_sound_get_gain(global.current_track)-alpha_increment, 0)
+audio_sound_gain(global.current_track,audio_sound_get_gain(global.current_track)- 3*alpha_increment/4, 0)
 
 if(current_alpha &gt;= 1){
     room = change_room
+    if(audio_is_playing(global.current_track)){
+        audio_stop_sound(global.current_track)
+    }
 }
 </string>
           </argument>

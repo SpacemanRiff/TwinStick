@@ -131,13 +131,35 @@ previous_cool_down = 60
           <argument>
             <kind>1</kind>
             <string>if(!audio_is_playing(global.current_track)){
-    current_track_counter = (current_track_counter + 1) % 2
+    current_track_counter = (current_track_counter + 1) % 4
     switch(current_track_counter){
         case 0:
-            global.current_track = msc_normal_1
+            if((wave_count%boss_wave_every == 0 &amp;&amp; enemies_left_in_wave &gt; 0) || (wave_count%boss_wave_every == 4 &amp;&amp; enemies_left_in_wave &lt;= 0)){
+                global.current_track = msc_boss_1
+            }else{
+                global.current_track = msc_normal_1
+            }
             break;
         case 1:
-            global.current_track = msc_normal_2
+            if((wave_count%boss_wave_every == 0 &amp;&amp; enemies_left_in_wave &gt; 0) || (wave_count%boss_wave_every == 4 &amp;&amp; enemies_left_in_wave &lt;= 0)){
+                global.current_track = msc_boss_2
+            }else{
+                global.current_track = msc_normal_2
+            }
+            break;
+        case 2:
+            if((wave_count%boss_wave_every == 0 &amp;&amp; enemies_left_in_wave &gt; 0) || (wave_count%boss_wave_every == 4 &amp;&amp; enemies_left_in_wave &lt;= 0)){
+                global.current_track = msc_boss_3
+            }else{
+                global.current_track = msc_normal_3
+            }
+            break;
+        case 3:
+            if((wave_count%boss_wave_every == 0 &amp;&amp; enemies_left_in_wave &gt; 0) || (wave_count%boss_wave_every == 4 &amp;&amp; enemies_left_in_wave &lt;= 0)){
+                global.current_track = msc_boss_4
+            }else{
+                global.current_track = msc_normal_4
+            }
             break;
     }
     audio_play_sound(global.current_track,1,false)
@@ -575,6 +597,7 @@ previous_cool_down = 60
             <kind>1</kind>
             <string>draw_set_font(font0)
 draw_set_valign(fa_center)
+draw_set_alpha(0.75)
 
 //waves
 draw_set_halign(fa_left)
@@ -700,10 +723,14 @@ if(enemies_left_in_wave &lt;= 0){
 }
 
 if(show_scoreboard){
-    draw_set_alpha(0.75)
     draw_set_halign(fa_center)
     draw_rectangle_colour(4, view_hview/2 - 128, 260, view_hview/2 + 128, global.hud_blue, global.hud_blue, global.hud_blue, global.hud_blue, false)
-    draw_rectangle_colour(6, view_hview/2 - 126, 258, view_hview/2 + 126, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false)
+    draw_rectangle_colour(260, view_hview/2 - 128, 292, view_hview/2 - 96, global.hud_blue, global.hud_blue, global.hud_blue, global.hud_blue, false)
+    
+    draw_rectangle_colour(6, view_hview/2 - 126, 258, view_hview/2 + 126, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false)    
+    draw_rectangle_colour(259, view_hview/2 - 126, 290, view_hview/2 - 98, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false)
+    draw_sprite_ext(hud_select_button, gamepad_button_check(0, gp_select), 276, view_hview/2 - 112,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+    
     draw_text_colour(96, view_hview/2 - 110, "Kills",global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue,1)
     draw_text_colour(164, view_hview/2 - 110, "Points",global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue,1)
     
@@ -726,8 +753,13 @@ if(show_scoreboard){
     draw_sprite_ext(spr_boss_cannon,2,38, view_hview/2 + 80,0.5,0.5,image_angle,image_blend,image_alpha)
     draw_text_colour(128, view_hview/2 + 80, string(enemy_boss_kills),global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue,1)
     draw_text_colour(244, view_hview/2 + 80, string(enemy_boss_points),global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue,1)
-    draw_set_alpha(1)
+}else{
+    draw_rectangle_colour(4, view_hview/2 - 128, 36, view_hview/2 - 96, global.hud_blue, global.hud_blue, global.hud_blue, global.hud_blue, false)
+    draw_rectangle_colour(6, view_hview/2 - 126, 34, view_hview/2 - 98, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false)
+    draw_sprite_ext(hud_select_button, gamepad_button_check(0, gp_select), 20, view_hview/2 - 112,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 }
+draw_set_alpha(1)
+
 </string>
           </argument>
         </arguments>

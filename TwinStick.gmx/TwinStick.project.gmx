@@ -9,6 +9,13 @@
       <sound>sound\msc_main_menu</sound>
       <sound>sound\msc_normal_1</sound>
       <sound>sound\msc_normal_2</sound>
+      <sound>sound\msc_normal_3</sound>
+      <sound>sound\msc_normal_4</sound>
+      <sound>sound\msc_boss_1</sound>
+      <sound>sound\msc_boss_2</sound>
+      <sound>sound\msc_boss_3</sound>
+      <sound>sound\msc_boss_4</sound>
+      <sound>sound\msc_credits</sound>
     </sounds>
     <sounds name="sfx">
       <sound>sound\snd_machine_gun_basic</sound>
@@ -150,6 +157,7 @@
       <sprite>sprites\spr_power_up_dash_sprite</sprite>
       <sprite>sprites\spr_power_up_decoy_shadow</sprite>
       <sprite>sprites\hud_cycle</sprite>
+      <sprite>sprites\hud_select_button</sprite>
     </sprites>
     <sprites name="effects">
       <sprite>sprites\spr_smoke</sprite>
@@ -176,10 +184,12 @@
   </scripts>
   <fonts name="fonts">
     <font>fonts\font0</font>
+    <font>fonts\font1</font>
   </fonts>
   <objects name="objects">
     <object>objects\obj_supervisor</object>
-    <object>objects\menu_controller</object>
+    <object>objects\obj_menu_controller</object>
+    <object>objects\obj_credits</object>
     <object>objects\obj_player</object>
     <objects name="enemies">
       <object>objects\obj_enemy_nexus</object>
@@ -228,8 +238,9 @@
     <room>rooms\main_menu</room>
     <room>rooms\arena_easy</room>
     <room>rooms\arena_hard</room>
-    <room>rooms\room2</room>
+    <room>rooms\credits</room>
     <room>rooms\test_room</room>
+    <room>rooms\main_menu_obselete</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
