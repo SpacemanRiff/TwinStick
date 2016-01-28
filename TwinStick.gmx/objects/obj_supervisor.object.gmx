@@ -760,6 +760,16 @@ if(show_scoreboard){
 }
 draw_set_alpha(1)
 
+// for presentations - thumbsticks 
+
+draw_circle_colour(view_wview/2 - 128, view_hview - 64, 24, c_black, c_black, false)
+draw_circle_colour(view_wview/2 + 128, view_hview - 64, 24, c_black, c_black, false)
+
+draw_circle_colour(view_wview/2 - 128 + 16 * gamepad_axis_value(0,gp_axislh), view_hview - 64 + 16 * gamepad_axis_value(0,gp_axislv), 24, global.hud_blue, global.hud_blue, false)
+draw_circle_colour(view_wview/2 - 128 + 16 * gamepad_axis_value(0,gp_axislh), view_hview - 64 + 16 * gamepad_axis_value(0,gp_axislv), 22, c_dkgray, c_dkgray, false)
+draw_circle_colour(view_wview/2 + 128 + 16 * gamepad_axis_value(0,gp_axisrh), view_hview - 64 + 16 * gamepad_axis_value(0,gp_axisrv), 24, global.hud_blue, global.hud_blue, false)
+draw_circle_colour(view_wview/2 + 128 + 16 * gamepad_axis_value(0,gp_axisrh), view_hview - 64 + 16 * gamepad_axis_value(0,gp_axisrv), 22, c_dkgray, c_dkgray, false)
+
 </string>
           </argument>
         </arguments>
