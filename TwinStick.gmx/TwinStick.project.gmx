@@ -164,11 +164,20 @@
       <sprite>sprites\spr_smoke_shadow</sprite>
       <sprite>sprites\fx_explosion</sprite>
       <sprite>sprites\fx_explosion_shadow</sprite>
+      <sprite>sprites\spr_light</sprite>
     </sprites>
     <sprites name="menu">
       <sprite>sprites\menu_items</sprite>
     </sprites>
     <sprite>sprites\logo</sprite>
+    <sprite>sprites\spr_light_pole</sprite>
+    <sprite>sprites\spr_light_pole_top</sprite>
+    <sprite>sprites\spr_light_pole_leg</sprite>
+    <sprite>sprites\spr_light_pole_shadow</sprite>
+    <sprite>sprites\spr_enemy_shield</sprite>
+    <sprite>sprites\spr_enemy_shield_shadow</sprite>
+    <sprite>sprites\spr_shield_enemies</sprite>
+    <sprite>sprites\sprite112</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background_grid</background>
@@ -199,6 +208,8 @@
       <object>objects\obj_enemy</object>
       <object>objects\obj_enemy_tank</object>
       <object>objects\obj_enemy_scout</object>
+      <object>objects\obj_enemy_shield</object>
+      <object>objects\obj_shield_enemies</object>
       <object>objects\obj_enemy_boss</object>
     </objects>
     <objects name="weapons">
@@ -217,6 +228,7 @@
       <object>objects\obj_bomb_spawner</object>
       <object>objects\obj_tree</object>
       <object>objects\obj_boss_spawn_pad</object>
+      <object>objects\obj_light_pole</object>
     </objects>
     <objects name="power_ups">
       <object>objects\obj_multiplier_orb</object>
@@ -232,15 +244,17 @@
       <object>objects\fx_fade_out</object>
       <object>objects\fx_fade_in</object>
       <object>objects\obj_explosion</object>
+      <object>objects\obj_light</object>
     </objects>
+    <object>objects\obj_camera</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\main_menu</room>
     <room>rooms\arena_easy</room>
     <room>rooms\arena_hard</room>
     <room>rooms\credits</room>
-    <room>rooms\test_room</room>
     <room>rooms\main_menu_obselete</room>
+    <room>rooms\test_room</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

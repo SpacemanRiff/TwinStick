@@ -85,6 +85,9 @@ special_weapon = 0
 time_until_special = 0
 special_cool_down = 60
 previous_cool_down = 60
+
+surf = surface_create(room_width, room_height)
+surf_scale = 0.125
 </string>
           </argument>
         </arguments>
@@ -760,16 +763,6 @@ if(show_scoreboard){
 }
 draw_set_alpha(1)
 
-// for presentations - thumbsticks 
-
-draw_circle_colour(view_wview/2 - 128, view_hview - 64, 24, c_black, c_black, false)
-draw_circle_colour(view_wview/2 + 128, view_hview - 64, 24, c_black, c_black, false)
-
-draw_circle_colour(view_wview/2 - 128 + 16 * gamepad_axis_value(0,gp_axislh), view_hview - 64 + 16 * gamepad_axis_value(0,gp_axislv), 24, global.hud_blue, global.hud_blue, false)
-draw_circle_colour(view_wview/2 - 128 + 16 * gamepad_axis_value(0,gp_axislh), view_hview - 64 + 16 * gamepad_axis_value(0,gp_axislv), 22, c_dkgray, c_dkgray, false)
-draw_circle_colour(view_wview/2 + 128 + 16 * gamepad_axis_value(0,gp_axisrh), view_hview - 64 + 16 * gamepad_axis_value(0,gp_axisrv), 24, global.hud_blue, global.hud_blue, false)
-draw_circle_colour(view_wview/2 + 128 + 16 * gamepad_axis_value(0,gp_axisrh), view_hview - 64 + 16 * gamepad_axis_value(0,gp_axisrv), 22, c_dkgray, c_dkgray, false)
-
 </string>
           </argument>
         </arguments>
@@ -805,11 +798,21 @@ draw_circle_colour(view_wview/2 + 128 + 16 * gamepad_axis_value(0,gp_axisrh), vi
     }
 }
 
-draw_sprite_ext(hud_health_bar,obj_player.current_health,obj_player.x,obj_player.y-32,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
-
 if(obj_player.using_shield){
     draw_sprite_ext(hud_shield_bar,obj_player.shield_health,obj_player.x,obj_player.y+32,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 }
+
+surface_set_target(surf)
+draw_clear(c_black)
+with(obj_light){
+    draw_set_blend_mode(bm_src_color)
+    draw_sprite_ext(spr_light,0,x*other.surf_scale,y*other.surf_scale,light_size*other.surf_scale,light_size*other.surf_scale,0,c_white,light_strength)
+    draw_set_blend_mode(bm_normal)
+}
+surface_reset_target()
+draw_surface_ext(surf,0,0,1/surf_scale,1/surf_scale,0,c_white,0.5)
+
+draw_sprite_ext(hud_health_bar,obj_player.current_health,obj_player.x,obj_player.y-32,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 </string>
           </argument>
         </arguments>

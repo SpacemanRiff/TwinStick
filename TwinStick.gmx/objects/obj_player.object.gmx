@@ -76,6 +76,14 @@ dying = false
 image_speed = 0
 image_index = 0
 
+light = instance_create(x,y,obj_light)
+default_light_size = 15
+light_size = default_light_size
+light.light_size = light_size
+
+camera = instance_create(x,y,obj_camera)
+camera.x = x
+camera.y = y
 </string>
           </argument>
         </arguments>
@@ -98,7 +106,8 @@ image_index = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!dying){
+            <string>///movement
+if(!dying){
     if(!dashing){
         if(move_down){
             vspeed = default_speed * vspeed_mod
@@ -174,6 +183,9 @@ image_index = 0
     hspeed = 0
     vspeed = 0
 }
+
+light.x = x
+light.y = y
 </string>
           </argument>
         </arguments>
@@ -194,7 +206,8 @@ image_index = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!dying){
+            <string>///shoot boys
+if(!dying){
     gamepad_set_vibration(0,0,0)
     if(delay_until_shot &lt;= 0){
         if(shooting &amp;&amp; !charging_dash &amp;&amp; !dashing){        
@@ -207,6 +220,7 @@ image_index = 0
                 shot.o_x = x
                 shot.o_y = y
                 shot.from_player = true
+                camera.shake = true
             } 
             audio_play_sound(snd_machine_gun_basic,1,false) 
             delay_until_shot = firing_rate
@@ -245,12 +259,36 @@ image_index = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!dying &amp;&amp; current_health &lt;= 0){
+            <string>///death
+if(!dying &amp;&amp; current_health &lt;= 0){
     dying = true
     image_index = 0
     image_speed = 0.75
     sprite_index = fx_explosion
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///light code
+
+light.light_size = light_size
 </string>
           </argument>
         </arguments>
