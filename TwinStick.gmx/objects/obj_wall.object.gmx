@@ -31,19 +31,47 @@ default_depth = depth
 number_of_extra_floors = irandom(3)+1
 building_style =  irandom(2)
 roof_style = irandom(3)
+floor_list[0] = 0
 
 image_speed = 0
 
+draw_x_offset = 0
+draw_Y_offset = 0
+
 for(i = 0; i &lt; number_of_extra_floors; i++){
-    next_floor = instance_create(x,y,obj_wall_floor)
-    next_floor.current_floor = i+1
-    next_floor.depth = next_floor.depth - next_floor.y/100000 - next_floor.current_floor/1000
-    next_floor.building_style = building_style
+    floor_list[i] = instance_create(x,y,obj_wall_floor)
+    floor_list[i].current_floor = i+1
+    floor_list[i].depth = floor_list[i].depth - floor_list[i].y/100000 - floor_list[i].current_floor/1000
+    floor_list[i].building_style = building_style
 }
-next_floor.sprite = spr_building_roof_p
+floor_list[number_of_extra_floors-1].sprite = spr_building_roof_p
 if(irandom(15) &lt; 1){
-    next_floor.is_roof = true
+    floor_list[number_of_extra_floors-1].is_roof = true
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_x_offset = calculate_x_offset(x,y)
+draw_y_offset = calculate_y_offset(x,y)
 </string>
           </argument>
         </arguments>
@@ -67,6 +95,11 @@ if(irandom(15) &lt; 1){
           <argument>
             <kind>1</kind>
             <string>draw_sprite_ext(sprite_index,building_style,x,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+
+for(i = 0; i &lt; number_of_extra_floors; i++){
+    floor_list[i].draw_x_offset = draw_x_offset
+    floor_list[i].draw_y_offset = draw_y_offset
+}
 </string>
           </argument>
         </arguments>
