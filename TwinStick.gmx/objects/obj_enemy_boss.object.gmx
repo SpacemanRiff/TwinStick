@@ -44,10 +44,15 @@ projectile_type = obj_cannon_shell
 weapon_fire_sound = snd_cannon
 firing_rate = 5
 delay_until_shot = 0
-delay_between_bursts = 240
+delay_between_bursts = 180
 delay_until_burst = delay_between_bursts
-shots_per_burst = 45
+shots_per_burst = 30
 shots_left_in_burst = shots_per_burst
+
+missile_type = obj_missile
+missile_fire_sound = snd_missile_firing
+missile_rate = 25
+delay_until_missile = 0
 
 shooting = false
 
@@ -88,6 +93,15 @@ if(delay_until_burst &lt;= 0){
             shots_left_in_burst--
             audio_play_sound_at(weapon_fire_sound,x,y,0,256,512,1,false,1) 
         }
+        if(delay_until_missile == 0 &amp;&amp; shooting){
+            missile = instance_create(x,y,missile_type)
+            missile.direction = facing_direction
+            missile.parent_object = id
+            missile.hover_height = 2
+            delay_until_missile = missile_rate
+            
+            audio_play_sound_at(missile_fire_sound,x,y,0,256,512,1,false,1) 
+        }
         has_sight = true
     }else{
         has_sight = false
@@ -101,6 +115,10 @@ if(delay_until_burst &lt;= 0){
 
 if(delay_until_shot &gt; 0){
     delay_until_shot --
+}
+
+if(delay_until_missile &gt; 0){
+    delay_until_missile --
 }
 
 if(delay_until_burst &gt; 0){
@@ -184,6 +202,9 @@ depth = default_depth - y/100000
     obj_supervisor.enemies_left_in_wave--
     explosion = instance_create(x,y,obj_explosion)
     explosion.image_scale = 2
+    if(instance_number(obj_enemy)&lt;=1){
+        obj_supervisor.slowdown_timer = obj_supervisor.default_slowdown_timer
+    }
     instance_destroy()
 }
 </string>

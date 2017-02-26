@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>event_inherited()
 
-speed = 12
+default_speed = 12
 
 damage = 2
 

@@ -110,16 +110,16 @@ camera.y = y
 if(!dying){
     if(!dashing){
         if(move_down){
-            vspeed = default_speed * vspeed_mod
+            vspeed = default_speed * vspeed_mod * obj_supervisor.slowdown_amount
         }
         if(move_up){
-            vspeed = -default_speed * vspeed_mod
+            vspeed = -default_speed * vspeed_mod * obj_supervisor.slowdown_amount
         }
         if(move_right){
-            hspeed = default_speed * hspeed_mod
+            hspeed = default_speed * hspeed_mod * obj_supervisor.slowdown_amount
         }
         if(move_left){
-            hspeed = -default_speed * hspeed_mod
+            hspeed = -default_speed * hspeed_mod * obj_supervisor.slowdown_amount
         }
         
         if(!move_left &amp;&amp; !move_right){
@@ -130,8 +130,8 @@ if(!dying){
         }
         
     }else{
-        hspeed = (dash_speed + dash_speed*(dash_duration/default_dash_duration)) * dash_power * dcos(dash_direction)
-        vspeed = (dash_speed + dash_speed*(dash_duration/default_dash_duration)) * dash_power * dsin(-dash_direction)
+        hspeed = (dash_speed + dash_speed*(dash_duration/default_dash_duration)) * dash_power * dcos(dash_direction)  * obj_supervisor.slowdown_amount
+        vspeed = (dash_speed + dash_speed*(dash_duration/default_dash_duration)) * dash_power * dsin(-dash_direction)  * obj_supervisor.slowdown_amount
         
         dash_duration--
         if(dash_duration &lt;= 0){
@@ -223,7 +223,7 @@ if(!dying){
                 //camera.shake = true
             } 
             audio_play_sound(snd_machine_gun_basic,1,false) 
-            delay_until_shot = firing_rate
+            delay_until_shot = firing_rate / obj_supervisor.slowdown_amount
         }
     }
     

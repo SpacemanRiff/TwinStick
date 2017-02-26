@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>hover_height = 0
-speed = 16
+default_speed = 16
 damage = 1
 
 var parent_object;
@@ -65,6 +65,8 @@ o_y = 0
         instance_destroy()
     }
 }
+
+speed = default_speed * obj_supervisor.slowdown_amount
 </string>
           </argument>
         </arguments>
