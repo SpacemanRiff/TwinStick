@@ -35,7 +35,6 @@ delay_until_shot = 0
 depth = depth - y/100000
 
 has_sight = false
-
 destroyed = false
 
 body_sprite = spr_turret_body
