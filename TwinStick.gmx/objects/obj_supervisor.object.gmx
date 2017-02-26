@@ -69,7 +69,7 @@ decrease_spawn_timer_rate = 150
 time_until_next_decrease = decrease_spawn_timer_rate
 
 wave_count = 0
-default_wave_increment = 10
+default_wave_increment = 5
 number_of_enemies_in_wave = 0
 enemies_left_in_wave = 0
 enemies_left_to_spawn = 0
