@@ -100,7 +100,8 @@ depth = default_depth - y/100000
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(current_health &lt; 1){
+            <string>///death code
+if(current_health &lt; 1){
     if(random(1) &lt; power_up_drop_rate){
         switch(irandom(6)){
             case 0:
@@ -138,6 +139,9 @@ depth = default_depth - y/100000
     }
     obj_supervisor.enemies_left_in_wave--
     explosion = instance_create(x,y,obj_explosion)
+    if(instance_number(obj_enemy)&lt;=1){
+        obj_supervisor.slowdown_timer = obj_supervisor.default_slowdown_timer
+    }
     instance_destroy()
 }
 </string>

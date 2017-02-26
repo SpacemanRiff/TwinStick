@@ -53,9 +53,9 @@ shake_intensity = 4
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>goto_x_sum = obj_player.x * 10
-goto_y_sum = obj_player.y * 10
-goto_total = 10
+            <string>goto_x_sum = obj_player.x * 25
+goto_y_sum = obj_player.y * 25
+goto_total = 25
 with(obj_enemy){
     if(calculate_magnitude(obj_player.x-x,obj_player.y-y) &lt; (view_wview + view_hview)/4){
         distance_multiplier = (((view_wview + view_hview)/4) - calculate_magnitude(obj_player.x-x,obj_player.y-y)) / ((view_wview + view_hview)/4)

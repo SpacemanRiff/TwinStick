@@ -463,35 +463,35 @@ light.light_size = light_size
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_x_offset = 
-draw_y_offset = 
+            <string>draw_x_offset = calculate_x_offset(x,y)
+draw_y_offset = calculate_y_offset(x,y)
 
 if(!dying &amp;&amp; !dead){
     draw_sprite_ext(spr_player_body_shadow,image_index,x,y,image_xscale,image_yscale,last_direction_moved,image_blend,image_alpha)
     draw_sprite_ext(spr_player_cannon_shadow,image_index,x,y,image_xscale,image_yscale,facing_direction,image_blend,image_alpha)
     
-    draw_sprite_ext(spr_player_body,image_index,x+calculate_x_offset(x,y)/2,y+calculate_y_offset(x,y)/2,image_xscale,image_yscale,last_direction_moved,image_blend,image_alpha)
-    draw_sprite_ext(spr_player_cannon,image_index,x+calculate_x_offset(x,y),y+calculate_y_offset(x,y),image_xscale,image_yscale,facing_direction,image_blend,image_alpha)
+    draw_sprite_ext(spr_player_body,image_index,x+draw_x_offset/2,y+draw_y_offset/2,image_xscale,image_yscale,last_direction_moved,image_blend,image_alpha)
+    draw_sprite_ext(spr_player_cannon,image_index,x+draw_x_offset,y+draw_y_offset,image_xscale,image_yscale,facing_direction,image_blend,image_alpha)
     
     if(charging_dash){    
-        draw_sprite_ext(spr_dash_attack,image_index,x+calculate_x_offset(x,y) + 16*dcos(facing_direction),y+calculate_y_offset(x,y) + 16*dsin(-facing_direction)/*-hover_height*/,dash_power,dash_power,facing_direction,image_blend,image_alpha)
+        draw_sprite_ext(spr_dash_attack,image_index,x+draw_x_offset + 16*dcos(facing_direction),y+draw_y_offset + 16*dsin(-facing_direction)/*-hover_height*/,dash_power,dash_power,facing_direction,image_blend,image_alpha)
     }
     if(dashing){
-        draw_sprite_ext(spr_dash_shield,image_index,x+calculate_x_offset(x,y)/2,y+calculate_y_offset(x,y)/2/*-hover_height*/,image_xscale,image_yscale,dash_direction,image_blend,image_alpha)
+        draw_sprite_ext(spr_dash_shield,image_index,x+draw_x_offset/2,y+draw_y_offset/2/*-hover_height*/,image_xscale,image_yscale,dash_direction,image_blend,image_alpha)
     }
     
     if(using_shield){
-        draw_sprite_ext(spr_player_shield,image_index,x+calculate_x_offset(x,y)/2,y+calculate_y_offset(x,y)/2/*-hover_height*/,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+        draw_sprite_ext(spr_player_shield,image_index,x+draw_x_offset/2,y+draw_y_offset/2/*-hover_height*/,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
     }
     
     if(instance_exists(obj_enemy_boss)){
-        draw_sprite_ext(hud_boss_pointer,image_index,x+calculate_x_offset(x,y)/2,y+calculate_y_offset(x,y)/2/*-hover_height*/,image_xscale,image_yscale,point_direction(x,y,obj_enemy_boss.x,obj_enemy_boss.y),image_blend,image_alpha)
+        draw_sprite_ext(hud_boss_pointer,image_index,x+draw_x_offset/2,y+draw_y_offset/2/*-hover_height*/,image_xscale,image_yscale,point_direction(x,y,obj_enemy_boss.x,obj_enemy_boss.y),image_blend,image_alpha)
     }
 }else if(!dead){
     for(i = 0; i &lt; 6; i++){
         image_angle = irandom(360)
         draw_sprite_ext(fx_explosion_shadow,image_index,x,y,1,1,image_angle,image_blend,image_alpha)
-        draw_sprite_ext(fx_explosion,image_index,x+calculate_x_offset(x,y)/2,y+calculate_y_offset(x,y)/2,1,1,image_angle,image_blend,image_alpha)
+        draw_sprite_ext(fx_explosion,image_index,x+draw_x_offset/2,y+draw_y_offset/2,1,1,image_angle,image_blend,image_alpha)
     }
 }
 </string>
