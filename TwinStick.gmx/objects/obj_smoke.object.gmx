@@ -25,9 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>lifespan = 60
-hover_height = 5
-life_left = 60
+            <string>lifespan = 30
+hover_height = 0.5
+life_left = lifespan
+scale = 3
+
+direction = 0
+speed = 0
+speed_dec = 0.05
 </string>
           </argument>
         </arguments>
@@ -50,7 +55,13 @@ life_left = 60
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>life_left--
+            <string>if(speed &gt; 0){
+    speed-=speed_dec
+}else{
+    speed = 0
+}
+hover_height += 0.1
+life_left--
 if(life_left &lt;= 0){
     instance_destroy()
 }
@@ -76,8 +87,8 @@ if(life_left &lt;= 0){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(spr_smoke_shadow,image_index,x,y,life_left/lifespan,life_left/lifespan,direction,image_blend,life_left/lifespan)
-draw_sprite_ext(spr_smoke,image_index,x+calculate_x_offset(x,y),y+calculate_y_offset(x,y),life_left/lifespan,life_left/lifespan,direction,image_blend,life_left/lifespan)
+            <string>draw_sprite_ext(spr_smoke_shadow,image_index,x,y,(1-life_left/lifespan)*scale,(1-life_left/lifespan)*scale,direction,image_blend,life_left/lifespan)
+draw_sprite_ext(spr_smoke,image_index,x+calculate_x_offset(x,y)*hover_height,y+calculate_y_offset(x,y)*hover_height,(1-life_left/lifespan)*scale,(1-life_left/lifespan)*scale,direction,image_blend,life_left/lifespan)
 </string>
           </argument>
         </arguments>

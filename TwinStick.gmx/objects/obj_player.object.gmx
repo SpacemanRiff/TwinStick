@@ -36,6 +36,10 @@ vspeed_mod = 0
 selected_weapon = 0
 total_weapons = 2
 
+smoke_rate = 2
+delay_until_smoke = 0
+
+
 firing_rate = 10
 max_fire_rate = 15
 min_fire_rate = 5
@@ -153,6 +157,16 @@ if(!dying){
         last_direction_moved = point_direction(x, y, x + hspeed, y + vspeed)
     }
     
+    if(delay_until_smoke &lt;= 0){
+        smoke = instance_create(x - 32 * dcos(last_direction_moved),y - 32 * dsin(-last_direction_moved), obj_smoke)
+        smoke.direction = last_direction_moved + 180
+        smoke.speed = 2
+        smoke.scale = 5
+        delay_until_smoke = smoke_rate
+    } else {
+        delay_until_smoke--
+    }
+    
     if(place_meeting(x+hspeed,y,obj_wall)){
         var move = sign(hspeed);
         repeat(abs(ceil(hspeed)))
@@ -215,7 +229,7 @@ light.y = y
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///shoot boys
+            <string>///shoot, boys
 if(!dying){
     gamepad_set_vibration(0,0,0)
     switch selected_weapon{
@@ -245,7 +259,7 @@ if(!dying){
                     for(i = -floor(shot_count/2); i &lt; ceil(shot_count/2); i++){
                         shot = instance_create(x,y,obj_flame)
                         shot.parent_object = id
-                        shot.direction = facing_direction + 5 * random_range(-1,1)
+                        shot.direction = facing_direction + 5 * random_range(-1,1) + ((10 / ceil(shot_count/2)) * i)
                         shot.hover_height = hover_height
                         shot.range = 512
                         shot.o_x = x
@@ -253,7 +267,9 @@ if(!dying){
                         shot.from_player = true
                         //camera.shake = true
                     } 
-                    //audio_play_sound(snd_machine_gun_basic,1,false) 
+                    if(!audio_is_playing(snd_flame)){
+                        audio_play_sound(snd_flame,1,false) 
+                    }
                     delay_until_flame = flame_rate / obj_supervisor.slowdown_amount
                 }
             }
