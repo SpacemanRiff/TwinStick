@@ -33,10 +33,18 @@ default_speed = 5
 hspeed_mod = 0
 vspeed_mod = 0
 
+selected_weapon = 0
+total_weapons = 2
+
 firing_rate = 10
 max_fire_rate = 15
 min_fire_rate = 5
 delay_until_shot = 0
+
+flame_rate = 2
+max_flame_rate = 2
+min_flame_rate = 2
+delay_until_flame = 0
 
 hover_height = 5
 
@@ -68,6 +76,7 @@ dash_power = 0
 dash_speed = 15
 dash_direction = 0
 default_dash_duration = 30
+dash_charge_speed = 0.05
 dash_duration = 0
 
 dead = false
@@ -209,31 +218,59 @@ light.y = y
             <string>///shoot boys
 if(!dying){
     gamepad_set_vibration(0,0,0)
-    if(delay_until_shot &lt;= 0){
-        if(shooting &amp;&amp; !charging_dash &amp;&amp; !dashing){        
-            for(i = -floor(shot_count/2); i &lt; ceil(shot_count/2); i++){
-                shot = instance_create(x,y,obj_bullet)
-                shot.parent_object = id
-                shot.direction = facing_direction + ((15 / ceil(shot_count/2)) * i)
-                shot.hover_height = hover_height
-                shot.range = 512
-                shot.o_x = x
-                shot.o_y = y
-                shot.from_player = true
-                //camera.shake = true
-            } 
-            audio_play_sound(snd_machine_gun_basic,1,false) 
-            delay_until_shot = firing_rate / obj_supervisor.slowdown_amount
-        }
+    switch selected_weapon{
+        case 0:
+            if(delay_until_shot &lt;= 0){
+                if(shooting &amp;&amp; !charging_dash &amp;&amp; !dashing){        
+                    for(i = -floor(shot_count/2); i &lt; ceil(shot_count/2); i++){
+                        shot = instance_create(x,y,obj_bullet)
+                        shot.parent_object = id
+                        shot.direction = facing_direction + ((15 / ceil(shot_count/2)) * i)
+                        shot.hover_height = hover_height
+                        shot.range = 512
+                        shot.o_x = x
+                        shot.o_y = y
+                        shot.from_player = true
+                        //camera.shake = true
+                    } 
+                    audio_play_sound(snd_machine_gun_basic,1,false) 
+                    delay_until_shot = firing_rate / obj_supervisor.slowdown_amount
+                }
+            }
+            break
+        
+        case 1:
+            if(delay_until_flame &lt;= 0){
+                if(shooting &amp;&amp; !charging_dash &amp;&amp; !dashing){        
+                    for(i = -floor(shot_count/2); i &lt; ceil(shot_count/2); i++){
+                        shot = instance_create(x,y,obj_flame)
+                        shot.parent_object = id
+                        shot.direction = facing_direction + 5 * random_range(-1,1)
+                        shot.hover_height = hover_height
+                        shot.range = 512
+                        shot.o_x = x
+                        shot.o_y = y
+                        shot.from_player = true
+                        //camera.shake = true
+                    } 
+                    //audio_play_sound(snd_machine_gun_basic,1,false) 
+                    delay_until_flame = flame_rate / obj_supervisor.slowdown_amount
+                }
+            }
+            break
     }
     
     if(delay_until_shot &gt; 0){
         delay_until_shot --
     }
     
+    if(delay_until_flame &gt; 0){
+        delay_until_flame --
+    }
+    
     if(charging_dash){
         if(dash_power &lt; 1){
-            dash_power+=0.02
+            dash_power+=dash_charge_speed
         }else{
             dash_power = 1
         }

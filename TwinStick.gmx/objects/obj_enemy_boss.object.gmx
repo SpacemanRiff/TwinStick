@@ -51,7 +51,7 @@ shots_left_in_burst = shots_per_burst
 
 missile_type = obj_missile
 missile_fire_sound = snd_missile_firing
-missile_rate = 25
+missile_rate = 100
 delay_until_missile = 0
 
 shooting = false

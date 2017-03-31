@@ -134,6 +134,8 @@
         <sprite>sprites\spr_friendly_turret_cannon</sprite>
         <sprite>sprites\spr_friendly_turret_cannon_shadow</sprite>
       </sprites>
+      <sprite>sprites\spr_fireball</sprite>
+      <sprite>sprites\spr_fireball_shadow</sprite>
     </sprites>
     <sprites name="hud">
       <sprite>sprites\hud_health_bar</sprite>
@@ -158,6 +160,9 @@
       <sprite>sprites\spr_power_up_decoy_shadow</sprite>
       <sprite>sprites\hud_cycle</sprite>
       <sprite>sprites\hud_select_button</sprite>
+      <sprite>sprites\hud_gun</sprite>
+      <sprite>sprites\hud_flame</sprite>
+      <sprite>sprites\hud_dpad_down</sprite>
     </sprites>
     <sprites name="effects">
       <sprite>sprites\spr_smoke</sprite>
@@ -214,6 +219,7 @@
     </objects>
     <objects name="weapons">
       <object>objects\obj_bullet</object>
+      <object>objects\obj_flame</object>
       <object>objects\obj_cannon_shell</object>
       <object>objects\obj_bomb</object>
       <object>objects\obj_bomb_decoy</object>

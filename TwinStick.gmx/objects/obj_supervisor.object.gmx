@@ -313,9 +313,9 @@ current_zoom = min_zoom
             instance_create(obj_player.x,obj_player.y,obj_bomb)
         }
     }
-    /*if(gamepad_button_check_released(0,gp_face3)){
-        
-    }*/
+    if(gamepad_button_check_released(0,gp_padd)){
+        obj_player.selected_weapon = (obj_player.selected_weapon+1)%obj_player.total_weapons
+    }
     if(gamepad_button_check_released(0,gp_face4)){
         if(!obj_player.dashing &amp;&amp; !obj_player.charging_dash){
             special_weapon = (special_weapon+1)%2
@@ -782,6 +782,19 @@ draw_sprite_ext(hud_cycle,0,window_get_width() - 116, window_get_height() - 152,
 draw_sprite_ext(hud_y_button,gamepad_button_check(0, gp_face4),window_get_width() - 96, window_get_height() - 152,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 draw_sprite_ext(hud_right_trigger,gamepad_button_check(0, gp_shoulderrb),window_get_width() - 106, window_get_height() - 112,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 
+//weapon
+draw_rectangle_colour(window_get_width() - 104, window_get_height()-162, window_get_width()-4, window_get_height()-230, global.hud_blue, global.hud_blue, global.hud_blue, global.hud_blue, false)
+draw_rectangle_colour(window_get_width() - 102, window_get_height()-164, window_get_width()-6, window_get_height()-228, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false)
+if(obj_player.selected_weapon == 0){
+    draw_sprite_ext(hud_gun,0,window_get_width() - 54, window_get_height() - 196,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+}else if(obj_player.selected_weapon == 1){
+    draw_sprite_ext(hud_flame,0,window_get_width() - 54, window_get_height() - 196,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+}
+draw_sprite_ext(hud_cycle,0,window_get_width() - 44, window_get_height() - 229,image_xscale,image_yscale,gamepad_button_check(0, gp_padd)*90,image_blend,image_alpha)
+draw_sprite_ext(hud_dpad_down,gamepad_button_check(0, gp_padd),window_get_width() - 64, window_get_height() - 229,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+//draw_sprite_ext(hud_right_trigger,gamepad_button_check(0, gp_shoulderrb),window_get_width() - 106, window_get_height() - 112,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+
+//new enemies
 if(enemies_left_in_wave &lt;= 0){
     new_enemy_sprite = spr_enemy
     new_enemy_image_index = 2
