@@ -33,6 +33,7 @@
   </sounds>
   <sprites name="sprites">
     <sprites name="player">
+      <sprite>sprites\spr_player_flamer</sprite>
       <sprite>sprites\spr_player_cannon</sprite>
       <sprite>sprites\spr_player_cannon_shadow</sprite>
       <sprite>sprites\spr_player_body</sprite>

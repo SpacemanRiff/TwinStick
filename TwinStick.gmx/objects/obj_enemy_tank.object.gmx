@@ -34,7 +34,7 @@ default_speed = 2
 max_health = 6
 current_health = max_health
 
-power_up_drop_rate = 0.15
+power_up_drop_rate = 0.2
 
 multiplier_orb_count = 4
 

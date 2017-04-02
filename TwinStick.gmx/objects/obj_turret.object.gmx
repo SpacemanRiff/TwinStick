@@ -26,8 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>facing_direction = 0
-cannon_height = 8
-body_height = 4
+cannon_height = 1
+body_height = cannon_height/2
 
 firing_rate = 20
 delay_until_shot = 0
@@ -110,15 +110,15 @@ weapon_fire_sound = snd_cannon
           <argument>
             <kind>1</kind>
             <string>draw_sprite_ext(body_sprite_shadow,image_index,x,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
-draw_sprite_ext(body_sprite,image_index,x+calculate_x_offset(x,y)/2,y+calculate_y_offset(x,y)/2,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+draw_sprite_ext(body_sprite,image_index,x+calculate_x_offset(x,y)*body_height,y+calculate_y_offset(x,y)*body_height,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 if(!destroyed){
     draw_sprite_ext(weapon_sprite_shadow,image_index,x,y,image_xscale,image_yscale,facing_direction,image_blend,image_alpha)
     if(has_sight &amp;&amp; instance_exists(target)){
         draw_set_alpha(0.5)
-        draw_line_width_colour(x+calculate_x_offset(x,y),y+calculate_y_offset(x,y),target.x+calculate_x_offset(target.x,target.y),target.y+calculate_y_offset(target.x,target.y),2,c_red,c_red)
+        draw_line_width_colour(x+calculate_x_offset(x,y)*cannon_height,y+calculate_y_offset(x,y)*cannon_height,target.x+calculate_x_offset(target.x,target.y)*target.hover_height,target.y+calculate_y_offset(target.x,target.y)*target.hover_height,2,c_red,c_red)
         draw_set_alpha(1)
     }
-    draw_sprite_ext(weapon_sprite,image_index,x+calculate_x_offset(x,y),y+calculate_y_offset(x,y),image_xscale,image_yscale,facing_direction,image_blend,image_alpha)
+    draw_sprite_ext(weapon_sprite,image_index,x+calculate_x_offset(x,y)*cannon_height,y+calculate_y_offset(x,y)*cannon_height,image_xscale,image_yscale,facing_direction,image_blend,image_alpha)
 }
 </string>
           </argument>

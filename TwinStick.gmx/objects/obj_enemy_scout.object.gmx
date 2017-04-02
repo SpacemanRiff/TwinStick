@@ -34,7 +34,7 @@ default_speed = 6
 max_health = 1
 current_health = max_health
 
-power_up_drop_rate = 0.05
+power_up_drop_rate = 0.1
 
 face_path = true
 

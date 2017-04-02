@@ -50,7 +50,7 @@ max_flame_rate = 2
 min_flame_rate = 2
 delay_until_flame = 0
 
-hover_height = 5
+hover_height = 1
 
 facing_direction = 0
 shooting = false
@@ -158,7 +158,7 @@ if(!dying){
     }
     
     if(delay_until_smoke &lt;= 0){
-        smoke = instance_create(x - 32 * dcos(last_direction_moved),y - 32 * dsin(-last_direction_moved), obj_smoke)
+        smoke = instance_create(x - 24 * dcos(last_direction_moved),y - 24 * dsin(-last_direction_moved), obj_smoke)
         smoke.direction = last_direction_moved + 180
         smoke.speed = 2
         smoke.scale = 5
@@ -520,31 +520,48 @@ light.light_size = light_size
 draw_y_offset = calculate_y_offset(x,y)
 
 if(!dying &amp;&amp; !dead){
-    draw_sprite_ext(spr_player_body_shadow,image_index,x,y,image_xscale,image_yscale,last_direction_moved,image_blend,image_alpha)
-    draw_sprite_ext(spr_player_cannon_shadow,image_index,x,y,image_xscale,image_yscale,facing_direction,image_blend,image_alpha)
+    draw_sprite_ext(spr_player_body_shadow,0,x,y,image_xscale,image_yscale,last_direction_moved,image_blend,image_alpha)
+    draw_sprite_ext(spr_player_cannon_shadow,0,x,y,image_xscale,image_yscale,facing_direction,image_blend,image_alpha)
     
-    draw_sprite_ext(spr_player_body,image_index,x+draw_x_offset/2,y+draw_y_offset/2,image_xscale,image_yscale,last_direction_moved,image_blend,image_alpha)
-    draw_sprite_ext(spr_player_cannon,image_index,x+draw_x_offset,y+draw_y_offset,image_xscale,image_yscale,facing_direction,image_blend,image_alpha)
+    draw_sprite_ext(spr_player_body,0,x+draw_x_offset*hover_height/2,y+draw_y_offset*hover_height/2,image_xscale,image_yscale,last_direction_moved,image_blend,image_alpha)
+    
+    if(selected_weapon == 0){
+        if(shooting){
+            image_speed = 10
+            draw_sprite_ext(spr_player_cannon,image_index,x+draw_x_offset*hover_height,y+draw_y_offset*hover_height,image_xscale,image_yscale,facing_direction,image_blend,image_alpha)
+        }else{
+            image_speed = 0
+            draw_sprite_ext(spr_player_cannon,0,x+draw_x_offset*hover_height,y+draw_y_offset*hover_height,image_xscale,image_yscale,facing_direction,image_blend,image_alpha)        
+        }
+    }else if(selected_weapon == 1){
+        if(shooting){
+            image_speed = 0
+            draw_sprite_ext(spr_player_flamer,1,x+draw_x_offset*hover_height,y+draw_y_offset*hover_height,image_xscale,image_yscale,facing_direction,image_blend,image_alpha)
+        }else{
+            image_speed = 0
+            draw_sprite_ext(spr_player_flamer,0,x+draw_x_offset*hover_height,y+draw_y_offset*hover_height,image_xscale,image_yscale,facing_direction,image_blend,image_alpha)        
+        }        
+    }
     
     if(charging_dash){    
-        draw_sprite_ext(spr_dash_attack,image_index,x+draw_x_offset + 16*dcos(facing_direction),y+draw_y_offset + 16*dsin(-facing_direction)/*-hover_height*/,dash_power,dash_power,facing_direction,image_blend,image_alpha)
+        draw_sprite_ext(spr_dash_attack,0,(x+draw_x_offset + 16*dcos(facing_direction))*hover_height/2,(y+draw_y_offset + 16*dsin(-facing_direction))-hover_height,dash_power,dash_power,facing_direction,image_blend,image_alpha)
     }
     if(dashing){
-        draw_sprite_ext(spr_dash_shield,image_index,x+draw_x_offset/2,y+draw_y_offset/2/*-hover_height*/,image_xscale,image_yscale,dash_direction,image_blend,image_alpha)
+        draw_sprite_ext(spr_dash_shield,0,x+draw_x_offset*hover_height/2,y+draw_y_offset*hover_height/2,image_xscale,image_yscale,dash_direction,image_blend,image_alpha)
     }
     
     if(using_shield){
-        draw_sprite_ext(spr_player_shield,image_index,x+draw_x_offset/2,y+draw_y_offset/2/*-hover_height*/,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+        draw_sprite_ext(spr_player_shield,0,x+draw_x_offset*hover_height/2,y+draw_y_offset*hover_height/2,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
     }
     
     if(instance_exists(obj_enemy_boss)){
-        draw_sprite_ext(hud_boss_pointer,image_index,x+draw_x_offset/2,y+draw_y_offset/2/*-hover_height*/,image_xscale,image_yscale,point_direction(x,y,obj_enemy_boss.x,obj_enemy_boss.y),image_blend,image_alpha)
+        draw_sprite_ext(hud_boss_pointer,0,x+draw_x_offset*hover_height/2,y+draw_y_offset*hover_height/2,image_xscale,image_yscale,point_direction(x,y,obj_enemy_boss.x,obj_enemy_boss.y),image_blend,image_alpha)
     }
 }else if(!dead){
     for(i = 0; i &lt; 6; i++){
         image_angle = irandom(360)
-        draw_sprite_ext(fx_explosion_shadow,image_index,x,y,1,1,image_angle,image_blend,image_alpha)
-        draw_sprite_ext(fx_explosion,image_index,x+draw_x_offset/2,y+draw_y_offset/2,1,1,image_angle,image_blend,image_alpha)
+        draw_sprite_ext(fx_explosion_shadow,0,x,y,1,1,image_angle,image_blend,image_alpha)
+        draw_sprite_ext(fx_explosion,0,x+draw_x_offset/2,y+draw_y_offset/2,1,1,image_angle,image_blend,image_alpha)
     }
 }
 </string>
