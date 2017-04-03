@@ -94,11 +94,13 @@ draw_y_offset = calculate_y_offset(x,y)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,building_style,x,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
-
-for(i = 0; i &lt; number_of_extra_floors; i++){
-    floor_list[i].draw_x_offset = draw_x_offset
-    floor_list[i].draw_y_offset = draw_y_offset
+            <string>if(is_visible(x,y,sprite_get_width(sprite_index)/2)){
+    draw_sprite_ext(sprite_index,building_style,x,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+    
+    for(i = 0; i &lt; number_of_extra_floors; i++){
+        floor_list[i].draw_x_offset = draw_x_offset
+        floor_list[i].draw_y_offset = draw_y_offset
+    }
 }
 </string>
           </argument>

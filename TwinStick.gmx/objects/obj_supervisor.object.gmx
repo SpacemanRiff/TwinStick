@@ -790,9 +790,15 @@ if(obj_player.selected_weapon == 0){
 }else if(obj_player.selected_weapon == 1){
     draw_sprite_ext(hud_flame,0,window_get_width() - 54, window_get_height() - 196,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 }
-draw_sprite_ext(hud_cycle,0,window_get_width() - 44, window_get_height() - 229,image_xscale,image_yscale,gamepad_button_check(0, gp_padd)*90,image_blend,image_alpha)
-draw_sprite_ext(hud_dpad_down,gamepad_button_check(0, gp_padd),window_get_width() - 64, window_get_height() - 229,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+
+draw_rectangle_colour(window_get_width() - 104, window_get_height()-234, window_get_width()-4, window_get_height()-310, global.hud_blue, global.hud_blue, global.hud_blue, global.hud_blue, false)
+draw_rectangle_colour(window_get_width() - 102, window_get_height()-236, window_get_width()-6, window_get_height()-308, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false)
+draw_sprite_ext(hud_temp_gauge,(obj_player.current_heat/obj_player.max_heat)*16,window_get_width() - 54, window_get_height() - 270,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+
+draw_sprite_ext(hud_cycle,0,window_get_width() - 44, window_get_height() - 224,image_xscale,image_yscale,gamepad_button_check(0, gp_padd)*90,image_blend,image_alpha)
+draw_sprite_ext(hud_dpad_down,gamepad_button_check(0, gp_padd),window_get_width() - 64, window_get_height() - 224,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 //draw_sprite_ext(hud_right_trigger,gamepad_button_check(0, gp_shoulderrb),window_get_width() - 106, window_get_height() - 112,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+
 
 //new enemies
 if(enemies_left_in_wave &lt;= 0){

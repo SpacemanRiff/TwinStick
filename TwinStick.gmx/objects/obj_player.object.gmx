@@ -50,6 +50,11 @@ max_flame_rate = 2
 min_flame_rate = 2
 delay_until_flame = 0
 
+current_heat = 0
+max_heat = 500
+heat_build = 1
+heat_decay = 1
+
 hover_height = 1
 
 facing_direction = 0
@@ -254,7 +259,7 @@ if(!dying){
             break
         
         case 1:
-            if(delay_until_flame &lt;= 0){
+            if(delay_until_flame &lt;= 0 &amp;&amp; current_heat &lt; max_heat){
                 if(shooting &amp;&amp; !charging_dash &amp;&amp; !dashing){        
                     for(i = -floor(shot_count/2); i &lt; ceil(shot_count/2); i++){
                         shot = instance_create(x,y,obj_flame)
@@ -265,6 +270,11 @@ if(!dying){
                         shot.o_x = x
                         shot.o_y = y
                         shot.from_player = true
+                        if(current_heat + heat_build &gt;= max_heat){
+                            current_heat = max_heat
+                        }else{
+                            current_heat += heat_build
+                        }
                         //camera.shake = true
                     } 
                     if(!audio_is_playing(snd_flame)){
@@ -282,6 +292,12 @@ if(!dying){
     
     if(delay_until_flame &gt; 0){
         delay_until_flame --
+    }
+    
+    if(current_heat &gt; 0 &amp;&amp; (!shooting || selected_weapon != 1)){
+        current_heat -= heat_decay
+    }else if(current_heat &lt;= 0 &amp;&amp; (!shooting || selected_weapon != 1)){
+        current_heat = 0
     }
     
     if(charging_dash){

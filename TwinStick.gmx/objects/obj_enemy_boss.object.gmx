@@ -30,7 +30,7 @@
 default_speed = 2
 default_depth = 0
 
-max_health = 100*(obj_supervisor.wave_count/obj_supervisor.boss_wave_every)
+max_health = 100.0*(obj_supervisor.wave_count/obj_supervisor.boss_wave_every)
 current_health = max_health
 
 power_up_drop_rate = 1

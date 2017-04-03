@@ -35,7 +35,7 @@ start_scale = 0.1
 scale_speed = 0.1
 current_scale = start_scale
 
-damage = 0.25
+damage = 0.1
 
 sprite = spr_fireball
 sprite_shadow = spr_fireball_shadow

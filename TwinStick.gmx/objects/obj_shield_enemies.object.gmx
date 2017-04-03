@@ -83,7 +83,7 @@ image_yscale = current_health/default_health
             <kind>1</kind>
             <string>if(object_get_name(other.parent_object) != "obj_enemy"){
     if(current_health &gt; 0){
-        current_health--
+        current_health-=other.damage
     }
 }
 </string>

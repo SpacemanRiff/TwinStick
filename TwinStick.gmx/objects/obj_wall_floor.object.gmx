@@ -30,6 +30,8 @@ image_speed = 0
 
 current_floor = 0
 
+size_scale = 0.02
+
 sprite = spr_building
 building_style = 0
 
@@ -61,10 +63,13 @@ is_roof = false
             <string>//x_offset = calculate_magnitude(x + /*view_xview + view_wview/2*/obj_player.x,y + /*view_yview + view_hview/2*/obj_player.y,)/scale * dcos(point_direction(/*view_xview + view_wview/2*/obj_player.x,/*view_yview + view_hview/2*/obj_player.y,x,y))
 //y_offset = calculate_magnitude(x + /*view_xview + view_wview/2*/obj_player.x,y + /*view_yview + view_hview/2*/obj_player.y,)/scale * dsin(-point_direction(/*view_xview + view_wview/2*/obj_player.x,/*view_yview + view_hview/2*/obj_player.y,x,y))
 
-draw_sprite_ext(sprite,building_style,x+draw_x_offset*(current_floor),y+draw_y_offset*(current_floor),1 + current_floor/50,1 + current_floor/50,image_angle,image_blend,image_alpha)
-if(is_roof){
-    for(i = 0; i &lt; 4; i++){
-        draw_sprite_ext(spr_roof_details,i,x+draw_x_offset*(current_floor+i/4),y+draw_y_offset*(current_floor+i/4),1 + current_floor/50,1 + current_floor/50,image_angle,image_blend,image_alpha)    
+
+if(is_visible(x,y,sprite_get_width(sprite)/2)){
+    draw_sprite_ext(sprite,building_style,x+draw_x_offset*(current_floor),y+draw_y_offset*(current_floor),1 + current_floor*size_scale,1 + current_floor*size_scale,image_angle,image_blend,image_alpha)
+    if(is_roof){
+        for(i = 0; i &lt; 4; i++){
+            draw_sprite_ext(spr_roof_details,i,x+draw_x_offset*(current_floor+i/4),y+draw_y_offset*(current_floor+i/4),1 + (current_floor+i/4)*size_scale,1 + (current_floor+i/4)*size_scale,image_angle,image_blend,image_alpha)    
+        }
     }
 }
 </string>

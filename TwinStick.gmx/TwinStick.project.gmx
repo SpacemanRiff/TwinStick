@@ -165,6 +165,7 @@
       <sprite>sprites\hud_gun</sprite>
       <sprite>sprites\hud_flame</sprite>
       <sprite>sprites\hud_dpad_down</sprite>
+      <sprite>sprites\hud_temp_gauge</sprite>
     </sprites>
     <sprites name="effects">
       <sprite>sprites\spr_smoke</sprite>
@@ -197,6 +198,7 @@
     <script>scripts\calculate_magnitude.gml</script>
     <script>scripts\calculate_x_offset.gml</script>
     <script>scripts\calculate_y_offset.gml</script>
+    <script>scripts\is_visible.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font0</font>

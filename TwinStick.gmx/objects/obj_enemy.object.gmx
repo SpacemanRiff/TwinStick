@@ -30,7 +30,7 @@
 hover_height = 5
 default_speed = 4
 
-max_health = 3
+max_health = 3.0
 current_health = max_health
 
 score_value = 25
@@ -167,7 +167,7 @@ if(current_health &lt; 1){
           <argument>
             <kind>1</kind>
             <string>if(other.parent_object != id){
-    current_health--
+    current_health-=other.damage
 }
 </string>
           </argument>
@@ -193,10 +193,10 @@ if(current_health &lt; 1){
             <kind>1</kind>
             <string>if(face_path){
     draw_sprite_ext(sprite_shadow,image_index,x,y,image_xscale,image_yscale,direction,image_blend,image_alpha)
-    draw_sprite_ext(sprite,current_health-1,x+calculate_x_offset(x,y)/2,y+calculate_y_offset(x,y)/2,image_xscale,image_yscale,direction,image_blend,image_alpha)
+    draw_sprite_ext(sprite,ceil(current_health)-1,x+calculate_x_offset(x,y)/2,y+calculate_y_offset(x,y)/2,image_xscale,image_yscale,direction,image_blend,image_alpha)
 }else{
     draw_sprite_ext(sprite_shadow,image_index,x,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
-    draw_sprite_ext(sprite,current_health-1,x+calculate_x_offset(x,y)/2,y+calculate_y_offset(x,y)/2,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+    draw_sprite_ext(sprite,ceil(current_health)-1,x+calculate_x_offset(x,y)/2,y+calculate_y_offset(x,y)/2,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 }
 </string>
           </argument>
