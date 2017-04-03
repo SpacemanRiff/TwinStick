@@ -259,12 +259,12 @@
     <object>objects\obj_camera</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\test_room</room>
     <room>rooms\main_menu</room>
     <room>rooms\arena_easy</room>
     <room>rooms\arena_hard</room>
     <room>rooms\credits</room>
     <room>rooms\main_menu_obselete</room>
+    <room>rooms\test_room</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

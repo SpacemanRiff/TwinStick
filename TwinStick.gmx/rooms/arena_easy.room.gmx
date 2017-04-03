@@ -342,9 +342,7 @@
     <instance objName="obj_wall" x="864" y="1440" name="inst_12D9C0AA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="800" y="1440" name="inst_4E21A6C1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bomb_spawner" x="384" y="1024" name="inst_A0EC7586" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bomb_spawner" x="1024" y="384" name="inst_12E13965" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bomb_spawner" x="1664" y="1024" name="inst_8ABB4ED2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bomb_spawner" x="1024" y="1664" name="inst_15AC1501" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tree" x="32" y="1184" name="inst_6E19F248" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tree" x="32" y="1120" name="inst_B5B59E68" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tree" x="32" y="1056" name="inst_CFAC0E56" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

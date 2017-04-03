@@ -321,6 +321,14 @@ current_zoom = min_zoom
             special_weapon = (special_weapon+1)%2
         }
     }
+    if(gamepad_button_check_pressed(0,gp_face3)){
+        if(!obj_player.dashing &amp;&amp; !obj_player.charging_dash){
+            obj_player.venting = true
+        }
+    }
+    if(gamepad_button_check_released(0,gp_face3)){
+        obj_player.venting = false
+    }
     /*if(gamepad_button_check_released(0,gp_face4)){
         if(obj_player.turret_count &gt; 0){
             obj_player.turret_count--
@@ -331,6 +339,7 @@ current_zoom = min_zoom
         if(!obj_player.dashing &amp;&amp; time_until_special &lt;= 0){        
             if(special_weapon == 0){
                 obj_player.charging_dash = true
+                obj_player.venting = false
             }else if(special_weapon == 1){
                 instance_create(obj_player.x,obj_player.y,obj_bomb_decoy)
                 time_until_special = special_cool_down * 8
@@ -689,6 +698,13 @@ view_hview[0] = default_view_height * current_zoom
 draw_set_valign(fa_center)
 draw_set_alpha(0.75)
 
+draw_set_halign(fa_left)
+draw_rectangle_colour(2, 2, 100, 30, global.hud_blue, global.hud_blue, global.hud_blue, global.hud_blue, false)
+draw_rectangle_colour(4, 4, 98, 28, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false)
+draw_text_colour(10 , 16, "FPS: ", global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue, 1)
+draw_set_halign(fa_right)
+draw_text_colour(92 , 16, string(round(fps_real)), global.hud_blue,global.hud_blue,global.hud_blue,global.hud_blue, 1)
+
 //waves
 draw_set_halign(fa_left)
 draw_rectangle_colour(window_get_width()/2 - 112, 2, window_get_width()/2 + 112, 30, global.hud_blue, global.hud_blue, global.hud_blue, global.hud_blue, false)
@@ -867,6 +883,7 @@ if(show_scoreboard){
     draw_rectangle_colour(6, window_get_height()/2 - 126, 34, window_get_height()/2 - 98, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false)
     draw_sprite_ext(hud_select_button, gamepad_button_check(0, gp_select), 20, window_get_height()/2 - 112,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 }
+draw_set_valign(fa_center)
 draw_set_alpha(1)
 
 </string>
@@ -919,6 +936,14 @@ surface_reset_target()
 draw_surface_ext(surf,0,0,1/surf_scale,1/surf_scale,0,c_white,0.5)
 
 draw_sprite_ext(hud_health_bar,obj_player.current_health,obj_player.x,obj_player.y-32,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+if(obj_player.selected_weapon == 1){
+    draw_set_halign(fa_center)
+    if(obj_player.overheated){
+        draw_rectangle_colour(obj_player.x-74,obj_player.y+36, obj_player.x+74,obj_player.y+60, global.hud_red,global.hud_red,global.hud_red,global.hud_red,  false)
+        draw_rectangle_colour(obj_player.x-72,obj_player.y+38, obj_player.x+72,obj_player.y+58, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false)
+        draw_text_colour(obj_player.x,obj_player.y+48, "!!OVERHEATED!!", global.hud_red,global.hud_red,global.hud_red,global.hud_red, 1)
+    }
+}
 </string>
           </argument>
         </arguments>

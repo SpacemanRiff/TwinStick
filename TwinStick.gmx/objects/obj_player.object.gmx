@@ -51,9 +51,15 @@ min_flame_rate = 2
 delay_until_flame = 0
 
 current_heat = 0
-max_heat = 500
+max_heat = 100
 heat_build = 1
-heat_decay = 1
+heat_decay = 0.5
+overheated = false
+venting = false
+venting_multiplier = 4
+venting_slowdown = 0.25
+cooling_smoke_rate = 2
+delay_until_cool_smoke = 0
 
 hover_height = 1
 
@@ -138,6 +144,12 @@ if(!dying){
         }
         if(move_left){
             hspeed = -default_speed * hspeed_mod * obj_supervisor.slowdown_amount
+        }
+        
+        if(venting){
+            vspeed *= venting_slowdown
+            hspeed *= venting_slowdown
+        
         }
         
         if(!move_left &amp;&amp; !move_right){
@@ -259,7 +271,7 @@ if(!dying){
             break
         
         case 1:
-            if(delay_until_flame &lt;= 0 &amp;&amp; current_heat &lt; max_heat){
+            if(delay_until_flame &lt;= 0 &amp;&amp; current_heat &lt; max_heat &amp;&amp; !overheated &amp;&amp; !venting){
                 if(shooting &amp;&amp; !charging_dash &amp;&amp; !dashing){        
                     for(i = -floor(shot_count/2); i &lt; ceil(shot_count/2); i++){
                         shot = instance_create(x,y,obj_flame)
@@ -270,18 +282,29 @@ if(!dying){
                         shot.o_x = x
                         shot.o_y = y
                         shot.from_player = true
-                        if(current_heat + heat_build &gt;= max_heat){
-                            current_heat = max_heat
-                        }else{
-                            current_heat += heat_build
-                        }
                         //camera.shake = true
                     } 
                     if(!audio_is_playing(snd_flame)){
                         audio_play_sound(snd_flame,1,false) 
                     }
+                    if(current_heat + heat_build &gt;= max_heat){
+                        current_heat = max_heat
+                        overheated = true
+                    }else{
+                        current_heat += heat_build
+                    }
                     delay_until_flame = flame_rate / obj_supervisor.slowdown_amount
                 }
+            }else if(overheated || venting){    
+                if(delay_until_cool_smoke &lt;= 0){
+                    smoke = instance_create(x,y, obj_smoke)
+                    smoke.direction = facing_direction + 90
+                    smoke.speed = 2
+                    smoke.scale = 5
+                    delay_until_cool_smoke = cooling_smoke_rate
+                } else {
+                    delay_until_cool_smoke--
+                }                
             }
             break
     }
@@ -294,10 +317,15 @@ if(!dying){
         delay_until_flame --
     }
     
-    if(current_heat &gt; 0 &amp;&amp; (!shooting || selected_weapon != 1)){
-        current_heat -= heat_decay
-    }else if(current_heat &lt;= 0 &amp;&amp; (!shooting || selected_weapon != 1)){
+    if(current_heat &gt; 0 &amp;&amp; (!shooting || selected_weapon != 1 || overheated)){
+        if(venting){
+            current_heat -= heat_decay * venting_multiplier
+        }else{
+            current_heat -= heat_decay        
+        }
+    }else if(current_heat &lt;= 0 &amp;&amp; (!shooting || selected_weapon != 1 || overheated)){
         current_heat = 0
+        overheated = false
     }
     
     if(charging_dash){
@@ -552,15 +580,15 @@ if(!dying &amp;&amp; !dead){
     }else if(selected_weapon == 1){
         if(shooting){
             image_speed = 0
-            draw_sprite_ext(spr_player_flamer,1,x+draw_x_offset*hover_height,y+draw_y_offset*hover_height,image_xscale,image_yscale,facing_direction,image_blend,image_alpha)
+            draw_sprite_ext(spr_player_flamer,1,x+draw_x_offset*hover_height,y+draw_y_offset*hover_height,image_xscale,image_yscale,facing_direction,make_colour_rgb(255, 255 - 128 * (current_heat / max_heat) , 255 - 128 * (current_heat / max_heat)),image_alpha)
         }else{
             image_speed = 0
-            draw_sprite_ext(spr_player_flamer,0,x+draw_x_offset*hover_height,y+draw_y_offset*hover_height,image_xscale,image_yscale,facing_direction,image_blend,image_alpha)        
+            draw_sprite_ext(spr_player_flamer,0,x+draw_x_offset*hover_height,y+draw_y_offset*hover_height,image_xscale,image_yscale,facing_direction,make_colour_rgb(255, 255 - 128 * (current_heat / max_heat) , 255 - 128 * (current_heat / max_heat)),image_alpha)        
         }        
     }
     
     if(charging_dash){    
-        draw_sprite_ext(spr_dash_attack,0,(x+draw_x_offset + 16*dcos(facing_direction))*hover_height/2,(y+draw_y_offset + 16*dsin(-facing_direction))-hover_height,dash_power,dash_power,facing_direction,image_blend,image_alpha)
+        draw_sprite_ext(spr_dash_attack,0,(x+draw_x_offset*hover_height/2 + 16*dcos(facing_direction)),(y+draw_y_offset*hover_height/2 + 16*dsin(-facing_direction)),dash_power,dash_power,facing_direction,image_blend,image_alpha)
     }
     if(dashing){
         draw_sprite_ext(spr_dash_shield,0,x+draw_x_offset*hover_height/2,y+draw_y_offset*hover_height/2,image_xscale,image_yscale,dash_direction,image_blend,image_alpha)
